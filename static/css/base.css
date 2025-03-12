@@ -18,7 +18,7 @@ body {
 }
 
 #delivery-banner {
-    background-color: darkgray;
+    background-color: rgb(146, 144, 144);
     color: white;
     padding: 0.5rem;
     text-transform: uppercase;
@@ -27,18 +27,22 @@ body {
 
 .container-home {
     min-height: 20rem;
-    margin: 15rem auto;
+    margin: 12rem auto;
     padding: 1rem;
 }
 
 .homepage-intro {
     background-color: rgb(236, 235, 235) !important;
+    color: rgb(29, 29, 29);
+    font-size: larger;
+    font-weight: 450;
     text-align: center !important;
     width: 80% !important;
-    max-width: 600px !important;
+    max-width: 700px !important;
     border-radius: 10px !important;
     display: flex;
     justify-content: flex-end;
     align-items: center;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    opacity: 0.9;
 }

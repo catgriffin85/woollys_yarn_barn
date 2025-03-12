@@ -6,6 +6,12 @@ html {
     height: 100%;
 }
 
+.topnav {
+    margin-bottom: 0 !important;
+    margin-right: 0 !important;
+    padding-bottom: 0 !important;
+}
+
 header {
     background-color: white;
 }
@@ -25,9 +31,16 @@ body {
     text-align: center;
 }
 
+.navbar {
+    font-size: larger;
+    color: rgb(29, 29, 29);
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
 .container-home {
     min-height: 20rem;
-    margin: 12rem auto;
+    margin: 14rem auto;
     padding: 1rem;
 }
 

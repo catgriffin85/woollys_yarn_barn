@@ -13,7 +13,7 @@
             "size": ["3mm", "4mm", "4.5mm", "5mm", "6mm"],
             "price": "6.99",
             "rating": "4",
-            "image": "media/aluminium_crochet_hook.avif"
+            "image": "aluminum_crochet_hook.avif"
         }
     },
     {
@@ -30,7 +30,7 @@
             "size": ["5mm", "6mm", "7mm", "8mm"],
             "price": "8.99",
             "rating": "5",
-            "image": "media/cirular_needles.avif"
+            "image": "circular_needles.avif"
         }
     },
     {
@@ -47,7 +47,7 @@
             "size": [],
             "price": "19.99",
             "rating": "4",
-            "image": "media/crochet_hook_pack.avif"
+            "image": "crochet_hook_pack.avif"
         }
     },
     {
@@ -64,7 +64,7 @@
             "size": [],
             "price": "24.99",
             "rating": "4",
-            "image": "media/crochet_pack_1.png"
+            "image": "crochet_pack_1.png"
         }
     },
     {
@@ -81,7 +81,7 @@
             "size": [],
             "price": "29.99",
             "rating": "5",
-            "image": "media/crochet_pack_2.jpg"
+            "image": "crochet_pack_2.jpg"
         }
     },
     {
@@ -98,7 +98,7 @@
             "size": ["5mm", "6mm", "7mm", "8mm"],
             "price": "7.99",
             "rating": "4",
-            "image": "media/double_pointed_needles.avif"
+            "image": "double_pointed_needles.avif"
         }
     },
     {
@@ -108,14 +108,14 @@
             "category": "1",
             "sub_category": "knitting_needle_case",
             "sku": "ACC-0007",
-            "name": "knitting_needle_case",
+            "name": "Knitting Needle Case",
             "description": "Keep your knitting needles organized and protected with this stylish and compact storage case.",
             "weight": [],
             "colour": [],
             "size": [],
             "price": "19.99",
             "rating": "4",
-            "image": "media/knitting_needle_case_1.png"
+            "image": "knitting_needle_case_1.png"
         }
     },
     {
@@ -125,14 +125,14 @@
             "category": "1",
             "sub_category": "knitting_needle",
             "sku": "ACC-0008",
-            "name": "knitting_needle",
+            "name": "Straight Knitting Needle",
             "description": "Classic and easy to use, these straight knitting needles are perfect for flat projects like scarves, blankets, and sweaters. Crafted for comfort and smooth stitching.",
             "weight": [],
             "colour": [],
             "size": ["5mm", "6mm", "7mm", "8mm"],
             "price": "5.99",
             "rating": "4",
-            "image": "media/knitting_needles.avif"
+            "image": "knitting_needles.avif"
         }
     },
     {
@@ -149,7 +149,7 @@
             "size": [],
             "price": "8.99",
             "rating": "3",
-            "image": "media/single_ball_1.png"
+            "image": "single_ball_1.png"
         }
     },
     {
@@ -166,7 +166,7 @@
             "size": [],
             "price": "7.99",
             "rating": "5",
-            "image": "media/single_ball_2.png"
+            "image": "single_ball_2.png"
         }
     },
     {
@@ -183,7 +183,7 @@
             "size": [],
             "price": "8.99",
             "rating": "5",
-            "image": "media/single_ball_3.png"
+            "image": "single_ball_3.jpg"
         }
     },
     {
@@ -200,7 +200,7 @@
             "size": [],
             "price": "9.99",
             "rating": "5",
-            "image": "media/single_ball_4.png"
+            "image": "single_ball_4.png"
         }
     },
     {
@@ -217,7 +217,7 @@
             "size": [],
             "price": "6.99",
             "rating": "4",
-            "image": "media/single_ball_5.png"
+            "image": "single_ball_5.png"
         }
     },
     {
@@ -234,7 +234,7 @@
             "size": [],
             "price": "4.99",
             "rating": "3",
-            "image": "media/single_ball_6.png"
+            "image": "single_ball_6.png"
         }
     },
     {
@@ -251,7 +251,7 @@
             "size": [],
             "price": "5.99",
             "rating": "5",
-            "image": "media/single_ball_7.png"
+            "image": "single_ball_7.png"
         }
     },
     {
@@ -268,7 +268,7 @@
             "size": [],
             "price": "8.99",
             "rating": "5",
-            "image": "media/single_ball_8.png"
+            "image": "single_ball_8.png"
         }
     },
     {
@@ -285,7 +285,7 @@
             "size": ["3mm", "4mm", "4.5mm", "5mm", "6mm"],
             "price": "8.99",
             "rating": "5",
-            "image": "media/wooden_crochet_hook.avif"
+            "image": "wooden_crochet_hook.avif"
         }
     },
     {
@@ -293,7 +293,7 @@
         "pk": 18,
         "fields": {
             "category": "1",
-            "sub_category": "yarn_bowl",
+            "sub_category": "Blue Yarn Bowl",
             "sku": "ACC-0009",
             "name": "yarn_bowl",
             "description": "Prevent tangles and keep your yarn steady with this beautifully crafted yarn bowl—perfect for neat and frustration-free knitting.",
@@ -302,7 +302,7 @@
             "size": [],
             "price": "14.99",
             "rating": "4",
-            "image": "media/yarn_bowl_1.png"
+            "image": "yarn_bowl_1.png"
         }
     },
     {
@@ -310,7 +310,7 @@
         "pk": 19,
         "fields": {
             "category": "1",
-            "sub_category": "yarn_bowl",
+            "sub_category": "Yarn Bowl",
             "sku": "ACC-0010",
             "name": "yarn_bowl",
             "description": "Prevent tangles and keep your yarn steady with this beautifully crafted yarn bowl—perfect for neat and frustration-free knitting.",
@@ -319,7 +319,7 @@
             "size": [],
             "price": "19.99",
             "rating": "5",
-            "image": "media/yarn_bowl_2.png"
+            "image": "yarn_bowl_2.png"
         }
     },
     {
@@ -336,7 +336,7 @@
             "size": [],
             "price": "29.99",
             "rating": "5",
-            "image": "media/yarn_pack_9.jpg"
+            "image": "yarn_pack_9.jpg"
         }
     },
     {
@@ -353,7 +353,7 @@
             "size": [],
             "price": "39.99",
             "rating": "5",
-            "image": "media/yarn_pack_large.jpg"
+            "image": "yarn_pack_large.jpg"
         }
     },
     {
@@ -370,7 +370,7 @@
             "size": [],
             "price": "24.99",
             "rating": "4",
-            "image": "media/yarn_pack_multi_5.jpg"
+            "image": "yarn_pack_multi_5.jpg"
         }
     },
     {
@@ -387,7 +387,7 @@
             "size": [],
             "price": "21.99",
             "rating": "3",
-            "image": "media/yarn_pack_multi_2.jpg"
+            "image": "yarn_pack_multi_2.jpg"
         }
     },
     {
@@ -404,7 +404,7 @@
             "size": [],
             "price": "16.99",
             "rating": "5",
-            "image": "media/yarn_pack_multi_6.jpg"
+            "image": "yarn_pack_multi_6.jpg"
         }
     },
     {
@@ -421,7 +421,7 @@
             "size": [],
             "price": "32.99",
             "rating": "5",
-            "image": "media/yarn_pack_multi_4.jpg"
+            "image": "yarn_pack_multi_4.jpg"
         }
     },
     {
@@ -438,7 +438,7 @@
             "size": [],
             "price": "39.99",
             "rating": "5",
-            "image": "media/yarn_pack_white_to_black.jpg"
+            "image": "yarn_pack_white_to_black.jpg"
         }
     },
     {
@@ -455,7 +455,7 @@
             "size": [],
             "price": "29.99",
             "rating": "5",
-            "image": "media/yarn_pack_multi_3.jpg"
+            "image": "yarn_pack_multi_3.jpg"
         }
     },
     {
@@ -472,7 +472,7 @@
             "size": [],
             "price": "12.99",
             "rating": "5",
-            "image": "media/yarn_pack_multi_7.jpg"
+            "image": "yarn_pack_multi_7.jpg"
         }
     },
     {
@@ -489,7 +489,7 @@
             "size": [],
             "price": "39.99",
             "rating": "5",
-            "image": "media/yarn_pack_multi_8.jpg"
+            "image": "yarn_pack_multi_8.jpg"
         }
     },
     {
@@ -506,7 +506,7 @@
             "size": [],
             "price": "29.99",
             "rating": "5",
-            "image": "media/yarn_pack_pink.jpg"
+            "image": "yarn_pack_pink.jpg"
         }
     }
 ]

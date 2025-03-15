@@ -6,6 +6,12 @@ html {
     height: 100%;
 }
 
+.topnav {
+    margin-bottom: 0 !important;
+    margin-right: 0 !important;
+    padding-bottom: 0 !important;
+}
+
 header {
     background-color: white;
 }
@@ -13,14 +19,53 @@ header {
 body {
     background: url('/media/homepage_ring_of_yarn.jpg') no-repeat center center fixed;
     background-size: cover;
-    height: calc(100vh - 164px);
-    color: #555;
+    height: calc(80vh - 164px);
+    z-index: -1;
 }
 
 #delivery-banner {
-    background-color: darkgray;
+    background-color: rgb(146, 144, 144);
     color: white;
     padding: 0.5rem;
     text-transform: uppercase;
     text-align: center;
+}
+
+.navbar {
+    font-size: larger;
+    color: rgb(29, 29, 29);
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+.container-home {
+    min-height: 20rem;
+    margin: 14rem auto;
+    padding: 1rem;
+}
+
+.homepage-intro {
+    background-color: rgb(236, 235, 235) !important;
+    color: rgb(29, 29, 29);
+    font-size: larger;
+    font-weight: 450;
+    text-align: center !important;
+    width: 80% !important;
+    max-width: 700px !important;
+    border-radius: 10px !important;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    opacity: 0.9;
+}
+
+.overlay {
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    position: fixed;
+    background: white;
+    z-index: -1;
 }

@@ -5,10 +5,10 @@ from .models import Stock
 def shop_all(request):
     """ A view to show all stock on the site, including sorting and searching """
 
-    stock = Stock.objects.all()
+    stocks = Stock.objects.all()
 
     context = {
-        'stock': stock,
+        'stocks': stocks,
     }
 
     return render(request, 'stock/stock.html', context)

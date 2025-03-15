@@ -1,0 +1,66 @@
+[
+    {
+      "pk": 1,
+      "model": "stock.category",
+      "fields": {
+        "category": "accessory",
+        "friendly_name": "Accessory"
+      }
+    },
+    {
+        "pk": 2,
+        "model": "stock.category",
+        "fields": {
+          "category": "yarn",
+          "friendly_name": "Yarn"
+        }
+      },
+      {
+        "pk": 3,
+        "model": "stock.sub_category",
+        "fields": {
+          "category": "crochet_hook",
+          "friendly_name": "Crochet Hook"
+        }
+      },
+      {
+        "pk": 4,
+        "model": "stock.sub_category",
+        "fields": {
+          "category": "knitting_needle",
+          "friendly_name": "Knitting Needle"
+        }
+      },
+      {
+        "pk": 5,
+        "model": "stock.sub_category",
+        "fields": {
+          "category": "knitting_needle_case",
+          "friendly_name": "Knitting Needle Case"
+        }
+      },
+      {
+        "pk": 6,
+        "model": "stock.sub_category",
+        "fields": {
+          "category": "single_ball",
+          "friendly_name": "Single Ball"
+        }
+      },
+      {
+        "pk": 7,
+        "model": "stock.sub_category",
+        "fields": {
+          "category": "yarn_bowl",
+          "friendly_name": "Yarn Bowl"
+        }
+      },
+      {
+        "pk": 7,
+        "model": "stock.sub_category",
+        "fields": {
+          "category": "yarn_pack",
+          "friendly_name": "Yarn Pack"
+        }
+      },
+    ]

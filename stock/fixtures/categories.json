@@ -14,53 +14,5 @@
           "category": "yarn",
           "friendly_name": "Yarn"
       }
-  },
-  {
-      "pk": 3,
-      "model": "stock.category",
-      "fields": {
-          "category": 1,
-          "friendly_name": "Crochet Hook"
-      }
-  },
-  {
-      "pk": 4,
-      "model": "stock.category",
-      "fields": {
-          "category": 1,
-          "friendly_name": "Knitting Needle"
-      }
-  },
-  {
-      "pk": 5,
-      "model": "stock.category",
-      "fields": {
-          "category": 1,
-          "friendly_name": "Knitting Needle Case"
-      }
-  },
-  {
-      "pk": 6,
-      "model": "stock.category",
-      "fields": {
-          "category": 2,
-          "friendly_name": "Single Ball"
-      }
-  },
-  {
-      "pk": 7,
-      "model": "stock.category",
-      "fields": {
-          "category": 2,
-          "friendly_name": "Yarn Bowl"
-      }
-  },
-  {
-      "pk": 8,
-      "model": "stock.category",
-      "fields": {
-          "category": 2,
-          "friendly_name": "Yarn Pack"
-      }
   }
 ]

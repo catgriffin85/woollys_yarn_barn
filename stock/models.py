@@ -3,6 +3,10 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 
 
 class Category(models.Model):
+
+    class Meta:
+        verbose_name_plural = 'Categories'
+
     category = models.CharField(max_length=250)
     friendly_name = models.CharField(max_length=250, null=True, blank=True)
 
@@ -25,6 +29,10 @@ class SubCategory(models.Model):
 
 
 class Stock(models.Model):
+
+    class Meta:
+        verbose_name_plural = 'Stock'
+
     category = models.ForeignKey('Category', null=True, blank=True, on_delete=models.SET_NULL)
     sub_category = models.CharField(max_length=50, null=True, blank=True)
     sku = models.CharField(max_length=50, null=True, blank=True)

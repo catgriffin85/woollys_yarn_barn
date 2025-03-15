@@ -3,7 +3,7 @@
         "model": "stock.Stock",
         "pk": 1,
         "fields": {
-            "category": "accessory",
+            "category": "2",
             "sub_category": "crochet_hook",
             "sku": "ACC-0001",
             "name": "Aluminium Crochet Hook",
@@ -20,7 +20,7 @@
         "model": "stock.Stock",
         "pk": 2,
         "fields": {
-            "category": "accessory",
+            "category": "2",
             "sub_category": "knitting_needle",
             "sku": "ACC-0002",
             "name": "Circular Knitting Needle",
@@ -37,7 +37,7 @@
         "model": "stock.Stock",
         "pk": 3,
         "fields": {
-            "category": "accessory",
+            "category": "2",
             "sub_category": "crochet_hook",
             "sku": "ACC-0003",
             "name": "Crochet Hook Pack",
@@ -54,7 +54,7 @@
         "model": "stock.Stock",
         "pk": 4,
         "fields": {
-            "category": "accessory",
+            "category": "2",
             "sub_category": "crochet_hook",
             "sku": "ACC-0004",
             "name": "Crochet Hook Pack",
@@ -71,7 +71,7 @@
         "model": "stock.Stock",
         "pk": 5,
         "fields": {
-            "category": "accessory",
+            "category": "2",
             "sub_category": "crochet_hook",
             "sku": "ACC-0005",
             "name": "Crochet Hook Pack",
@@ -88,7 +88,7 @@
         "model": "stock.Stock",
         "pk": 6,
         "fields": {
-            "category": "accessory",
+            "category": "2",
             "sub_category": "knitting_needle",
             "sku": "ACC-0006",
             "name": "Double Pointed Knitting Needle",
@@ -105,7 +105,7 @@
         "model": "stock.Stock",
         "pk": 7,
         "fields": {
-            "category": "accessory",
+            "category": "2",
             "sub_category": "knitting_needle_case",
             "sku": "ACC-0007",
             "name": "knitting_needle_case",
@@ -122,7 +122,7 @@
         "model": "stock.Stock",
         "pk": 8,
         "fields": {
-            "category": "accessory",
+            "category": "2",
             "sub_category": "knitting_needle",
             "sku": "ACC-0008",
             "name": "knitting_needle",
@@ -139,7 +139,7 @@
         "model": "stock.Stock",
         "pk": 9,
         "fields": {
-            "category": "yarn",
+            "category": "1",
             "sub_category": "single_ball",
             "sku": "YRN-0001",
             "name": "Chunky Wool Yarn",
@@ -156,7 +156,7 @@
         "model": "stock.Stock",
         "pk": 10,
         "fields": {
-            "category": "yarn",
+            "category": "1",
             "sub_category": "single_ball",
             "sku": "YRN-0002",
             "name": "Soft Merino Yarn",
@@ -173,7 +173,7 @@
         "model": "stock.Stock",
         "pk": 11,
         "fields": {
-            "category": "yarn",
+            "category": "1",
             "sub_category": "single_ball",
             "sku": "YRN-0003",
             "name": "Cotton Blend Yarn",
@@ -190,7 +190,7 @@
         "model": "stock.Stock",
         "pk": 12,
         "fields": {
-            "category": "yarn",
+            "category": "1",
             "sub_category": "single_ball",
             "sku": "YRN-0004",
             "name": "Hand-Dyed Wool Yarn",
@@ -207,7 +207,7 @@
         "model": "stock.Stock",
         "pk": 13,
         "fields": {
-            "category": "yarn",
+            "category": "1",
             "sub_category": "single_ball",
             "sku": "YRN-0005",
             "name": "Silk Blend Yarn",
@@ -224,7 +224,7 @@
         "model": "stock.Stock",
         "pk": 14,
         "fields": {
-            "category": "yarn",
+            "category": "1",
             "sub_category": "single_ball",
             "sku": "YRN-0006",
             "name": "Eco-Friendly Bamboo Yarn",
@@ -241,7 +241,7 @@
         "model": "stock.Stock",
         "pk": 15,
         "fields": {
-            "category": "yarn",
+            "category": "1",
             "sub_category": "single_ball",
             "sku": "YRN-0007",
             "name": "Superwash Wool Yarn",
@@ -258,7 +258,7 @@
         "model": "stock.Stock",
         "pk": 16,
         "fields": {
-            "category": "yarn",
+            "category": "1",
             "sub_category": "single_ball",
             "sku": "YRN-0008",
             "name": "Alpaca Blend Yarn",
@@ -275,7 +275,7 @@
         "model": "stock.Stock",
         "pk": 17,
         "fields": {
-            "category": "accessory",
+            "category": "2",
             "sub_category": "crochet_hook",
             "sku": "ACC-0008",
             "name": "Wooden Crochet Hook",
@@ -292,7 +292,7 @@
         "model": "stock.Stock",
         "pk": 18,
         "fields": {
-            "category": "accessory",
+            "category": "2",
             "sub_category": "yarn_bowl",
             "sku": "ACC-0009",
             "name": "yarn_bowl",
@@ -309,7 +309,7 @@
         "model": "stock.Stock",
         "pk": 19,
         "fields": {
-            "category": "accessory",
+            "category": "2",
             "sub_category": "yarn_bowl",
             "sku": "ACC-0010",
             "name": "yarn_bowl",
@@ -326,7 +326,7 @@
         "model": "stock.Stock",
         "pk": 20,
         "fields": {
-            "category": "yarn",
+            "category": "1",
             "sub_category": "yarn_pack",
             "sku": "YRN-0009",
             "name": "Essential Neutrals Pack",
@@ -343,7 +343,7 @@
        "model": "stock.Stock",
         "pk": 21,
         "fields": {
-            "category": "yarn",
+            "category": "1",
             "sub_category": "yarn_pack",
             "sku": "YRN-0010",
             "name": "Rainbow Pack",
@@ -360,7 +360,7 @@
         "model": "stock.Stock",
         "pk": 22,
         "fields": {
-            "category": "yarn",
+            "category": "1",
             "sub_category": "yarn_pack",
             "sku": "YRN-0011",
             "name": "Pastel Dreams Pack",
@@ -377,7 +377,7 @@
         "model": "stock.Stock",
         "pk": 23,
         "fields": {
-            "category": "yarn",
+            "category": "1",
             "sub_category": "yarn_pack",
             "sku": "YRN-0012",
             "name": "Earth Tones Pack",
@@ -394,7 +394,7 @@
         "model": "stock.Stock",
         "pk": 24,
         "fields": {
-            "category": "yarn",
+            "category": "1",
             "sub_category": "yarn_pack",
             "sku": "YRN-0013",
             "name": "Winter Wonders Pack",
@@ -411,7 +411,7 @@
         "model": "stock.Stock",
         "pk": 25,
         "fields": {
-            "category": "yarn",
+            "category": "1",
             "sub_category": "yarn_pack",
             "sku": "YRN-0014",
             "name": "Summer Brights Pack",
@@ -428,7 +428,7 @@
         "model": "stock.Stock",
         "pk": 26,
         "fields": {
-            "category": "yarn",
+            "category": "1",
             "sub_category": "yarn_pack",
             "sku": "YRN-0015",
             "name": "Ombre Shades Pack",
@@ -445,7 +445,7 @@
         "model": "stock.Stock",
         "pk": 27,
         "fields": {
-            "category": "yarn",
+            "category": "1",
             "sub_category": "yarn_pack",
             "sku": "YRN-0016",
             "name": "Super Chunky Pack",
@@ -462,7 +462,7 @@
         "model": "stock.Stock",
         "pk": 28,
         "fields": {
-            "category": "yarn",
+            "category": "1",
             "sub_category": "yarn_pack",
             "sku": "YRN-0017",
             "name": "Sock Knitting Pack",
@@ -479,7 +479,7 @@
         "model": "stock.Stock",
         "pk": 29,
         "fields": {
-            "category": "yarn",
+            "category": "1",
             "sub_category": "yarn_pack",
             "sku": "YRN-0018",
             "name": "Luxury Wool Pack",
@@ -496,7 +496,7 @@
         "model": "stock.Stock",
         "pk": 30,
         "fields": {
-            "category": "yarn",
+            "category": "1",
             "sub_category": "yarn_pack",
             "sku": "YRN-0019",
             "name": "Eco-Friendly Pack",

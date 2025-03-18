@@ -293,9 +293,9 @@
         "pk": 18,
         "fields": {
             "category": "1",
-            "sub_category": "Blue Yarn Bowl",
+            "sub_category": "yarn_bowl",
             "sku": "ACC-0009",
-            "name": "yarn_bowl",
+            "name": "Blue Yarn Bowl",
             "description": "Prevent tangles and keep your yarn steady with this beautifully crafted yarn bowl—perfect for neat and frustration-free knitting.",
             "weight": [],
             "colour": [],
@@ -310,9 +310,9 @@
         "pk": 19,
         "fields": {
             "category": "1",
-            "sub_category": "Yarn Bowl",
+            "sub_category": "yarn_bowl",
             "sku": "ACC-0010",
-            "name": "yarn_bowl",
+            "name": "Yarn Bowl",
             "description": "Prevent tangles and keep your yarn steady with this beautifully crafted yarn bowl—perfect for neat and frustration-free knitting.",
             "weight": [],
             "colour": [],

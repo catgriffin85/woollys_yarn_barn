@@ -1,31 +1,38 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.db.models import Q
-from .models import Stock
+from .models import Stock, Category
 
 
 def shop_all(request):
-    """ A view to show all stock on the site, including sorting and searching """
+    """ A view to show all products, including sorting and search queries """
 
     stocks = Stock.objects.all()
     query = None
+    categories = None
 
-    if request.GET:
-        if 'q' in request.GET:
-            query = request.GET['q']
-            if not query:
-                messages.error(request, "You didn't enter any search criteria")
-                return redirect(reverse('stock'))
+    if 'category' in request.GET:
+        categories = request.GET['category'].split(',')
+        stocks = stocks.filter(category__name__in=categories)
+        categories = Category.objects.filter(name__in=categories)
+
+    if 'q' in request.GET:
+        query = request.GET['q']
+        if not query:
+            messages.error(request, "You didn't enter any search criteria!")
+            return redirect(reverse('products'))
             
-            queries = Q(name__icontains=query) | Q(description__icontains=query)
-            stocks = stocks.filter(queries)
+        queries = Q(name__icontains=query) | Q(description__icontains=query)
+        stocks = stocks.filter(queries)
 
     context = {
         'stocks': stocks,
         'search_term': query,
+        'current_categories': categories,
     }
 
     return render(request, 'stock/stock.html', context)
+
 
 
 def stock_detail(request, stock_id):

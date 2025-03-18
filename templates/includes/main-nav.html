@@ -10,8 +10,8 @@
                 Shop All
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="all-products-link">
-                <a href="" class="dropdown-item">Yarn</a>
-                <a href="" class="dropdown-item ">Accessories</a>
+                <a href="{% url 'stock' %}?category=single_ball,yarn_pack" class="dropdown-item">Yarn</a>
+                <a href="{% url 'stock' %}?category=knitting_needle,crochet_hook,knitting_needle_case,yarn_bowl" class="dropdown-item ">Accessories</a>
                 <a href="{% url 'stock' %}" class="dropdown-item">Full Collection</a>
             </div>
         </li>
@@ -21,9 +21,9 @@
                 Yarn
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="yarn-link">
-                <a href="" class="dropdown-item">Single Ball</a>
-                <a href="" class="dropdown-item">Yarn Packs</a>
-                <a href="" class="dropdown-item">All Yarn</a>
+                <a href="{% url 'stock' %}?category=single_ball" class="dropdown-item">Single Ball</a>
+                <a href="{% url 'stock' %}?category=yarn_pack" class="dropdown-item">Yarn Packs</a>
+                <a href="{% url 'stock' %}?category=single_ball,yarn_pack" class="dropdown-item">All Yarn</a>
             </div>
         </li>
 
@@ -32,9 +32,9 @@
                 Accessories
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="accessories-link">
-                <a href="" class="dropdown-item">Knitting Needles</a>
-                <a href="" class="dropdown-item">Crochet Hooks</a>
-                <a href="" class="dropdown-item">All Accessories</a>
+                <a href="{% url 'stock' %}?category=knitting_needle" class="dropdown-item">Knitting Needles</a>
+                <a href="{% url 'stock' %}?category=crochet_hook" class="dropdown-item">Crochet Hooks</a>
+                <a href="{% url 'stock' %}?category=knitting_needle,crochet_hook,knitting_needle_case,yarn_bowl" class="dropdown-item">All Accessories</a>
             </div>
         </li>
 

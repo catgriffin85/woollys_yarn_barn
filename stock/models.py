@@ -6,27 +6,16 @@ class Category(models.Model):
 
     class Meta:
         verbose_name_plural = 'Categories'
-
-    category = models.CharField(max_length=250)
-    friendly_name = models.CharField(max_length=250, null=True, blank=True)
+        
+    name = models.CharField(max_length=254, default='')
+    friendly_name = models.CharField(max_length=254, null=True, blank=True)
 
     def __str__(self):
-        return self.category
-    
+        return self.name
+
     def get_friendly_name(self):
         return self.friendly_name
     
-
-class SubCategory(models.Model):
-    sub_category = models.CharField(max_length=250)
-    friendly_name = models.CharField(max_length=250, null=True, blank=True)
-
-    def __str__(self):
-        return self.sub_category
-    
-    def get_friendly_name(self):
-        return self.friendly_name
-
 
 class Stock(models.Model):
 
@@ -34,9 +23,8 @@ class Stock(models.Model):
         verbose_name_plural = 'Stock'
 
     category = models.ForeignKey('Category', null=True, blank=True, on_delete=models.SET_NULL)
-    sub_category = models.CharField(max_length=50, null=True, blank=True)
     sku = models.CharField(max_length=50, null=True, blank=True)
-    name = models.CharField(max_length=200)
+    name = models.CharField(max_length=200, blank=True)
     description = models.TextField()
     weight = models.JSONField(default=list, null=True, blank=True)
     colour = models.JSONField(default=list, null=True, blank=True)

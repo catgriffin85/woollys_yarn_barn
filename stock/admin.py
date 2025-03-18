@@ -5,7 +5,6 @@ from .models import Stock, Category
 class StockAdmin(admin.ModelAdmin):
     list_display = (
         'category',
-        'sub_category',
         'sku',
         'name',
         'price',
@@ -18,8 +17,11 @@ class StockAdmin(admin.ModelAdmin):
 class CategoryAdmin(admin.ModelAdmin):
     list_display = (
         'friendly_name',
-        'category',
+        'name',
     )
+
+    ordering = ('friendly_name',)
+
 
 admin.site.register(Stock, StockAdmin)
 admin.site.register(Category, CategoryAdmin)

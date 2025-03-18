@@ -3,8 +3,7 @@
         "model": "stock.Stock",
         "pk": 1,
         "fields": {
-            "category": "1",
-            "sub_category": "crochet_hook",
+            "category": "3",
             "sku": "ACC-0001",
             "name": "Aluminium Crochet Hook",
             "description": "Lightweight and smooth, this aluminium crochet hook glides effortlessly through yarn, making stitching a breeze",
@@ -20,8 +19,7 @@
         "model": "stock.Stock",
         "pk": 2,
         "fields": {
-            "category": "1",
-            "sub_category": "knitting_needle",
+            "category": "4",
             "sku": "ACC-0002",
             "name": "Circular Knitting Needle",
             "description": "Perfect for knitting in the round or large projects, these flexible circular needles provide comfort and precision.",
@@ -37,8 +35,7 @@
         "model": "stock.Stock",
         "pk": 3,
         "fields": {
-            "category": "1",
-            "sub_category": "crochet_hook",
+            "category": "3",
             "sku": "ACC-0003",
             "name": "Crochet Hook Pack",
             "description": "A complete set of crochet hooks in multiple sizes, ideal for all your projects from fine lacework to chunky blankets",
@@ -54,8 +51,7 @@
         "model": "stock.Stock",
         "pk": 4,
         "fields": {
-            "category": "1",
-            "sub_category": "crochet_hook",
+            "category": "3",
             "sku": "ACC-0004",
             "name": "Crochet Hook Pack",
             "description": "A complete set of crochet hooks in multiple sizes, ideal for all your projects from fine lacework to chunky blankets",
@@ -71,8 +67,7 @@
         "model": "stock.Stock",
         "pk": 5,
         "fields": {
-            "category": "1",
-            "sub_category": "crochet_hook",
+            "category": "3",
             "sku": "ACC-0005",
             "name": "Crochet Hook Pack",
             "description": "A complete set of crochet hooks in multiple sizes, ideal for all your projects from fine lacework to chunky blankets",
@@ -88,8 +83,7 @@
         "model": "stock.Stock",
         "pk": 6,
         "fields": {
-            "category": "1",
-            "sub_category": "knitting_needle",
+            "category": "4",
             "sku": "ACC-0006",
             "name": "Double Pointed Knitting Needle",
             "description": "Essential for sock knitting and small circular projects, these sturdy double-pointed needles ensure smooth, seamless stitches.",
@@ -105,8 +99,7 @@
         "model": "stock.Stock",
         "pk": 7,
         "fields": {
-            "category": "1",
-            "sub_category": "knitting_needle_case",
+            "category": "5",
             "sku": "ACC-0007",
             "name": "Knitting Needle Case",
             "description": "Keep your knitting needles organized and protected with this stylish and compact storage case.",
@@ -122,8 +115,7 @@
         "model": "stock.Stock",
         "pk": 8,
         "fields": {
-            "category": "1",
-            "sub_category": "knitting_needle",
+            "category": "4",
             "sku": "ACC-0008",
             "name": "Straight Knitting Needle",
             "description": "Classic and easy to use, these straight knitting needles are perfect for flat projects like scarves, blankets, and sweaters. Crafted for comfort and smooth stitching.",
@@ -139,8 +131,7 @@
         "model": "stock.Stock",
         "pk": 9,
         "fields": {
-            "category": "2",
-            "sub_category": "single_ball",
+            "category": "1",
             "sku": "YRN-0001",
             "name": "Chunky Wool Yarn",
             "description": "Quick and fluffy yarn, ideal for quick-knit blankets and winter accessories.",
@@ -156,8 +147,7 @@
         "model": "stock.Stock",
         "pk": 10,
         "fields": {
-            "category": "2",
-            "sub_category": "single_ball",
+            "category": "1",
             "sku": "YRN-0002",
             "name": "Soft Merino Yarn",
             "description": "Luxuriously soft and warm yarn, perfect for cozy scarves, hats, and baby knits",
@@ -173,8 +163,7 @@
         "model": "stock.Stock",
         "pk": 11,
         "fields": {
-            "category": "2",
-            "sub_category": "single_ball",
+            "category": "1",
             "sku": "YRN-0003",
             "name": "Cotton Blend Yarn",
             "description": "Breathable and durable yarn, great for lightweight garments and home decor.",
@@ -190,8 +179,7 @@
         "model": "stock.Stock",
         "pk": 12,
         "fields": {
-            "category": "2",
-            "sub_category": "single_ball",
+            "category": "1",
             "sku": "YRN-0004",
             "name": "Hand-Dyed Wool Yarn",
             "description": "Each yarn skein is uniquely dyed for stunning, one-of-a-kind creations.",
@@ -207,8 +195,7 @@
         "model": "stock.Stock",
         "pk": 13,
         "fields": {
-            "category": "2",
-            "sub_category": "single_ball",
+            "category": "1",
             "sku": "YRN-0005",
             "name": "Silk Blend Yarn",
             "description": "A touch of luxury yarn with a silky sheen, perfect for elegant shawls and wraps.",
@@ -224,8 +211,7 @@
         "model": "stock.Stock",
         "pk": 14,
         "fields": {
-            "category": "2",
-            "sub_category": "single_ball",
+            "category": "1",
             "sku": "YRN-0006",
             "name": "Eco-Friendly Bamboo Yarn",
             "description": "Soft, sustainable, and naturally antibacterial yarn, ideal for eco-conscious crafters.",
@@ -241,8 +227,7 @@
         "model": "stock.Stock",
         "pk": 15,
         "fields": {
-            "category": "2",
-            "sub_category": "single_ball",
+            "category": "1",
             "sku": "YRN-0007",
             "name": "Superwash Wool Yarn",
             "description": "Easy-care yarn that’s machine washable, making it great for everyday wear.",
@@ -258,8 +243,7 @@
         "model": "stock.Stock",
         "pk": 16,
         "fields": {
-            "category": "2",
-            "sub_category": "single_ball",
+            "category": "1",
             "sku": "YRN-0008",
             "name": "Alpaca Blend Yarn",
             "description": "Lightweight yet incredibly warm yarn, a dream to work with for soft and cozy projects.",
@@ -276,7 +260,6 @@
         "pk": 17,
         "fields": {
             "category": "1",
-            "sub_category": "crochet_hook",
             "sku": "ACC-0008",
             "name": "Wooden Crochet Hook",
             "description": "Crafted from smooth, durable wood, this ergonomic crochet hook provides a comfortable grip for hours of crocheting.",
@@ -292,8 +275,7 @@
         "model": "stock.Stock",
         "pk": 18,
         "fields": {
-            "category": "1",
-            "sub_category": "yarn_bowl",
+            "category": "6",
             "sku": "ACC-0009",
             "name": "Blue Yarn Bowl",
             "description": "Prevent tangles and keep your yarn steady with this beautifully crafted yarn bowl—perfect for neat and frustration-free knitting.",
@@ -309,8 +291,7 @@
         "model": "stock.Stock",
         "pk": 19,
         "fields": {
-            "category": "1",
-            "sub_category": "yarn_bowl",
+            "category": "6",
             "sku": "ACC-0010",
             "name": "Yarn Bowl",
             "description": "Prevent tangles and keep your yarn steady with this beautifully crafted yarn bowl—perfect for neat and frustration-free knitting.",
@@ -327,7 +308,6 @@
         "pk": 20,
         "fields": {
             "category": "2",
-            "sub_category": "yarn_pack",
             "sku": "YRN-0009",
             "name": "Essential Neutrals Pack",
             "description": "A classic set of neutral yarn shades for timeless and versatile projects.",
@@ -344,7 +324,6 @@
         "pk": 21,
         "fields": {
             "category": "2",
-            "sub_category": "yarn_pack",
             "sku": "YRN-0010",
             "name": "Rainbow Pack",
             "description": "A vibrant collection of bold coloured yarn to brighten up your knitting and crochet.",
@@ -361,7 +340,6 @@
         "pk": 22,
         "fields": {
             "category": "2",
-            "sub_category": "yarn_pack",
             "sku": "YRN-0011",
             "name": "Pastel Dreams Pack",
             "description": "Soft, delicate yarn perfect for baby projects and elegant accessories.",
@@ -378,7 +356,6 @@
         "pk": 23,
         "fields": {
             "category": "2",
-            "sub_category": "yarn_pack",
             "sku": "YRN-0012",
             "name": "Earth Tones Pack",
             "description": "A warm, natural selection of yarn inspired by the beauty of nature.",
@@ -395,7 +372,6 @@
         "pk": 24,
         "fields": {
             "category": "2",
-            "sub_category": "yarn_pack",
             "sku": "YRN-0013",
             "name": "Winter Wonders Pack",
             "description": "Cozy shades of blue, greys and white yarn for seasonal knitting.",
@@ -412,7 +388,6 @@
         "pk": 25,
         "fields": {
             "category": "2",
-            "sub_category": "yarn_pack",
             "sku": "YRN-0014",
             "name": "Summer Brights Pack",
             "description": "Cheerful and sunny coloured yarn, great for warm-weather projects.",
@@ -429,7 +404,6 @@
         "pk": 26,
         "fields": {
             "category": "2",
-            "sub_category": "yarn_pack",
             "sku": "YRN-0015",
             "name": "Ombre Shades Pack",
             "description": "A gradient set of yarn designed to create stunning fade effects in your work.",
@@ -446,7 +420,6 @@
         "pk": 27,
         "fields": {
             "category": "2",
-            "sub_category": "yarn_pack",
             "sku": "YRN-0016",
             "name": "Super Chunky Pack",
             "description": "A bundle of thick, plush yarns for quick and cozy projects.",
@@ -463,7 +436,6 @@
         "pk": 28,
         "fields": {
             "category": "2",
-            "sub_category": "yarn_pack",
             "sku": "YRN-0017",
             "name": "Sock Knitting Pack",
             "description": "A variety of soft, durable yarns perfect for crafting comfortable socks.",
@@ -480,7 +452,6 @@
         "pk": 29,
         "fields": {
             "category": "2",
-            "sub_category": "yarn_pack",
             "sku": "YRN-0018",
             "name": "Luxury Wool Pack",
             "description": "A premium selection of merino, alpaca, and silk blends yarn for high-end creations.",
@@ -497,7 +468,6 @@
         "pk": 30,
         "fields": {
             "category": "2",
-            "sub_category": "yarn_pack",
             "sku": "YRN-0019",
             "name": "Eco-Friendly Pack",
             "description": "Sustainable and organic yarns, perfect for environmentally conscious crafters.",

@@ -40,7 +40,7 @@ body {
 
 .container-home {
     min-height: 20rem;
-    margin: 0.5rem auto;
+    margin: 0rem auto;
     padding: 1rem;
 }
 
@@ -75,6 +75,11 @@ body {
 .card {
     border-color: grey;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.459);
+}
+
+.card:hover {
+    transform: scale(1.03); 
+    box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.6); 
 }
 
 .card-img-top {

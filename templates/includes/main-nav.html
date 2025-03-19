@@ -11,7 +11,7 @@
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="all-products-link">
                 <a href="{% url 'stock' %}?category=single_ball,yarn_pack" class="dropdown-item">Yarn</a>
-                <a href="{% url 'stock' %}?category=knitting_needle,crochet_hook,knitting_needle_case,yarn_bowl" class="dropdown-item ">Accessories</a>
+                <a href="{% url 'stock' %}?category=knitting_needle,crochet_hook,knitting_needle_case,yarn_bowl" class="dropdown-item">Accessories</a>
                 <a href="{% url 'stock' %}" class="dropdown-item">Full Collection</a>
             </div>
         </li>
@@ -35,6 +35,16 @@
                 <a href="{% url 'stock' %}?category=knitting_needle" class="dropdown-item">Knitting Needles</a>
                 <a href="{% url 'stock' %}?category=crochet_hook" class="dropdown-item">Crochet Hooks</a>
                 <a href="{% url 'stock' %}?category=knitting_needle,crochet_hook,knitting_needle_case,yarn_bowl" class="dropdown-item">All Accessories</a>
+            </div>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#" id="all-products-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Shop By
+            </a>
+            <div class="dropdown-menu border-0" aria-labelledby="all-products-link">
+                <a href="{% url 'stock' %}?sort=price&direction=asc" class="dropdown-item">Price</a>
+                <a href="{% url 'stock' %}?sort=rating&direction=desc" class="dropdown-item">Rating</a>
+                <a href="{% url 'stock' %}" class="dropdown-item">Full Collection</a>
             </div>
         </li>
 

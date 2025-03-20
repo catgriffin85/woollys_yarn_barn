@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.db.models import Q
+from django.db.models.functions import Lower
+
 from .models import Stock, Category
 
 
@@ -16,6 +18,10 @@ def shop_all(request):
     if request.GET:
         if 'sort' in request.GET:
             sortkey = request.GET['sort']
+
+            if sortkey == 'reset':
+                return redirect(reverse('stock'))
+    
             sort = sortkey
             if sortkey == 'name':
                 sortkey = 'lower_name'
@@ -41,7 +47,7 @@ def shop_all(request):
             queries = Q(name__icontains=query) | Q(description__icontains=query)
             stocks = stocks.filter(queries)
 
-    current_sorting = f'{sort}_{direction}'
+    current_sorting = f"{request.GET.get('sort', 'None')}_{request.GET.get('direction', 'None')}"
 
     context = {
         'stocks': stocks,

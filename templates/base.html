@@ -90,7 +90,7 @@
                     </div>
                   </li>
                   <li class="list-inline-item">
-                    <a class="text-info font-weight-boldtext-black nav-link" href="">
+                    <a class="text-info font-weight-boldtext-black nav-link" href="{% url 'view_cart' %}">
                       <div class="text-center">
                         <div><i class="fas fa-shopping-cart fa-lg" style="color: black;"></i></div>
                         <p class="my-0" style="color: black;">
@@ -119,7 +119,7 @@
       </div>
         <div id="delivery-banner" class="row text-center">
             <div class="col-12 d-flex justify-content-center">
-                <h4 class="my-1">Free delivery on all orders over €{{ FREE_DELIVERY_THRESHOLD }}!</h4>                
+                <h4 class="my-1">Free delivery on all orders over €{{ free_delivery_threshold }}!</h4>                
             </div>            
         </div>
       </div>

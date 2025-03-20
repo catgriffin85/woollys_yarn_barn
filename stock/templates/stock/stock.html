@@ -14,8 +14,6 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col text-center mt-3">
-                <h4 class="logo-font">View All Our Items</h4>
-                <hr class="w-75 mb-1">
             </div>
         </div>
         <div class="row">
@@ -27,8 +25,8 @@
                                 <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Sort by...</option>
                                 <option value="price_asc" {% if current_sorting == 'price_asc' %}selected{% endif %}>Price (low to high)</option>
                                 <option value="price_desc" {% if current_sorting == 'price_desc' %}selected{% endif %}>Price (high to low)</option>
-                                <option value="rating_asc" {% if current_sorting == 'rating_asc' %}selected{% endif %}>Rating (low to high)</option>
                                 <option value="rating_desc" {% if current_sorting == 'rating_desc' %}selected{% endif %}>Rating (high to low)</option>
+                                <option value="rating_asc" {% if current_sorting == 'rating_asc' %}selected{% endif %}>Rating (low to high)</option>
                                 <option value="name_asc" {% if current_sorting == 'name_asc' %}selected{% endif %}>Name (A-Z)</option>
                                 <option value="name_desc" {% if current_sorting == 'name_desc' %}selected{% endif %}>Name (Z-A)</option>
                                 <option value="category_asc" {% if current_sorting == 'category_asc' %}selected{% endif %}>Category (A-Z)</option>
@@ -38,13 +36,14 @@
                         <div class="col-12 col-md-8 order-md-first">
                             <p class="text-muted justify-content-start">
                                 {% if search_term or current_categories or current_sorting != 'None_None' %}
-                                    <span class="small text-secondary"><a href="{% url 'stock' %}">Shop All</a> | </span>
+                                    <span><a class="shop-all-stock" href="{% url 'stock' %}">Shop All</a> | </span>
                                 {% endif %}
-                                {{ stock|length }} Items{% if search_term %} found for <strong>"{{ search_term }}"</strong>{% endif %}
+                                {{ stocks | length }} Items{% if search_term %} found for <strong>"{{ search_term }}"</strong>{% endif %}
                             </p>
                         </div>
                     </div>
                 </div>
+                <hr class="w-100 mb-1">
                 <br>
                 <div class="row">
                     {% for stock in stocks %}
@@ -88,23 +87,52 @@
             </div>
         </div>
     </div>
+    <div class="scroll-up-btn btn btn-lg py-3">
+        <a class="btt-link d-flex h-100">
+            <i class="fas fa-arrow-up"></i>
+        </a>	
+    </div>
 </div>
-<script>
-    document.getElementById('sort-selector').addEventListener('change', function() {
-    const selectedValue = this.value;
-    let url = new URL(window.location.href);
-    let params = new URLSearchParams(url.search);
 
-    if (selectedValue === 'reset') {
-        params.delete('sort');
-        params.delete('direction');
-    } else {
-        let [sort, direction] = selectedValue.split('_');
-        params.set('sort', sort);
-        params.set('direction', direction);
-    }
+{% endblock %}
 
-    window.location.href = `${url.pathname}?${params.toString()}`;
-});
-</script>
+{% block postloadjs %}
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const scrollButton = document.querySelector(".scroll-up-btn ");
+
+        window.addEventListener("scroll", function() {
+            if (window.scrollY > 100) { 
+                scrollButton.style.display = "block";
+            } else {
+                scrollButton.style.display = "none";
+            }
+        });
+
+        scrollButton.addEventListener("click", function() {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+    });
+    </script>
+
+    
+
+    <script>
+        document.getElementById('sort-selector').addEventListener('change', function() {
+        const selectedValue = this.value;
+        let url = new URL(window.location.href);
+        let params = new URLSearchParams(url.search);
+
+        if (selectedValue === 'reset') {
+            params.delete('sort');
+            params.delete('direction');
+        } else {
+            let [sort, direction] = selectedValue.split('_');
+            params.set('sort', sort);
+            params.set('direction', direction);
+        }
+
+        window.location.href = `${url.pathname}?${params.toString()}`;
+    });
+    </script>
 {% endblock %}

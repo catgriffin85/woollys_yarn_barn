@@ -45,19 +45,85 @@
                     {% else %}
                     <small class="text-muted">No Rating</small>
                     {% endif %}
+                    <br>
+                    <br>
+                    <form class="form" action="{% url 'add_to_cart' stock.id %}" method="POST">
+                        {% csrf_token %}
+                        <div class="form-row">
+                            {% with stock.weight as w %}
+                            {% if w %}
+                                <div class="col-12">
+                                    <p><strong>Weight:</strong></p>
+                                    <select class="form-control rounded-0 w-50" name="stock_weight" id='id_stock_weight'>
+                                        <option value="dk">DK</option>
+                                        <option value="aran">Aran</option>
+                                        <option value="chunky" selected>Chunky</option>
+                                        <option value="super_chunky">Super Chunky</option>
+                                    </select>
+                                </div>
+                            {% endif %}
+                            {% endwith %}
+                            {% with stock.colour as c %}
+                            {% if c %}
+                                <div class="col-12">
+                                    <p><strong>Colour:</strong></p>
+                                    <select class="form-control rounded-0 w-50" name="stock_colour" id='id_stock_colour'>
+                                        <option value="blue">Blue</option>
+                                        <option value="pink">Pink</option>
+                                        <option value="green" selected>Green</option>
+                                        <option value="white">White</option>
+                                        <option value="black">Black</option>
+                                        <option value="grey">Grey</option>
+                                        <option value="yellow">Yellow</option>
+                                    </select>
+                                </div>
+                            {% endif %}
+                            {% endwith %}
+                            {% with stock.size as s %}
+                            {% if s %}
+                                <div class="col-12">
+                                    <p><strong>Size:</strong></p>
+                                    <select class="form-control rounded-0 w-50" name="stock_size" id='id_stock_size'>
+                                        <option value="3mm">3mm</option>
+                                        <option value="4mm">4mm</option>
+                                        <option value="4.5mm" selected>4.5mm</option>
+                                        <option value="5mm">5mm</option>
+                                        <option value="6mm">6mm</option>
+                                        <option value="7mm">7mm</option>
+                                        <option value="8mm">8mm</option>
+                                    </select>
+                                </div>
+                            {% endif %}
+                            {% endwith %}
+                            <div class="col-12">
+                                <p class="mt-3"><strong>Quantity:</strong></p>
+                                <div class="form-group w-50">
+                                    <div class="input-group">
+                                        <input class="form-control qty_input" type="number"
+                                            name="quantity" value="1" min="1" max="99"
+                                            data-item_id="{{ stock.id }}"
+                                            id="id_qty_{{ stock.id }}">
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <div>
+                            <a href="{% url 'stock' %}" class="btn back-btn btn-outline-black rounded-0 btn-md">
+                                <span class="icon">
+                                    <i class="fas fa-chevron-left"></i>
+                                </span>
+                                <span class="text-uppercase">Back</span>
+                            </a>
+                            <input type="submit" class="btn btn-black back-btn rounded-0 text-uppercase" value="Add to Cart">
+                            </div>
+                            <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                            </div>
+                        </div>
+                    </form>
                 </div>
-            </div>
-            <div>
-                <a href="{% url 'stock' %}" class="btn back-btn btn-outline-black rounded-0 btn-md">
-                    <span class="icon">
-                        <i class="fas fa-chevron-left"></i>
-                    </span>
-                    <span class="text-uppercase">Back</span>
-                </a>
             </div>
         </div>
     </div>
 </div>
 </div>
-
 {% endblock %}

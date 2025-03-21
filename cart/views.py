@@ -1,39 +1,53 @@
 from django.shortcuts import render, redirect
+from django.http import HttpResponse
 
 def view_cart(request):
     """ A view that renders the cart contents page """
     return render(request, 'cart/cart.html')
 
 def add_to_cart(request, item_id):
-    """ Add a quantity of the specified product to the shopping cart and add weight, colour or size if applicable """
+    """ Add a quantity of the specified product to the shopping cart, considering weight, colour, or size if applicable """
 
-    quantity = int(request.POST.get('quantity'))
-    redirect_url = request.POST.get('redirect_url')
+    # Retrieve cart from session or initialize as empty dictionary
+    cart = request.session.get('cart', {})
+
+    # Get the quantity from the form, default to 1 if not provided
+    quantity = int(request.POST.get('quantity', 1))
+
+    # Get the redirect URL (if exists)
+    redirect_url = request.POST.get('redirect_url', '/')
+
+    # Get attributes from POST, default to None if not selected
     weight = request.POST.get('stock_weight', None)
     colour = request.POST.get('stock_colour', None)
     size = request.POST.get('stock_size', None)
 
-    cart = request.session.get('cart', {})
+    # Create a combined key for size, weight, and colour
+    attributes = f"{size or 'None'}-{weight or 'None'}-{colour or 'None'}"
 
-    if item_id not in cart or isinstance(cart[item_id], int):
-        cart[item_id] = {}
+    # Debugging: Print the attribute values
+    print(f"Attributes - Weight: {weight}, Colour: {colour}, Size: {size}")
 
-    # Handle weight
-    if weight:
-        cart[item_id].setdefault('items_by_weight', {})
-        cart[item_id]['items_by_weight'][weight] = cart[item_id]['items_by_weight'].get(weight, 0) + quantity
+    # If the item is not in the cart, add it with the appropriate attributes
+    if item_id not in cart:
+        cart[item_id] = {'items_by_attributes': {attributes: quantity}}
     else:
-        cart[item_id]['quantity'] = cart[item_id].get('quantity', 0) + quantity
+        # Ensure 'items_by_attributes' exists for the item
+        if 'items_by_attributes' not in cart[item_id]:
+            cart[item_id]['items_by_attributes'] = {}
 
-    # Handle colour
-    if colour:
-        cart[item_id].setdefault('items_by_colour', {})
-        cart[item_id]['items_by_colour'][colour] = cart[item_id]['items_by_colour'].get(colour, 0) + quantity
+        # If the attribute combination exists, add the quantity; otherwise, create a new entry
+        if attributes in cart[item_id]['items_by_attributes']:
+            cart[item_id]['items_by_attributes'][attributes] += quantity
+        else:
+            cart[item_id]['items_by_attributes'][attributes] = quantity
 
-    # Handle size
-    if size:
-        cart[item_id].setdefault('items_by_size', {})
-        cart[item_id]['items_by_size'][size] = cart[item_id]['items_by_size'].get(size, 0) + quantity
-
+    # Save the updated cart back to the session
     request.session['cart'] = cart
+    request.session.modified = True
+
+    # Debugging: Print the updated cart
+    print("Cart after adding item:", cart)
+
+    # Redirect to the specified URL (or home page if no redirect URL is provided)
     return redirect(redirect_url)

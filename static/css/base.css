@@ -144,3 +144,15 @@ body {
     background-color: rgb(146, 144, 144);
     color: white;
 }
+
+.card-cart {
+    background: rgb(245, 244, 244) !important;
+    border-color: rgb(245, 244, 244) !important;
+    box-shadow: none !important;
+}
+
+.card-cart:hover {
+    background: rgb(245, 244, 244) !important;
+    transform: none !important; 
+    box-shadow: none !important;
+}

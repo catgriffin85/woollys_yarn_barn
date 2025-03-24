@@ -35,7 +35,7 @@ def cart_contents(request):
     for item_id, item_data in cart.items():
         stock = get_object_or_404(Stock, pk=item_id)
 
-        # If the item is not using attributes (i.e., only a quantity is stored directly)
+        # If the item is not using attributes
         if isinstance(item_data, int):
             total += item_data * stock.price
             stock_count += item_data

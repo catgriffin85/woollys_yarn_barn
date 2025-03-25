@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load cart_extras %}
 
 {% block page_header %}
 <div class="container header-container">
@@ -24,11 +25,8 @@
         {% for item in cart_items %}
         <div class="col-12 ">
             <div class="card card-cart h-100 p-3">
-
-                <div class="row g-0 d-flex align-items-center">
-
-
-                    <div class="col-4 d-flex justify-content-center">
+                <div class="row">
+                    <div class="col-2 force-hide d-md-block d-flex justify-content-center">
                         {% if item.stock.image %}
                         <a href="{% url 'stock_detail' item.stock.id %}">
                             <img class="img-fluid rounded" src="{{ item.stock.image.url }}" alt="{{ item.stock.name }}"
@@ -41,29 +39,26 @@
                         </a>
                         {% endif %}
                     </div>
-
-
-                    <div class="col-4">
+                    <div class="col-7 col-sm-5">
                         <div class="card-body card-cart">
-                            <h5 class="card-title">{{ item.stock.name }}</h5>
-                            <p class="card-text"><strong>Quantity:</strong> {{ item.quantity }}</p>
-                            {% if item.size %}
-                            <p class="card-text"><strong>Size:</strong> {{ item.size }}</p>
-                            {% endif %}
-                            {% if item.weight %}
-                            <p class="card-text"><strong>Weight:</strong> {{ item.weight }}</p>
-                            {% endif %}
-                            {% if item.colour %}
-                            <p class="card-text"><strong>Colour:</strong> {{ item.colour }}</p>
-                            {% endif %}
+                            <p class="responsive-text">
+                                <strong>{% if item.size %}
+                                {{ item.size }}
+                                {% endif %}
+                                {% if item.weight %}
+                                {{ item.weight }}
+                                {% endif %}{{ item.stock.name }}
+                                {% if item.colour %}
+                                {{ item.colour }}
+                                {% endif %}</strong></p>
+                            <p class="card-text"><strong>Qty:</strong> {{ item.quantity }}</p>
                         </div>
                     </div>
-                    <div class="col-4 text-end">
-                        <div class="card-body card-cart">
-                            <p class="card-text"><strong>Price:</strong> €{{ item.price }}</p>
+                    <div class="col-3 col-sm-5">
+                        <div class="card-body card-cart d-flex justify-content-end align-items-end">
+                            <p><strong>Price: </strong>€{{ item.stock.price|calc_subtotal:item.quantity }}</p>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -90,7 +85,9 @@
         </div>
         {% else %}
         <p class="lead mb-5">Your cart is empty.</p>
-        <a href="{% url 'products' %}" class="btn btn-outline-black rounded-0 btn-lg">
+    </div>
+    <div>
+        <a href="{% url 'stock' %}" class="btn btn-outline-black rounded-0 btn-lg">
             <span class="icon">
                 <i class="fas fa-chevron-left"></i>
             </span>
@@ -99,7 +96,7 @@
     </div>
     {% endif %}
 
-        
+
 
 </div>
 </div>

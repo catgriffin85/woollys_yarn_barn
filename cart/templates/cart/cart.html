@@ -43,20 +43,26 @@
                         <div class="card-body card-cart">
                             <p class="responsive-text">
                                 <strong>{% if item.size %}
-                                {{ item.size }}
-                                {% endif %}
-                                {% if item.weight %}
-                                {{ item.weight }}
-                                {% endif %}{{ item.stock.name }}
-                                {% if item.colour %}
-                                {{ item.colour }}
-                                {% endif %}</strong></p>
-                            <p class="card-text"><strong>Qty:</strong> {{ item.quantity }}</p>
+                                    {{ item.size }}
+                                    {% endif %}
+                                    {% if item.weight %}
+                                    {{ item.weight }}
+                                    {% endif %}{{ item.stock.name }}
+                                    {% if item.colour %}
+                                    {{ item.colour }}
+                                    {% endif %}</strong>
+                            </p>
+                            {% include "cart/quantity_form.html" %}
                         </div>
                     </div>
                     <div class="col-3 col-sm-5">
                         <div class="card-body card-cart d-flex justify-content-end align-items-end">
-                            <p><strong>Price: </strong>€{{ item.stock.price|calc_subtotal:item.quantity }}</p>
+                            <p>
+                                <strong> Subtotal: </strong>
+                                <span id="subtotal_{{ item.item_id }}" class="subtotal">
+                                    €{{ item.stock.price|calc_subtotal:item.quantity }}
+                                </span>
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -72,6 +78,7 @@
                 <p><strong>Delivery:</strong> €{{ delivery }}</p>
                 <p><strong>Total:</strong> €{{ grand_total }}</p>
             </div>
+
             <div class="d-flex justify-content-end align-items-end">
                 <a href="{% url 'stock' %}" class="btn back-btn btn-outline-black rounded-0 btn-md">
                     <span class="icon">
@@ -105,4 +112,36 @@
 </div>
 </div>
 
+{% endblock %}
+
+{% block postloadjs %}
+{{ block.super }}
+
+<script type="text/javascript">
+
+    // Update quantity on click
+    $('.update-link').click(function (e) {
+        var form = $(this).prev('.update-form');
+        form.submit();
+    })
+
+    // Remove item and reload on click
+    $('.remove-item').click(function (e) {
+        e.preventDefault();
+
+        var csrfToken = "{{ csrf_token }}";
+        var itemId = $(this).data('item-id'); 
+        var url = `/cart/remove/${itemId}/`;
+        var data = { 'csrfmiddlewaretoken': csrfToken };
+
+        $.post(url, data)
+            .done(function () {
+                location.reload();
+            })
+            .fail(function (xhr, status, error) {
+                alert("Error removing item: " + error);
+            });
+    });
+
+</script>
 {% endblock %}

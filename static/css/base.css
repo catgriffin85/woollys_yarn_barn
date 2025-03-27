@@ -157,3 +157,6 @@ body {
     box-shadow: none !important;
 }
 
+.btn-link {
+    cursor: pointer;
+}

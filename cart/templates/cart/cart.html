@@ -116,18 +116,31 @@
 
 <script type="text/javascript">
 
+    $(document).ready(function () {
     // Update quantity on click
     $('.update-link').click(function (e) {
-        var form = $(this).prev('.update-form');
-        form.submit();
-    })
+        e.preventDefault();
+        var form = $(this).closest('.update-form');
+        var itemId = form.find('.qty_input').data('item_id');
+        var quantity = form.find('.qty_input').val();
+        var csrfToken = "{{ csrf_token }}";
+        var url = `/cart/adjust/${itemId}/`;
+        var data = { 'csrfmiddlewaretoken': csrfToken, 'quantity': quantity };
+
+        $.post(url, data)
+            .done(function (response) {
+                location.reload();  // Reload to update totals
+            })
+            .fail(function (xhr, status, error) {
+                alert("Error updating cart: " + error);
+            });
+    });
 
     // Remove item and reload on click
     $('.remove-item').click(function (e) {
         e.preventDefault();
-
+        var itemId = $(this).data('item-id');
         var csrfToken = "{{ csrf_token }}";
-        var itemId = $(this).data('item-id'); 
         var url = `/cart/remove/${itemId}/`;
         var data = { 'csrfmiddlewaretoken': csrfToken };
 
@@ -139,6 +152,8 @@
                 alert("Error removing item: " + error);
             });
     });
+});
+
 
 </script>
 {% endblock %}

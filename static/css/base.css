@@ -227,6 +227,11 @@ body {
 
 
 .spend-more-msg {
+    background-color: rgb(247, 243, 215) !important;
+    color: rgb(29, 29, 29) !important;
+}
+
+.go-to-cart {
     background-color: rgb(146, 144, 144) !important;
     color: white !important;
 }

@@ -85,12 +85,17 @@
                     </span>
                     <span class="text-uppercase">Keep Shopping</span>
                 </a>
-                <input type="submit" class="btn btn-black back-btn rounded-0 text-uppercase ms-2" value="Checkout">
+                <a href="{% url 'checkout' %}" class="btn back-btn btn-outline-black rounded-0 btn-md">
+                    <span class="text-uppercase">Secure Checkout</span>
+                    <span class="icon">
+                        <i class="fas fa-lock"></i>
+                    </span>
+                </a>
             </div>
             <input type="hidden" name="redirect_url" value="{{ request.path }}">
         </div>
         {% else %}
-        <p class="lead mb-5">Your cart is empty.</p>
+        <p class="lead m-5 ml-5">Your cart is empty.</p>
     </div>
     <div>
         <a href="{% url 'stock' %}" class="btn btn-outline-black rounded-0 btn-lg">

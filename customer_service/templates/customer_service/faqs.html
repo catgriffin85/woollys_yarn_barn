@@ -21,30 +21,178 @@
             <h3>Frequently Asked Questions</h3>
             <hr>
         </div>
-        <div class="row">
-            <div class="col-lg-8 mx-auto">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
                 <div class="accordion" id="faqAccordion">
+                    <fieldset class="rounded mb-1">
+                        <legend class="fieldset-label medium text-gray px-2 w-auto"><strong>Delivery</strong></legend>
+                        <hr>
+                    </fieldset>
+                
                     {% for faq in faqs %}
-                    <div class="card mb-3">
-                        <div class="card-header" id="headingOne">
-                            <h5 class="mb-0">
-                                <button class="btn btn-link" type="button" data-toggle="collapse"
-                                    data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    <p class="mb-0">{{ faq.question }}</p>
-                                </button>
-                            </h5>
-                        </div>
-                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
-                            data-parent="#faqAccordion">
-                            <div class="card-body">
-                                {{ faq.answer }}
+                        {% if faq.topics == "delivery" %}
+                            <div class="card mb-3">
+                                <div class="card-header" id="heading{{ faq.id }}">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link btn-block text-left" type="button" 
+                                            data-toggle="collapse" data-target="#collapse{{ faq.id }}" 
+                                            aria-expanded="false" aria-controls="collapse{{ faq.id }}">
+                                            <p class="mb-0">{{ faq.question }}</p>
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapse{{ faq.id }}" class="collapse" 
+                                    aria-labelledby="heading{{ faq.id }}" data-parent="#faqAccordion">
+                                    <div class="card-body">
+                                        {{ faq.answer }}
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+                    <hr>
+                    <fieldset class="rounded mb-1">
+                        <legend class="fieldset-label medium text-gray px-2 w-auto"><strong>Returns & Refunds</strong></legend>
+                        <hr>
+                    </fieldset>
+                
+                    {% for faq in faqs %}
+                        {% if faq.topics == "returns_refunds" %}
+                            <div class="card mb-3">
+                                <div class="card-header" id="heading{{ faq.id }}">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link btn-block text-left" type="button" 
+                                            data-toggle="collapse" data-target="#collapse{{ faq.id }}" 
+                                            aria-expanded="false" aria-controls="collapse{{ faq.id }}">
+                                            <p class="mb-0">{{ faq.question }}</p>
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapse{{ faq.id }}" class="collapse" 
+                                    aria-labelledby="heading{{ faq.id }}" data-parent="#faqAccordion">
+                                    <div class="card-body">
+                                        {{ faq.answer }}
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                    <hr>
+                    <fieldset class="rounded mb-1">
+                        <legend class="fieldset-label medium text-gray px-2 w-auto"><strong>Help with my order</strong></legend>
+                        <hr>
+                    </fieldset>
+                
+                    {% for faq in faqs %}
+                        {% if faq.topics == "order_issues" %}
+                            <div class="card mb-3">
+                                <div class="card-header" id="heading{{ faq.id }}">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link btn-block text-left" type="button" 
+                                            data-toggle="collapse" data-target="#collapse{{ faq.id }}" 
+                                            aria-expanded="false" aria-controls="collapse{{ faq.id }}">
+                                            <p class="mb-0">{{ faq.question }}</p>
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapse{{ faq.id }}" class="collapse" 
+                                    aria-labelledby="heading{{ faq.id }}" data-parent="#faqAccordion">
+                                    <div class="card-body">
+                                        {{ faq.answer }}
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                    <hr>
+                    <fieldset class="rounded mb-1">
+                        <legend class="fieldset-label medium text-gray px-2 w-auto"><strong>Item & Stock Queries</strong></legend>
+                        <hr>
+                    </fieldset>
+                
+                    {% for faq in faqs %}
+                        {% if faq.topics == "stock" %}
+                            <div class="card mb-3">
+                                <div class="card-header" id="heading{{ faq.id }}">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link btn-block text-left" type="button" 
+                                            data-toggle="collapse" data-target="#collapse{{ faq.id }}" 
+                                            aria-expanded="false" aria-controls="collapse{{ faq.id }}">
+                                            <p class="mb-0">{{ faq.question }}</p>
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapse{{ faq.id }}" class="collapse" 
+                                    aria-labelledby="heading{{ faq.id }}" data-parent="#faqAccordion">
+                                    <div class="card-body">
+                                        {{ faq.answer }}
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                    <hr>
+                    <fieldset class="rounded mb-1">
+                        <legend class="fieldset-label medium text-gray px-2 w-auto"><strong>Payments</strong></legend>
+                        <hr>
+                    </fieldset>
+                
+                    {% for faq in faqs %}
+                        {% if faq.topics == "payment_queries" %}
+                            <div class="card mb-3">
+                                <div class="card-header" id="heading{{ faq.id }}">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link btn-block text-left" type="button" 
+                                            data-toggle="collapse" data-target="#collapse{{ faq.id }}" 
+                                            aria-expanded="false" aria-controls="collapse{{ faq.id }}">
+                                            <p class="mb-0">{{ faq.question }}</p>
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapse{{ faq.id }}" class="collapse" 
+                                    aria-labelledby="heading{{ faq.id }}" data-parent="#faqAccordion">
+                                    <div class="card-body">
+                                        {{ faq.answer }}
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>                      
             </div>
+        </div>        
+        <div class="scroll-up-btn btn btn-lg py-3">
+            <a class="btt-link d-flex h-100">
+                <i class="fas fa-arrow-up"></i>
+            </a>	
+        </div>
+        <div class="text-center mb-3 mt-0">
+            <p>Still need help? Contact our 
+                <a class="customer_service_btn" href="{% url 'stock' %}">Customer Service Team</a> 
+                for further assistance.
+            </p>
         </div>
     </div>
 </section>
+
+{% endblock %}
+
+{% block postloadjs %}
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const scrollButton = document.querySelector(".scroll-up-btn ");
+
+        window.addEventListener("scroll", function() {
+            if (window.scrollY > 100) { 
+                scrollButton.style.display = "block";
+            } else {
+                scrollButton.style.display = "none";
+            }
+        });
+
+        scrollButton.addEventListener("click", function() {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+    });
+    </script>
 {% endblock %}

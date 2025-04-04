@@ -1,0 +1,42 @@
+[
+    {
+        "pk": 1,
+        "model": "customer_service.topic",
+        "fields": {
+            "name": "delivery",
+            "friendly_name": "Delivery"
+    }
+    },
+    {
+        "pk": 2,
+        "model": "customer_service.topic",
+            "fields": {
+            "name": "returns_refunds",
+            "friendly_name": "Returns and Refunds"
+        }
+    },
+    {
+        "pk": 3,
+        "model": "customer_service.topic",
+        "fields": {
+            "name": "order_issues",
+            "friendly_name": "Order Issues"
+        }
+    },
+    {
+        "pk": 4,
+        "model": "customer_service.topic",
+        "fields": {
+            "name": "stock",
+            "friendly_name": "Items and Stock"
+        }
+    },
+    {
+        "pk": 5,
+        "model": "customer_service.topic",
+        "fields": {
+            "name": "payment_queries",
+            "friendly_name": "Payment Queries"
+        }
+    }
+]

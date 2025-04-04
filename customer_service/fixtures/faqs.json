@@ -1,0 +1,367 @@
+[
+    {
+      "model": "customer_service.faq",
+      "pk": 1,
+      "fields": {
+        "topics": "delivery",
+        "question": "Where is my order?",
+        "question_id": "del_001",
+        "answer": "You will receive a status update email once your order has been shipped containing your tracking code. Follow the link in the email to track your package.",
+        "slug": "where-is-my-order",
+        "keywords": ["delivery", "order", "shipping", "package"],
+        "created_at": "2024-04-03T12:00:00Z",
+        "views": 0
+      }
+    },
+    {
+      "model": "customer_service.faq",
+      "pk": 2,
+      "fields": {
+        "topics": "returns_refunds",
+        "question": "How do I return an item?",
+        "question_id": "ret_001",
+        "answer": "To return an item, log into your account, go to 'My Orders', select the item, and click 'Return'. Follow the on-screen instructions to generate your return label.",
+        "slug": "how-do-i-return-an-item",
+        "keywords": ["returns", "refunds", "return policy", "item return"],
+        "created_at": "2024-04-03T12:00:00Z",
+        "views": 0
+      }
+    },
+    {
+      "model": "customer_service.faq",
+      "pk": 3,
+      "fields": {
+        "topics": "order_issues",
+        "question": "I received the wrong item. What should I do?",
+        "question_id": "ord_001",
+        "answer": "We're sorry about that! Please contact our customer support with your order number and a photo of the item received. We'll make it right.",
+        "slug": "i-received-the-wrong-item-what-should-i-do",
+        "keywords": ["wrong item", "order issue", "replacement", "mistake"],
+        "created_at": "2024-04-03T12:00:00Z",
+        "views": 0
+      }
+    },
+    {
+      "model": "customer_service.faq",
+      "pk": 4,
+      "fields": {
+        "topics": "stock",
+        "question": "Will you restock sold out items?",
+        "question_id": "stk_001",
+        "answer": "Yes, we frequently restock popular items. Please check back in a few days.",
+        "slug": "will-you-restock-sold-out-items",
+        "keywords": ["stock", "sold out", "restock", "inventory"],
+        "created_at": "2024-04-03T12:00:00Z",
+        "views": 0
+      }
+    },
+    {
+      "model": "customer_service.faq",
+      "pk": 5,
+      "fields": {
+        "topics": "payment_queries",
+        "question": "Why was my payment declined?",
+        "question_id": "pay_001",
+        "answer": "Your payment might be declined due to insufficient funds, incorrect card details, or issues with your bank. Please try another payment method or contact your bank.",
+        "slug": "why-was-my-payment-declined",
+        "keywords": ["payment", "card declined", "transaction issue", "billing"],
+        "created_at": "2024-04-03T12:00:00Z",
+        "views": 0
+      }
+    },
+    {
+      "model": "customer_service.faq",
+      "pk": 6,
+      "fields": {
+        "topics": "delivery",
+        "question": "How long does delivery take?",
+        "question_id": "del_002",
+        "answer": "Delivery usually takes 2-5 working days depending on your location.",
+        "slug": "how-long-does-delivery-take",
+        "keywords": ["shipping", "delivery time", "arrival", "expected delivery"],
+        "created_at": "2024-04-03T12:00:00Z",
+        "views": 0
+      }
+    },
+    {
+      "model": "customer_service.faq",
+      "pk": 7,
+      "fields": {
+        "topics": "delivery",
+        "question": "Can I track my order?",
+        "question_id": "del_003",
+        "answer": "Yes, once your order is shipped, you’ll receive a tracking number via email to monitor your delivery status.",
+        "slug": "can-i-track-my-order",
+        "keywords": ["tracking", "shipping", "track order", "delivery update"],
+        "created_at": "2024-04-03T12:00:00Z",
+        "views": 0
+      }
+    },
+    {
+      "model": "customer_service.faq",
+      "pk": 8,
+      "fields": {
+        "topics": "delivery",
+        "question": "Do you offer same-day delivery?",
+        "question_id": "del_004",
+        "answer": "No, we are not offering same-day delivery at this time.",
+        "slug": "do-you-offer-same-day-delivery",
+        "keywords": ["same day", "delivery", "fast shipping", "express"],
+        "created_at": "2024-04-03T12:00:00Z",
+        "views": 0
+      }
+    },
+    {
+      "model": "customer_service.faq",
+      "pk": 9,
+      "fields": {
+        "topics": "delivery",
+        "question": "What if my delivery is late?",
+        "question_id": "del_005",
+        "answer": "If your delivery is overdue, please check the tracking link first. If still unresolved, contact customer support for assistance.",
+        "slug": "what-if-my-delivery-is-late",
+        "keywords": ["late delivery", "delayed", "shipping issue", "track"],
+        "created_at": "2024-04-03T12:00:00Z",
+        "views": 0
+      }
+    },
+    {
+      "model": "customer_service.faq",
+      "pk": 10,
+      "fields": {
+        "topics": "delivery",
+        "question": "Can I change my delivery address?",
+        "question_id": "del_006",
+        "answer": "You can change the delivery address before your order is shipped by contacting customer support or accessing your account settings.",
+        "slug": "can-i-change-my-delivery-address",
+        "keywords": ["delivery address", "change address", "shipping details"],
+        "created_at": "2024-04-03T12:00:00Z",
+        "views": 0
+      }
+    },
+    {
+      "model": "customer_service.faq",
+      "pk": 11,
+      "fields": {
+        "topics": "returns_refunds",
+        "question": "How long do I have to return an item?",
+        "question_id": "ret_002",
+        "answer": "You have 30 days from the date of delivery to return an item for a full refund or exchange.",
+        "slug": "how-long-do-i-have-to-return-an-item",
+        "keywords": ["returns", "return policy", "refund window", "30 days"],
+        "created_at": "2024-04-03T12:00:00Z",
+        "views": 0
+      }
+    },
+    {
+      "model": "customer_service.faq",
+      "pk": 12,
+      "fields": {
+        "topics": "returns_refunds",
+        "question": "Are returns free?",
+        "question_id": "ret_003",
+        "answer": "Yes, we offer free returns on all orders. A prepaid return label will be provided once your request is approved.",
+        "slug": "are-returns-free",
+        "keywords": ["free return", "return label", "cost", "refund shipping"],
+        "created_at": "2024-04-03T12:00:00Z",
+        "views": 0
+      }
+    },
+    {
+      "model": "customer_service.faq",
+      "pk": 13,
+      "fields": {
+        "topics": "returns_refunds",
+        "question": "When will I receive my refund?",
+        "question_id": "ret_004",
+        "answer": "Refunds are processed within 5–7 business days after we receive and inspect your returned item.",
+        "slug": "when-will-i-receive-my-refund",
+        "keywords": ["refund", "processing time", "money back", "return"],
+        "created_at": "2024-04-03T12:00:00Z",
+        "views": 0
+      }
+    },
+    {
+      "model": "customer_service.faq",
+      "pk": 14,
+      "fields": {
+        "topics": "returns_refunds",
+        "question": "Can I exchange an item instead of a refund?",
+        "question_id": "ret_005",
+        "answer": "No, we do not offer exchange on items.",
+        "slug": "can-i-exchange-an-item-instead-of-a-refund",
+        "keywords": ["exchange", "swap item", "return for exchange", "size issue"],
+        "created_at": "2024-04-03T12:00:00Z",
+        "views": 0
+      }
+    },
+    {
+      "model": "customer_service.faq",
+      "pk": 15,
+      "fields": {
+        "topics": "returns_refunds",
+        "question": "What if the item I received is damaged or faulty?",
+        "question_id": "ret_006",
+        "answer": "We're sorry! Please upload a photo of the damaged item through your return request. We'll arrange a replacement or refund right away.",
+        "slug": "what-if-the-item-i-received-is-damaged-or-faulty",
+        "keywords": ["damaged", "faulty", "broken item", "return"],
+        "created_at": "2024-04-03T12:00:00Z",
+        "views": 0
+      }
+    },
+    {
+      "model": "customer_service.faq",
+      "pk": 16,
+      "fields": {
+        "topics": "order_issues",
+        "question": "My order hasn't arrived. What should I do?",
+        "question_id": "ord_002",
+        "answer": "If your order is late, please check the tracking link first. If there's no update within 48 hours, contact customer service.",
+        "slug": "my-order-hasnt-arrived-what-should-i-do",
+        "keywords": ["missing order", "order delay", "track order", "late delivery"],
+        "created_at": "2024-04-03T12:00:00Z",
+        "views": 0
+      }
+    },
+    {
+      "model": "customer_service.faq",
+      "pk": 17,
+      "fields": {
+        "topics": "order_issues",
+        "question": "I accidentally ordered the wrong item. Can I change it?",
+        "question_id": "ord_003",
+        "answer": "If your order hasn’t shipped yet, you can contact support to change or cancel it. After shipping, you can return the item.",
+        "slug": "i-accidentally-ordered-the-wrong-item-can-i-change-it",
+        "keywords": ["change order", "wrong product", "edit order", "cancel"],
+        "created_at": "2024-04-03T12:00:00Z",
+        "views": 0
+      }
+    },
+    {
+      "model": "customer_service.faq",
+      "pk": 18,
+      "fields": {
+        "topics": "order_issues",
+        "question": "I received a duplicate item. What now?",
+        "question_id": "ord_004",
+        "answer": "Please contact customer support and let us know. We’ll help you return the extra item at no cost.",
+        "slug": "i-received-a-duplicate-item-what-now",
+        "keywords": ["duplicate order", "extra item", "double", "mistake"],
+        "created_at": "2024-04-03T12:00:00Z",
+        "views": 0
+      }
+    },
+    {
+      "model": "customer_service.faq",
+      "pk": 19,
+      "fields": {
+        "topics": "order_issues",
+        "question": "An item is missing from my order. What do I do?",
+        "question_id": "ord_005",
+        "answer": "Double-check the packaging and order details. If something is missing, contact support within 7 days for assistance.",
+        "slug": "an-item-is-missing-from-my-order-what-do-i-do",
+        "keywords": ["missing item", "incomplete order", "package error", "product missing"],
+        "created_at": "2024-04-03T12:00:00Z",
+        "views": 0
+      }
+    },
+    {
+      "model": "customer_service.faq",
+      "pk": 20,
+      "fields": {
+        "topics": "order_issues",
+        "question": "How do I cancel an order?",
+        "question_id": "ord_006",
+        "answer": "You can cancel an order within 1 hour of placing it by visiting your account or contacting support.",
+        "slug": "how-do-i-cancel-an-order",
+        "keywords": ["cancel order", "stop order", "change mind", "refund"],
+        "created_at": "2024-04-03T12:00:00Z",
+        "views": 0
+      }
+    },
+    {
+      "model": "customer_service.faq",
+      "pk": 21,
+      "fields": {
+        "topics": "stock",
+        "question": "Can I pre-order out-of-stock items?",
+        "question_id": "stk_003",
+        "answer": "No, we do not accept pre-orders. We restock items regularly so please check back in a few days.",
+        "slug": "can-i-pre-order-out-of-stock-items",
+        "keywords": ["preorder", "out of stock", "stock alert", "early order"],
+        "created_at": "2024-04-03T12:00:00Z",
+        "views": 0
+      }
+    },
+    {
+      "model": "customer_service.faq",
+      "pk": 22,
+      "fields": {
+        "topics": "stock",
+        "question": "Why are some items out of stock for so long?",
+        "question_id": "stk_004",
+        "answer": "Some items depend on supplier availability or high demand, which can delay restocking.",
+        "slug": "why-are-some-items-out-of-stock-for-so-long",
+        "keywords": ["unavailable", "inventory issue", "supplier delay", "restock problem"],
+        "created_at": "2024-04-03T12:00:00Z",
+        "views": 0
+      }
+    },
+    {
+      "model": "customer_service.faq",
+      "pk": 23,
+      "fields": {
+        "topics": "payment_queries",
+        "question": "What payment methods do you accept?",
+        "question_id": "pay_002",
+        "answer": "We accept Visa and MasterCard via Stripe",
+        "slug": "what-payment-methods-do-you-accept",
+        "keywords": ["payment", "credit card", "paypal", "apple pay"],
+        "created_at": "2024-04-03T12:00:00Z",
+        "views": 0
+      }
+    },
+    {
+      "model": "customer_service.faq",
+      "pk": 24,
+      "fields": {
+        "topics": "payment_queries",
+        "question": "Why was I charged twice?",
+        "question_id": "pay_003",
+        "answer": "If you see duplicate charges, one might be a temporary authorization. Contact support if it doesn’t disappear in 24–48 hours.",
+        "slug": "why-was-i-charged-twice",
+        "keywords": ["double charge", "billing issue", "duplicate payment"],
+        "created_at": "2024-04-03T12:00:00Z",
+        "views": 0
+      }
+    },
+    {
+      "model": "customer_service.faq",
+      "pk": 25,
+      "fields": {
+        "topics": "payment_queries",
+        "question": "Is it safe to use my card on your site?",
+        "question_id": "pay_004",
+        "answer": "Yes, we use secure encryption and are PCI compliant to protect your data.",
+        "slug": "is-it-safe-to-use-my-card-on-your-site",
+        "keywords": ["security", "safe payment", "encryption", "PCI"],
+        "created_at": "2024-04-03T12:00:00Z",
+        "views": 0
+      }
+    },
+    {
+      "model": "customer_service.faq",
+      "pk": 26,
+      "fields": {
+        "topics": "payment_queries",
+        "question": "Can I use multiple payment methods?",
+        "question_id": "pay_005",
+        "answer": "At this time, we only support one payment method per order.",
+        "slug": "can-i-use-multiple-payment-methods",
+        "keywords": ["split payment", "multiple cards", "checkout"],
+        "created_at": "2024-04-03T12:00:00Z",
+        "views": 0
+      }
+    }
+  ]
+  

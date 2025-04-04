@@ -35,4 +35,4 @@ def all_faqs(request):
         'current_topics': topics,
     }
 
-    return render(request, 'customer_service/customer_service.html', context)
+    return render(request, 'customer_service/faqs.html', context)

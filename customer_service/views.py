@@ -57,15 +57,20 @@ def faq_view(request):
 
 
 def contact(request):
-    selected_topic = request.GET.get('topic')
+    selected_topic = request.GET.get('topic') or request.POST.get('topic')
     contact_form = ContactForm(initial={'topic': selected_topic})
-    faqs = None
 
+    faqs = None
     if selected_topic:
         faqs = Faq.objects.filter(topics=selected_topic)
+
+    # Get choices from the form field and pass to template
+    topic_choices = contact_form.fields['topic'].choices
 
     context = {
         'contact_form': contact_form,
         'faqs': faqs,
+        'selected_topic': selected_topic,
+        'topic_choices': topic_choices,
     }
     return render(request, 'customer_service/customer_service.html', context)

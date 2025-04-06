@@ -1,5 +1,7 @@
 from django.db import models
 
+import uuid
+
 
 class Topic(models.Model):
         
@@ -28,3 +30,26 @@ class Faq(models.Model):
     def __str__(self):
         return self.question
 
+
+class Contact(models.Model):
+
+    TOPICS = [
+        ('delivery', 'Delivery'),
+        ('returns_refunds', 'Returns & Refunds'),
+        ('order_issues', 'Help with my Order'),
+        ('stock', 'Item or Stock Query'),
+        ('payment_queries', 'Payments'),
+    ]
+
+    contact_id = models.CharField(max_length=32, null=False, editable=False)
+    full_name = models.CharField(max_length=50, null=False, blank=False)
+    email = models.EmailField(max_length=254, null=False, blank=False)
+    topic = models.CharField(max_length=30, choices=TOPICS, default='delivery')
+    customer_question = models.TextField()
+    created_on = models.DateTimeField(auto_now_add=True)
+    
+    def _generate_contact_id(self):
+        """
+        Generate a random, unique contact ID number using UUID
+        """
+        return uuid.uuid4().hex.upper()

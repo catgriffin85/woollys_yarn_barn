@@ -65,6 +65,21 @@ body {
     opacity: 0.9;
 }
 
+/* Footer */
+
+#footer {
+    position: fixed;
+    background-color: rgb(236, 235, 235) !important;
+    color: rgb(29, 29, 29) !important;
+    padding: 0.5rem;
+    text-align: center;
+}
+
+.copyright {
+    font-size: small;
+}
+
+
 /* Stock page */ 
 
 .overlay {

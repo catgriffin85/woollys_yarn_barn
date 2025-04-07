@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect, reverse
 from django.contrib import messages
 from django.db.models import Q
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
 
 from .models import Faq
 
@@ -57,20 +59,35 @@ def faq_view(request):
 
 
 def contact(request):
-    selected_topic = request.GET.get('topic') or request.POST.get('topic')
-    contact_form = ContactForm(initial={'topic': selected_topic})
+    selected_topic = request.POST.get('topic') or request.GET.get('topic')
 
-    faqs = None
-    if selected_topic:
-        faqs = Faq.objects.filter(topics=selected_topic)
+    if request.method == 'POST':
+        contact_form = ContactForm(request.POST)
 
-    # Get choices from the form field and pass to template
-    topic_choices = contact_form.fields['topic'].choices
+        if 'customer_question' in request.POST and contact_form.is_valid():
+            messages.success(request, "Your query has been submitted successfully!")
+            return redirect('contact')
+
+    else:
+        contact_form = ContactForm(initial={'topic': selected_topic})
+
+    if request.method == 'POST' and not contact_form.is_valid():
+        contact_form = ContactForm(request.POST)
+
+    faqs = Faq.objects.filter(topics=selected_topic) if selected_topic else None
 
     context = {
         'contact_form': contact_form,
         'faqs': faqs,
         'selected_topic': selected_topic,
-        'topic_choices': topic_choices,
+        'topic_choices': contact_form.fields['topic'].choices,
     }
     return render(request, 'customer_service/customer_service.html', context)
+
+
+@csrf_exempt
+def faq_thank_you(request):
+    if request.method == 'POST':
+        messages.success(request, "Thanks! We're glad we could help. 😊")
+        return JsonResponse({'status': 'ok'})
+    return JsonResponse({'status': 'error'}, status=400)

@@ -2,6 +2,10 @@
 {% load static %}
 {% load cart_extras %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/faq.css' %}">
+{% endblock %}
+
 {% block page_header %}
 <div class="container header-container">
     <div class="row">
@@ -41,7 +45,7 @@
                 <!-- FAQ Section (Visible only after topic selection) -->
                 {% if faqs %}
                 <div id="faq-section" class="mt-4">
-                    <p>Have you checked our Help Center for the answer to your question? You may find one of these helpful.</p>
+                    <p>Before you reach out, take a quick look at these helpful articles from our Help Center. They might have just the answer you need!</p>
                     <div class="accordion" id="faqAccordion">
                         {% for faq in faqs %}
                         <div class="card mb-2">
@@ -55,34 +59,29 @@
                         {% endfor %}
                     </div>
                     <div class="mt-3">
-                        <p>Was your question answered?</p>
+                        <p>Did these articles help answer your question?</p>
                         <div id="faq-response">
-                            <button type="button" id="yes-thanks-btn" class="btn btn-success">Yes, thanks</button>
-                            <button type="button" id="no-help-btn" class="btn btn-warning">No, I still need help</button>
+                            <button type="button" id="yes-thanks-btn" class="contact-btn rounded-0">
+                                <span class="icon">
+                                    <i class="fas fa-check"></i>
+                                </span>Yes, thank you!</button>
+                            <button type="button" id="no-help-btn" class="contact-btn rounded-0">No, I still need help
+                                <span class="icon">
+                                    <i class="fas fa-x"></i>
+                                </span></button>
                         </div>
-                        
+                        <br>
                         <div id="additional-query" style="display:none;">
                             <label for="id_customer_question">Please describe your query:</label>
                             {{ contact_form.customer_question|as_crispy_field }}
-                            <button type="submit" class="btn btn-primary">Submit your query</button>
+                            <button type="submit" class="submit-btn rounded-0">Submit your query</button>
                         </div>
-                        
+                        <br>
                     </div>
                 </div>
                 {% endif %}
-
-                <!-- Customer Question & Submit (Hidden until "No" is clicked) -->
-                <div id="queryForm" style="display: none;">
-                    <hr>
-                    {{ contact_form.customer_question|as_crispy_field }}
-                    <button type="submit" class="btn btn-primary">Submit Query</button>
-                </div>
-
-                <!-- Thank You Message -->
-                <div id="thankYouMessage" style="display: none;" class="mt-4 alert alert-success">
-                    Thanks! We're glad we could help. 😊
-                </div>
             </form>
+            <br>
         </div>
     </div>
 </div>
@@ -106,13 +105,21 @@
     const noButton = document.getElementById('no-help-btn');
     const additionalQuery = document.getElementById('additional-query');
 
-    yesButton.addEventListener('click', function() {
-        additionalQuery.style.display = 'none';  // Hide additional query form
-        alert('Thanks for your feedback!'); // Or just redirect if needed
+    yesButton.addEventListener('click', function () {
+    additionalQuery.style.display = 'none';
+
+    fetch("{% url 'faq_thank_you' %}", {
+        method: "POST",
+        headers: {
+            "X-CSRFToken": "{{ csrf_token }}",
+        },
+        }).then(() => {
+            location.reload(); 
         });
+    });
 
     noButton.addEventListener('click', function() {
-        additionalQuery.style.display = 'block';  // Show additional query form
+        additionalQuery.style.display = 'block';
         });
     });
 

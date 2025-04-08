@@ -55,6 +55,7 @@ def contact(request):
         contact_form = ContactForm(request.POST)
 
         if 'customer_question' in request.POST and contact_form.is_valid():
+            contact_form.save()
             # Send confirmation email
             user_email = contact_form.cleaned_data.get('email')
             user_name = contact_form.cleaned_data.get('full_name')

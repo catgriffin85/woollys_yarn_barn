@@ -1,7 +1,5 @@
 from django.db import models
 
-import uuid
-
 
 class Topic(models.Model):
         
@@ -13,7 +11,7 @@ class Topic(models.Model):
 
     def get_friendly_name(self):
         return self.friendly_name
-    
+
 
 class Faq(models.Model):
 
@@ -47,9 +45,17 @@ class Contact(models.Model):
     topic = models.CharField(max_length=30, choices=TOPICS, default='delivery')
     customer_question = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
-    
-    def _generate_contact_id(self):
-        """
-        Generate a random, unique contact ID number using UUID
-        """
-        return uuid.uuid4().hex.upper()
+
+    def save(self, *args, **kwargs):
+        if not self.contact_id:
+            last_contact = Contact.objects.exclude(contact_id='').order_by('-id').first()
+            if not last_contact or not last_contact.contact_id[1:].isdigit():
+                new_id = 'C0001'
+            else:
+                last_id = int(last_contact.contact_id[1:])
+                new_id = f'C{last_id + 1:04d}'
+            self.contact_id = new_id
+        super().save(*args, **kwargs)
+        
+    def __str__(self):
+        return f"{self.full_name} - {self.contact_id}"

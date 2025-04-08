@@ -13,6 +13,7 @@ class FaqAdmin(admin.ModelAdmin):
 
     ordering = ('topics',)
 
+
 class TopicAdmin(admin.ModelAdmin):
     list_display = (
         'friendly_name',

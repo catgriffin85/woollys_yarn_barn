@@ -95,33 +95,34 @@
     }
 
     function endForm() {
-        window.location.href = "{% url 'home' %}";  // or just hide the form
+        window.location.href = "{% url 'home' %}?thank_you=1";
     }
 </script>
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-    const yesButton = document.getElementById('yes-thanks-btn');
-    const noButton = document.getElementById('no-help-btn');
-    const additionalQuery = document.getElementById('additional-query');
+        const yesButton = document.getElementById('yes-thanks-btn');
+        const noButton = document.getElementById('no-help-btn');
+        const additionalQuery = document.getElementById('additional-query');
 
-    yesButton.addEventListener('click', function () {
-    additionalQuery.style.display = 'none';
+        yesButton.addEventListener('click', function () {
+            additionalQuery.style.display = 'none';
 
-    fetch("{% url 'faq_thank_you' %}", {
-        method: "POST",
-        headers: {
-            "X-CSRFToken": "{{ csrf_token }}",
-        },
-        }).then(() => {
-            location.reload(); 
+            fetch("{% url 'contact_thank_you' %}", {
+                method: "POST",
+                headers: {
+                    "X-CSRFToken": "{{ csrf_token }}",
+                },
+            }).then(() => {
+                // Redirect to the homepage
+                window.location.href = "{% url 'home' %}";
+            });
+        });
+
+        noButton.addEventListener('click', function() {
+            additionalQuery.style.display = 'block';
         });
     });
-
-    noButton.addEventListener('click', function() {
-        additionalQuery.style.display = 'block';
-        });
-    });
-
 </script>
+
 {% endblock %}

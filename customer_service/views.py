@@ -1,8 +1,9 @@
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect
 from django.contrib import messages
-from django.db.models import Q
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+from django.core.mail import send_mail
+from django.conf import settings
 
 from .models import Faq
 
@@ -13,7 +14,6 @@ def all_faqs(request):
     """ A view to show all faqs """
 
     faqs = Faq.objects.all()
-    query = None
     topics = None
 
     if request.GET:
@@ -23,18 +23,8 @@ def all_faqs(request):
             faqs = faqs.filter(topic__name__in=topics)
             topics = Faq.objects.filter(name__in=faqs)
 
-        if 'q' in request.GET:
-            query = request.GET['q']
-            if not query:
-                messages.error(request, "You didn't enter any search criteria!")
-                return redirect(reverse('faqs'))
-                
-            queries = Q(question__icontains=query) | Q(description__icontains=query)
-            faqs = faqs.filter(queries)
-
     context = {
         'faqs': faqs,
-        'search_term': query,
         'current_topics': topics,
     }
 
@@ -65,8 +55,27 @@ def contact(request):
         contact_form = ContactForm(request.POST)
 
         if 'customer_question' in request.POST and contact_form.is_valid():
-            messages.success(request, "Your query has been submitted successfully!")
-            return redirect('contact')
+            # Send confirmation email
+            user_email = contact_form.cleaned_data.get('email')
+            user_name = contact_form.cleaned_data.get('full_name')
+            subject = 'Your Query Has Been Received'
+            message = (
+                f"Hi {user_name},\n\n"
+                "Thank you for getting in touch with us. "
+                "We've received your query and will respond as soon as possible.\n\n"
+                "Best regards,\nThe Support Team"
+            )
+
+            send_mail(
+                subject,
+                message,
+                settings.DEFAULT_FROM_EMAIL,
+                [user_email],
+                fail_silently=False,
+            )
+
+            messages.success(request, "We have received your query and our Customer Service Team will be in touch shortly!")
+            return redirect('home')
 
     else:
         contact_form = ContactForm(initial={'topic': selected_topic})
@@ -82,12 +91,20 @@ def contact(request):
         'selected_topic': selected_topic,
         'topic_choices': contact_form.fields['topic'].choices,
     }
+
     return render(request, 'customer_service/customer_service.html', context)
 
 
 @csrf_exempt
-def faq_thank_you(request):
+def contact_thank_you(request):
     if request.method == 'POST':
-        messages.success(request, "Thanks! We're glad we could help. 😊")
+        messages.success(request, "Great! We're glad we could help. 😊")
         return JsonResponse({'status': 'ok'})
     return JsonResponse({'status': 'error'}, status=400)
+
+
+def home(request):
+    if request.GET.get('thank_you') == '1':
+        messages.success(request, "Great! We're glad we could help. 😊")
+
+    return render(request, 'home/home.html')

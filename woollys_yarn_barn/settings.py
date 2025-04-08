@@ -103,6 +103,7 @@ AUTHENTICATION_BACKENDS = [
 SITE_ID = 1
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+DEFAULT_FROM_EMAIL = 'woollys.yarn.barn@gmail.com'
 
 
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'

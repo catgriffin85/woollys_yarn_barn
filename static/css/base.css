@@ -67,11 +67,13 @@ body {
 
 /* Footer */
 
-#footer {
+.footer {
     position: fixed;
-    background-color: rgb(236, 235, 235) !important;
-    color: rgb(29, 29, 29) !important;
-    padding: 0.5rem;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: rgb(146, 144, 144);
+    color: white;
     text-align: center;
 }
 
@@ -79,6 +81,28 @@ body {
     font-size: small;
 }
 
+/* Login Page */
+
+.login-btn,
+.logout-btn,
+.change-btn,
+.email-btn,
+.password-btn,
+.signup-btn {
+    background-color: none;
+    border: none;
+}
+
+.login-btn:hover,
+.logout-btn:hover,
+.change-btn:hover,
+.email-btn:hover,
+.password-btn:hover,
+.signup-btn:hover {
+    background-color: rgb(146, 144, 144);
+    color: white;
+    border: none;
+}
 
 /* Stock page */ 
 

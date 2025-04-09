@@ -4,7 +4,7 @@
 
 {% block content %}
 <div class="overlay"></div>
-<div class="container mb-2">
+<div class="container container-order-complete mb-2">
     <div class="row">
         <div class="col">
             <hr>
@@ -12,28 +12,31 @@
             <hr>
         </div>
     </div>
-    <div class="col-8 col-sm-5">
+    <div class="col-12 col-sm-6">
         <div class="card-body card-cart">
             <p class="responsive-text">
-                <strong>Order Number:</strong> {{ order.order_number }}
+                <strong>Your order number is:</strong> {{ order.order_number }}
             </p>
-            <br>
             <p class="responsive-text">
                 <strong>Order Summary:</strong>
             </p>
-            <br>
-            <ul>
+            <ul class="order-summary">
                 {% for item in order.lineitems.all %}
-                    <li>{{ item.stock.name }} - €{{ item.stock.price }} (Qty: {{ item.quantity }})</li>
+                <li>{% if item.stock.image %}
+                    <img class="summary-img" src="{{ item.stock.image.url }}" alt="{{ item.stock.name }}">
+                    {% else %}
+                    <img class="summary-img" src="{% static 'images/no-image.png' %}" alt="No image available">
+                    {% endif %}
+                </li>
+                <li>{{ item.stock.name }} - €{{ item.stock.price }}</li>
+                <li>Qty: {{ item.quantity }}</li>
                 {% endfor %}
             </ul>
+            <hr>
             <p><strong>Order Total:</strong> €{{ order.order_total }}</p>
             <p><strong>Delivery:</strong> €{{ order.delivery_cost }}</p>
             <p><strong>Grand Total:</strong> €{{ order.grand_total }}</p>
         </div>
-        {% for item in order.line_items.all %}
-            <p>Stock: {{ item.stock }}</p>
-        {% endfor %}
     </div>
 </div>
 

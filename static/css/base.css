@@ -178,6 +178,10 @@ body {
 
 /* Shopping Cart Page */
 
+.container-cart {
+    padding-bottom: 5rem;
+}
+
 .keep-shopping-btn {
     text-transform: none !important;
     background-color: none;
@@ -204,6 +208,20 @@ body {
     cursor: pointer;
 }
 
+/* Order Complete Page */
+
+.container-order-complete {
+    padding-bottom: 5rem;
+}
+
+.order-summary {
+    list-style-type: none;
+}
+
+.summary-img {
+    max-width: 60px;
+    max-height: 80px;
+}
 
 /*   toast  */
 

@@ -108,4 +108,4 @@ def home(request):
     if request.GET.get('thank_you') == '1':
         messages.success(request, "Great! We're glad we could help. 😊")
 
-    return render(request, 'home/home.html')
+    return render(request, 'home/index.html')

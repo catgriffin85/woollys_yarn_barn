@@ -116,6 +116,10 @@ body {
     z-index: -1 !important;
 }
 
+.stock-container {
+    padding-bottom: 5rem;
+}
+
 .shop-all-stock {
     font-size: medium;
     color: rgb(94, 93, 93);

@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.conf import settings
 from django.core.mail import send_mail
@@ -9,6 +10,23 @@ from .forms import OrderForm
 from cart.contexts import cart_contents
 
 import stripe
+import json
+
+@require_POST
+def cache_checkout_data(request):
+    try:
+        pid = request.POST.get('client_secret').split('_secret')[0]
+        stripe.api_key = settings.STRIPE_SECRET_KEY
+        stripe.PaymentIntent.modify(pid, metadata={
+            'cart': json.dumps(request.session.get('cart', {})),
+            'save_info': request.POST.get('save_info'),
+            'username': request.user,
+        })
+        return HttpResponse(status=200)
+    except Exception as e:
+        messages.error(request, 'Sorry, your payment cannot be \
+            processed right now. Please try again later.')
+        return HttpResponse(content=e, status=400)
 
 
 def checkout(request):
@@ -32,9 +50,6 @@ def checkout(request):
         order_form = OrderForm(request.POST)
         if order_form.is_valid():
             order = order_form.save(commit=False)
-            order.order_total = total
-            order.delivery_cost = 0
-            order.grand_total = total
             order.save()
 
             # Send confirmation email
@@ -56,21 +71,30 @@ def checkout(request):
             )
 
             for item_id, item_data in cart.items():
-                stock_id = item_data.get('stock_id')
-                quantity = item_data.get('quantity', 1)
-                if stock_id:
-                    try:
-                        stock = Stock.objects.get(id=stock_id)
-                        line_item = OrderLineItem.objects.create(
+                try:
+                    stock = Stock.objects.get(id=item_data['stock_id'])
+                    attributes = item_data.get('items_by_attributes', {})
+
+                    for attr_key, quantity in attributes.items():
+                        stock_size, stock_weight, stock_colour = attr_key.split('-')
+
+                        order_line_item = OrderLineItem(
                             order=order,
                             stock=stock,
-                            quantity=quantity
+                            quantity=quantity,
+                            stock_size=stock_size if stock_size != "None" else None,
+                            stock_weight=stock_weight if stock_weight != "None" else None,
+                            stock_colour=stock_colour if stock_colour != "None" else None,
                         )
-                        print(f"Created line item: {line_item}")
-                    except Stock.DoesNotExist:
-                        print(f"No Stock ID {stock_id} not found.")
-                        continue
+                        order_line_item.save()
 
+                except Stock.DoesNotExist:
+                    messages.error(request, "One of the items in your cart is no longer available.")
+                    order.delete()
+                    return redirect('view_cart')
+
+                order.update_total()
+                
             # Clear the cart
             request.session['cart'] = {}
 
@@ -85,9 +109,6 @@ def checkout(request):
         'stripe_public_key': settings.STRIPE_PUBLIC_KEY,
         'client_secret': intent.client_secret,
     }
-
-    print("Cart contents:", cart)
-    print("Form valid:", order_form.is_valid())
 
     return render(request, 'checkout/checkout.html', context)
 

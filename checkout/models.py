@@ -34,13 +34,16 @@ class Order(models.Model):
         Update grand total each time a line item is added,
         accounting for delivery costs.
         """
-        self.order_total = self.lineitems.aggregate(Sum('lineitem_total'))['lineitem_total__sum']
+        self.order_total = self.lineitems.aggregate(Sum('lineitem_total'))['lineitem_total__sum'] or 0
+
         if self.order_total < settings.FREE_DELIVERY_THRESHOLD:
             self.delivery_cost = self.order_total * settings.STANDARD_DELIVERY_PERCENTAGE / 100
         else:
             self.delivery_cost = 0
+
         self.grand_total = self.order_total + self.delivery_cost
         self.save()
+
 
     def save(self, *args, **kwargs):
         """
@@ -54,12 +57,31 @@ class Order(models.Model):
     def __str__(self):
         return self.order_number
 
-    
+
+STOCK_WEIGHT_CHOICES = [
+    ("dk", "Double Knitting"),
+    ("aran", "Aran"),
+    ("chunky", "Chunky"),
+    ("super_chunky", "Super Chunky"),
+]
+
+STOCK_COLOUR_CHOICES = [
+    ("red", "Red"),
+    ("pink", "Pink"),
+    ("blue", "Blue"),
+    ("green", "Green"),
+    ("white", "White"),
+    ("black", "Black"),
+    ("grey", "Grey"),
+    ("yellow", "Yellow"),
+]
+
+   
 class OrderLineItem(models.Model):
     order = models.ForeignKey(Order, null=False, blank=False, on_delete=models.CASCADE, related_name='lineitems')
     stock = models.ForeignKey(Stock, null=False, blank=False, on_delete=models.CASCADE)
-    stock_weight = models.JSONField(default=list, null=True, blank=True)
-    stock_colour = models.JSONField(default=list, null=True, blank=True)
+    stock_weight = models.CharField(max_length=20, choices=STOCK_WEIGHT_CHOICES, null=True, blank=True)
+    stock_colour = models.CharField(max_length=20, choices=STOCK_COLOUR_CHOICES, null=True, blank=True)
     stock_size = models.JSONField(default=list, null=True, blank=True)
     quantity = models.IntegerField(null=False, blank=False, default=0)
     lineitem_total = models.DecimalField(max_digits=6, decimal_places=2, null=False, blank=False, editable=False)

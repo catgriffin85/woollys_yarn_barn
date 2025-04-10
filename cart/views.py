@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, reverse, HttpResponse, get_object_or_404
 from django.contrib import messages
+from cart.utils import format_cart_attributes
 
 from stock.models import Stock
 
@@ -23,7 +24,7 @@ def add_to_cart(request, item_id):
     colour = request.POST.get('stock_colour', None)
     size = request.POST.get('stock_size', None)
 
-    attributes = f"{size or 'None'}-{weight or 'None'}-{colour or 'None'}"
+    attributes = format_cart_attributes(size, weight, colour)
 
     if item_id not in cart:
         cart[item_id] = {
@@ -94,17 +95,40 @@ def adjust_cart(request, item_id):
 
 
 def remove_from_cart(request, item_id):
-    """ Remove an item from the cart """
-    
+    """ Remove a specific attribute combination of an item from the cart """
+
     stock = get_object_or_404(Stock, pk=item_id)
-    
+
     try:
         cart = request.session.get('cart', {})
 
-        if item_id in cart:
-            cart.pop(item_id)
-            messages.success(request, f'{stock.name} removed in your cart!')
+        item_id = str(item_id)
+        weight = request.POST.get('stock_weight', None)
+        colour = request.POST.get('stock_colour', None)
+        size = request.POST.get('stock_size', None)
+
+        attributes = format_cart_attributes(size, weight, colour)
+        print("Looking for attributes:", attributes)
+        print("Available keys:", cart[item_id]['items_by_attributes'].keys())
         
+        if item_id in cart and 'items_by_attributes' in cart[item_id]:
+            if attributes in cart[item_id]['items_by_attributes']:
+                del cart[item_id]['items_by_attributes'][attributes]
+
+                # Recalculate total quantity
+                total_quantity = sum(cart[item_id]['items_by_attributes'].values())
+
+                if total_quantity > 0:
+                    cart[item_id]['quantity'] = total_quantity
+                else:
+                    del cart[item_id]  # No variants left, remove the whole item
+
+                messages.success(request, f'Removed {stock.name} ({attributes}) from your cart!')
+            else:
+                messages.warning(request, f'Item with specified attributes not found in cart.')
+        else:
+            messages.warning(request, f'Item not found in cart.')
+
         request.session['cart'] = cart
         return HttpResponse(status=200)
 

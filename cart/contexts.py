@@ -5,7 +5,7 @@ from django.conf import settings
 
 
 WEIGHT_FRIENDLY_NAMES = {
-    'aran': 'Aran Weight',
+    'aran': 'Aran',
     'dk': 'Double Knit (DK)',
     'chunky': 'Chunky',
     'super_chunky': 'Super Chunky',

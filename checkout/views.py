@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404, HttpResponse
 from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.conf import settings
@@ -11,6 +11,7 @@ from cart.contexts import cart_contents
 
 import stripe
 import json
+
 
 @require_POST
 def cache_checkout_data(request):
@@ -44,12 +45,19 @@ def checkout(request):
     intent = stripe.PaymentIntent.create(
         amount=stripe_total,
         currency=settings.STRIPE_CURRENCY,
+        metadata={
+            'cart': json.dumps(cart),
+            'username': request.user.username if request.user.is_authenticated else 'anonymous',
+        },
     )
 
     if request.method == 'POST':
         order_form = OrderForm(request.POST)
         if order_form.is_valid():
             order = order_form.save(commit=False)
+            pid = request.POST.get('client_secret').split('_secret')[0]
+            order.stripe_pid = pid
+            order.original_cart = json.dumps(cart)
             order.save()
 
             # Send confirmation email
@@ -94,7 +102,6 @@ def checkout(request):
                     return redirect('view_cart')
 
                 order.update_total()
-                
             # Clear the cart
             request.session['cart'] = {}
 

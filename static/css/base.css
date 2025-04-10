@@ -204,8 +204,13 @@ body {
     box-shadow: none !important;
 }
 
+.quantity-field {
+    border-color: none !important;
+}
+
 .btn-link {
     cursor: pointer;
+    text-decoration: none !important;
 }
 
 /* Order Complete Page */

@@ -1,15 +1,9 @@
 <form class="form update-form" method="POST" action="{% url 'adjust_cart' item.item_id %}">
     {% csrf_token %}
-    <div class="form-group">
-        <div><p class="small">Quantity:</p></div>
-        <div class="input-group">
-            <input class="form-control form-control-sm qty_input" type="number"
-                name="quantity" value="{{ item.quantity }}" min="1" max="99"
-                data-item_id="{{ item.item_id }}"
-                id="id_qty_{{ item.item_id }}">
-        </div>
-    </div>
-    
+    <input class="quantity-field" type="number" name="quantity" value="{{ item.quantity }}" min="1" required>
+    <!-- Hidden fields for the variant attributes -->
+    <input type="hidden" name="stock_size" value="{{ size }}">
+    <input type="hidden" name="stock_weight" value="{{ weight }}">
+    <input type="hidden" name="stock_colour" value="{{ colour }}">
+</form>
 <a class="update-link btn-link text-info"><small>Update</small></a>
-<a class="remove-item btn-link text-danger float-right" data-item-id="{{ item.stock.id }}"><small>Remove</small></a>
-

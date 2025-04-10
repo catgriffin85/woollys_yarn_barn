@@ -52,12 +52,11 @@ def add_to_cart(request, item_id):
 
 
 def adjust_cart(request, item_id):
-    """ Adjust the quantity of the specified stock item in the cart """
+    """ Adjust the quantity of a specific attribute combination in the cart """
 
     item_id = str(item_id)  # Ensure item_id is a string for session storage
     quantity = request.POST.get('quantity', '0')  # Default to '0' if missing
 
-    # Ensure quantity is an integer and handle errors
     try:
         quantity = int(quantity)
     except ValueError:
@@ -67,30 +66,43 @@ def adjust_cart(request, item_id):
     stock = get_object_or_404(Stock, pk=item_id)
     cart = request.session.get('cart', {})
 
+    # Extract attribute values from POST
     weight = request.POST.get('stock_weight', None)
     colour = request.POST.get('stock_colour', None)
     size = request.POST.get('stock_size', None)
 
-    attributes = f"{size or 'None'}-{weight or 'None'}-{colour or 'None'}"
+    # Format attributes into a consistent key
+    attributes = format_cart_attributes(size, weight, colour)
+    print("Adjusting attributes:", attributes)
 
-    # Ensure item exists in cart
     if item_id not in cart or not isinstance(cart[item_id], dict):
-        cart[item_id] = {
-            "stock_id": int(item_id),
-            "quantity": 0,
-            "items_by_attributes": {}
-        }
+        messages.warning(request, "Item not found in cart.")
+        return redirect(reverse('view_cart'))
 
-    # Update quantity or remove item
+    if 'items_by_attributes' not in cart[item_id]:
+        cart[item_id]['items_by_attributes'] = {}
+
     if quantity > 0:
-        cart[item_id]["items_by_attributes"][attributes] = quantity
-        cart[item_id]["quantity"] = sum(cart[item_id]["items_by_attributes"].values())
+        cart[item_id]['items_by_attributes'][attributes] = quantity
+        cart[item_id]['quantity'] = sum(cart[item_id]['items_by_attributes'].values())
+        messages.success(request, f"Updated quantity of {stock.name} ({attributes}) to {quantity}.")
     else:
-        del cart[item_id]  # Remove item if quantity is 0
+        if attributes in cart[item_id]['items_by_attributes']:
+            del cart[item_id]['items_by_attributes'][attributes]
 
-    request.session['cart'] = cart  # Save updated cart
-    messages.success(request, f'Updated quantity of {stock.name} in your cart!')
+            # Recalculate total quantity
+            total_quantity = sum(cart[item_id]['items_by_attributes'].values())
 
+            if total_quantity > 0:
+                cart[item_id]['quantity'] = total_quantity
+            else:
+                del cart[item_id]  # Remove the whole item if no attributes left
+
+            messages.success(request, f"Removed {stock.name} ({attributes}) from your cart.")
+        else:
+            messages.warning(request, "Attribute combination not found in cart.")
+
+    request.session['cart'] = cart
     return redirect(reverse('view_cart'))
 
 

@@ -28,14 +28,56 @@
                 {% csrf_token %}
                 {{ form|crispy }}
                 <button type="submit" class="btn back-btn btn-outline-black rounded-0 btn-md">
-                    <span class="text-uppercase">Update Profile</span>
-                </button>  
+                    <span class="text-uppercase"><i class="fas fa-user fa-lg update-profile" style="color: black;" ></i> Update Profile</span>
+                </button>
             </form>
         </div>
         <div class="col-12 col-lg-6">
             <h4 class="text-muted">Order History</h4>
             <hr>
-            {{ orders }}
+            <div class="order-history table-responsive">
+                <table class="table table-sm table-borderless">
+                    <thead>
+                        <tr>
+                            <th>Order Number</th>
+                            <th>Date</th>
+                            <th>Items</th>
+                            <th>Order Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for order in orders %}
+                        <tr>
+                            <td>
+                                <a href="{% url 'order_history' order.order_number %}" title="{{ order.order_number }}">
+                                    {{ order.order_number|truncatechars:8 }}
+                                </a>
+                            </td>
+                            <td>{{ order.date }}</td>
+                            <td>
+                                <ul class="list-unstyled">
+                                    {% for item in order.lineitems.all %}
+                                    <li class="small">
+                                        {% if item.stock.has_sizes %}
+                                        Size {{ item.stock.size|upper }}
+                                        {% endif %}
+                                        {% if item.stock.has_weight %}
+                                        Weight {{ item.stock.weight|upper }}
+                                        {% endif %}
+                                        {% if item.stock.has_colour %}
+                                        Colour {{ item.stock.colour|upper }}
+                                        {% endif %}
+                                        {{ item.stock.name }} x{{ item.quantity }}
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </td>
+                            <td>€{{ order.grand_total }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>

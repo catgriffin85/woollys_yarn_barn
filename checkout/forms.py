@@ -4,7 +4,7 @@ from django_countries.fields import CountryField
 
 
 class OrderForm(forms.ModelForm):
-    country = CountryField(blank_label='(select country)').formfield()
+    country = CountryField(blank_label='Select Country').formfield()
 
     class Meta:
         model = Order

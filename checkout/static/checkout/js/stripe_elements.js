@@ -108,7 +108,7 @@ document.addEventListener("DOMContentLoaded", function () {
             } else {
                 if (result.paymentIntent.status === 'succeeded') {
                     $.post(url, postData).done(function () {
-                        form.submit();
+                       form.submit();
                     }).fail(function () {
                         location.reload();
                     });

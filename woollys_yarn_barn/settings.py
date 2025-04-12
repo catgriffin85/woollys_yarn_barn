@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 import os
+import dj_database_url
 
 if os.path.isfile('env.py'):
     import env
@@ -24,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-6pehhm5a%ke6gzvb55^5!9*o6(yu6eaw)o@3r@lu3^0^j)n(43'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -32,6 +33,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     '127.0.0.1', #vs code preview
     'localhost', #listen for stripe webhooks
+    'woollys-yarn-barn-c013ed10e4a8.herokuapp.com', #heroku application
 ]
 
 
@@ -126,13 +128,21 @@ WSGI_APPLICATION = 'woollys_yarn_barn.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+if 'DATABASE_URL' in os.environ:
+    DATABASES = {
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
     }
-}
+else: 
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
+DATABASES = {
+     'default': dj_database_url.parse('postgresql://neondb_owner:VQmXA51wTByJ@ep-white-math-a2beqj66.eu-central-1.aws.neon.tech/goal_chair_slice_806610')
+ }
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators

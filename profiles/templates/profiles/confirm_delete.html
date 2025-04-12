@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+<div class="container header-container">
+    <div class="row">
+        <div class="col"></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="overlay"></div>
+  <div class="container pt-5">
+    <h2>Confirm Profile Deletion</h2>
+    <p>Are you sure you want to delete your profile? This action cannot be undone and you will not longer have access to your order history.</p>
+    <form method="post">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-danger">Yes, delete my profile</button>
+      <a href="{% url 'profile' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+  </div>
+{% endblock %}

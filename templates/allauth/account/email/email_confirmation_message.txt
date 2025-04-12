@@ -2,6 +2,6 @@
 {% load account %}
 {% load i18n %}
 
-{% block content %}{% autoescape off %}{% user_display user as user_display %}{% blocktrans with site_name=current_site.name site_domain=current_site.domain %}You're receiving this e-mail because user {{ user_display }} has given your e-mail address to register an account on {{ site_domain }}.
+{% block content %}{% autoescape off %}{% user_display user as user_display %}{% blocktrans %}You are receiving this e-mail because this e-mail address is being used to register an account with Woolly's Yarn Barn.
 
-To confirm this is correct, go to {{ activate_url }}{% endblocktrans %}{% endautoescape %}{% endblock %}
+If this was you, please go to {{ activate_url }} to verify your email address and complete your account set up. If this was not you, please ignore this email.{% endblocktrans %}{% endautoescape %}{% endblock %}

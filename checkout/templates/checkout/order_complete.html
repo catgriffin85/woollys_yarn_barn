@@ -72,8 +72,9 @@
     </div>
     <div class="row justify-content-center align-items-center">
         <div class="col-12 col-lg-7">
+            {% if request.user.is_authenticated %}
             {% if from_profile %}
-            <a href="{% url 'stock' %}" class="btn back-btn btn-outline-black rounded-0 btn-md">
+            <a href="{% url 'profile' %}" class="btn back-btn btn-outline-black rounded-0 btn-md">
                 <span class="icon mr-2">
                     <i class="fas fa-angle-left"></i>
                 </span>
@@ -86,11 +87,16 @@
                 </span>
                 <span class="text-uppercase">Keep Shopping</span>
             </a>
-            <a href="{% url 'account_login' %}" class="btn back-btn btn-outline-black rounded-0 btn-md">
+            <a href="{% url 'profile' %}" class="btn back-btn btn-outline-black rounded-0 btn-md">
+                <span class="text-uppercase">View your orders</span>
+            </a>
+            {% endif %}
+            {% else %}
+            <a href="{% url 'account_signup' %}" class="btn back-btn btn-outline-black rounded-0 btn-md">
                 <span class="icon mr-2">
                     <i class="fas fa-user fa-lg"></i>
                 </span>
-                <span class="text-uppercase">Log in to view your orders</span>
+                <span class="text-uppercase">Create an account</span>
             </a>
             {% endif %}
         </div>

@@ -301,3 +301,48 @@ body {
     background-color: rgb(146, 144, 144) !important;
     color: white !important;
 }
+
+@media (max-width: 300px) {
+
+    /* auth pages */
+    .container-auth {
+        padding-top: 10rem;
+    }
+
+    /* homepage */
+
+    h2 {
+        font-size: 1.2em;
+      }
+
+    .homepage-intro {
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+    }
+
+    .list-inline-item {
+        font-size: medium;
+    }
+
+    /* Stock page */
+
+    .stock-container {
+        padding-top: 2rem;
+    }
+
+    /* Contact page */
+
+    .container-contact {
+        padding-top: 2rem;
+    }
+
+    /* Cart page */
+
+    .quantity-field {
+        max-width: 100%;
+    }
+
+    .remove-item {
+        padding: 0%;
+    }
+}

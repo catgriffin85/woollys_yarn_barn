@@ -68,3 +68,11 @@ select option[value=""] {
 .checkout-page {
     padding-bottom: 5rem;
 }
+
+
+@media (max-width: 300px) {
+
+    .checkout-page {
+        padding-top: 3rem;
+    }
+}

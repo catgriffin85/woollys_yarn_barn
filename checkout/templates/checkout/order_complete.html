@@ -12,40 +12,66 @@
             <hr>
         </div>
     </div>
-    <div class="col-12 col-sm-6">
-        <div class="card-body card-cart">
+    <div class="col-12">
+        <div class="card-body card-cart w-100">
             <p class="responsive-text">
                 <strong>Your order number is:</strong> {{ order.order_number }}
             </p>
             <p class="responsive-text">
                 <strong>Order Summary:</strong>
             </p>
-            <ul class="order-summary">
-                {% for item in order.lineitems.all %}
-                <li>{% if item.stock.image %}
-                    <img class="summary-img" src="{{ item.stock.image.url }}" alt="{{ item.stock.name }}">
-                    {% else %}
-                    <img class="summary-img" src="{% static 'images/no-image.png' %}" alt="No image available">
-                    {% endif %}
-                </li>
-                <li>
-                    {{ item.quantity }} x {{ item.stock.name }} – €{{ item.lineitem_total }}
-                    <ul class="order-summary">
-                        {% if item.stock_size %}<li>Size: {{ item.get_stock_size_display }}</li>{% endif %}
-                        {% if item.stock_weight %}<li>Weight: {{ item.get_stock_weight_display }}</li>{% endif %}
-                        {% if item.stock_colour %}<li>Colour: {{ item.get_stock_colour_display }}</li>{% endif %}
-                    </ul>
-                </li>
-                {% endfor %}
-            </ul>
+
+            {% for item in order.lineitems.all %}
+            <div class="card card-cart w-100 p-3 mb-3">
+                <div class="row">
+                    <!-- Product Image -->
+                    <div class="col-12 col-md-2 d-flex justify-content-center align-items-center mb-3 mb-md-0">
+                        {% if item.stock.image %}
+                        <a href="{% url 'stock_detail' item.stock.id %}">
+                            <img class="img-fluid rounded" src="{{ item.stock.image.url }}" alt="{{ item.stock.name }}"
+                                style="max-width: 100px;">
+                        </a>
+                        {% else %}
+                        <a href="#">
+                            <img class="img-fluid rounded" src="{{ MEDIA_URL }}default_image.jpg"
+                                alt="{{ item.stock.name }}" style="max-width: 100px;">
+                        </a>
+                        {% endif %}
+                    </div>
+
+                    <!-- Product Details -->
+                    <div class="col-12 col-md-10">
+                        <div class="card-body p-0">
+                            <p class="responsive-text mb-1"><strong>
+                                    {% if item.stock_size %}{{ item.get_stock_size_display }} {% endif %}
+                                    {% if item.stock_weight %}{{ item.get_stock_weight_display }} {% endif %}
+                                    {{ item.stock.name }}
+                                    {% if item.stock_colour %}- {{ item.get_stock_colour_display }}{% endif %}
+                                </strong></p>
+                            <p class="mb-1">Qty: {{ item.quantity }}</p>
+                            <p class="mb-1">Subtotal: €{{ item.stock.price|calc_subtotal:item.quantity }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
             <hr>
-            <p>Subtotal: €{{ order.order_total }}</p>
-            <p>Delivery: €{{ order.delivery_cost }}</p>
-            <p><strong>Total: €{{ order.grand_total }}</strong></p>
+
+            <!-- Totals Section -->
+            <div class="card card-cart w-100 px-3 py-2">
+                <div class="d-flex flex-column align-items-end text-right">
+                    <p class="mb-1"><strong>Subtotal:</strong> €{{ order.order_total }}</p>
+                    <p class="mb-1"><strong>Delivery:</strong> €{{ order.delivery_cost }}</p>
+                    <p class="mb-1"><strong>Total:</strong> €{{ order.grand_total }}</p>
+                </div>
+            </div>
+            <hr>
         </div>
+
     </div>
-    <div class="row">
-        <div class="col-12 col-lg-7 text-left">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-12 col-lg-7">
             {% if from_profile %}
             <a href="{% url 'stock' %}" class="btn back-btn btn-outline-black rounded-0 btn-md">
                 <span class="icon mr-2">

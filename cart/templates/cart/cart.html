@@ -24,7 +24,8 @@
         <div class="col-12">
             <div class="card card-cart h-100 p-3">
                 <div class="row">
-                    <div class="col-2 force-hide d-md-block d-flex justify-content-center">
+                    <!-- Image Column -->
+                    <div class="col-12 col-md-2 d-flex justify-content-left mb-2 mb-md-0">
                         {% if item.stock.image %}
                         <a href="{% url 'stock_detail' item.stock.id %}">
                             <img class="img-fluid rounded" src="{{ item.stock.image.url }}" alt="{{ item.stock.name }}"
@@ -37,7 +38,9 @@
                         </a>
                         {% endif %}
                     </div>
-                    <div class="col-7 col-sm-5">
+
+                    <!-- Item Info + Remove Button -->
+                    <div class="col-12 col-md-6 mb-2 mb-md-0">
                         <div class="card-body card-cart">
                             <p class="responsive-text">
                                 <strong>
@@ -53,12 +56,14 @@
                                 data-item-id="{{ item.item_id }}" data-stock-size="{{ item.size|default_if_none:'' }}"
                                 data-stock-weight="{{ item.weight|default_if_none:'' }}"
                                 data-stock-colour="{{ item.colour|default_if_none:'' }}">
-                                <i class="fas fa-trash-alt"></i> Remove
+                                <i class="fas fa-trash-alt remove-icon d-none d-sm-inline"></i> Remove
                             </button>
                         </div>
                     </div>
-                    <div class="col-3 col-sm-5">
-                        <div class="card-body card-cart d-flex justify-content-end align-items-end">
+
+                    <!-- Subtotal -->
+                    <div class="col-12 col-md-4 d-flex justify-content-md-end align-items-end">
+                        <div class="card-body card-cart">
                             <p>
                                 <strong>Subtotal:</strong>
                                 <span id="subtotal_{{ item.item_id }}" class="subtotal">
@@ -68,6 +73,7 @@
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
         {% endfor %}

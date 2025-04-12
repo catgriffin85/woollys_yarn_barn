@@ -1,8 +1,10 @@
 from django.http import HttpResponse
+from django.contrib.auth.models import User
 
 from .models import Order, OrderLineItem
 from stock.models import Stock
 from profiles.models import UserProfile
+
 
 import json
 import time
@@ -48,16 +50,20 @@ class StripeWH_Handler:
         profile = None
         username = intent.metadata.username
         if username != 'AnonymousUser':
-            profile = UserProfile.objects.get(user=username)
-            if save_info:
-                profile.default_phone_number = shipping_details.phone
-                profile.default_country = shipping_details.address.country
-                profile.default_postcode = shipping_details.address.postal_code
-                profile.default_town_or_city = shipping_details.address.city
-                profile.default_street_address1 = shipping_details.address.line1
-                profile.default_street_address2 = shipping_details.address.line2
-                profile.default_county = shipping_details.address.state
-                profile.save()
+            try:
+                user = User.objects.get(username=username)
+                profile = UserProfile.objects.get(user=user)
+                if save_info:
+                    profile.default_phone_number = shipping_details.phone
+                    profile.default_country = shipping_details.address.country
+                    profile.default_postcode = shipping_details.address.postal_code
+                    profile.default_town_or_city = shipping_details.address.city
+                    profile.default_street_address1 = shipping_details.address.line1
+                    profile.default_street_address2 = shipping_details.address.line2
+                    profile.default_county = shipping_details.address.state
+                    profile.save()
+            except User.DoesNotExist:
+                profile = None
 
         order_exists = False
         attempt = 1

@@ -104,6 +104,10 @@ body {
     border: none;
 }
 
+ul {
+    list-style: none;
+}
+
 /* Stock page */ 
 
 .overlay {
@@ -344,5 +348,19 @@ body {
 
     .remove-item {
         padding: 0%;
+    }
+}
+
+@media (max-width: 350px) {
+
+    /* homepage */
+
+    h2 {
+        font-size: 1.4em;
+      }
+
+    .homepage-intro {
+    padding-top: 3rem;
+    padding-bottom: 6rem;
     }
 }

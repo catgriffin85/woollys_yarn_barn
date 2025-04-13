@@ -3,6 +3,7 @@ from django.contrib import messages
 from django.core.mail import send_mail
 from django.conf import settings
 from .forms import NewsletterSignupForm
+from stock.models import Stock
 
 
 def newsletter_signup(request):
@@ -27,3 +28,8 @@ def newsletter_signup(request):
         form = NewsletterSignupForm()
 
     return render(request, 'newsletter/signup.html', {'form': form})
+
+
+def media_test(request):
+    stock = Stock.objects.first()
+    return render(request, 'newsletter/signup.html', {'stock': stock})

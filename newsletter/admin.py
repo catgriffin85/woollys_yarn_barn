@@ -2,10 +2,7 @@ from django.contrib import admin
 from .models import NewsletterSignup
 
 
-class NewsletterAdmin(admin.ModelAdmin):
-    list_display = (
-        'email',
-        'date_subscribed',
-    )
-
-admin.site.register(NewsletterSignup, NewsletterAdmin)
+@admin.register(NewsletterSignup)
+class NewsletterSignupAdmin(admin.ModelAdmin):
+    list_display = ('email', 'date_subscribed', 'unsubscribed',)
+    search_fields = ('email',)

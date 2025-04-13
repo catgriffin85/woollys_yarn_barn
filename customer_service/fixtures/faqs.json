@@ -225,20 +225,6 @@
     },
     {
       "model": "customer_service.faq",
-      "pk": 17,
-      "fields": {
-        "topics": "order_issues",
-        "question": "I accidentally ordered the wrong item. Can I change it?",
-        "question_id": "ord_003",
-        "answer": "If your order hasn’t shipped yet, you can contact support to change or cancel it. After shipping, you can return the item.",
-        "slug": "i-accidentally-ordered-the-wrong-item-can-i-change-it",
-        "keywords": ["change order", "wrong product", "edit order", "cancel"],
-        "created_at": "2024-04-03T12:00:00Z",
-        "views": 0
-      }
-    },
-    {
-      "model": "customer_service.faq",
       "pk": 18,
       "fields": {
         "topics": "order_issues",

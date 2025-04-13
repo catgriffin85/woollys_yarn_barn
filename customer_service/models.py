@@ -15,9 +15,9 @@ class Topic(models.Model):
 
 class Faq(models.Model):
 
-    topics = models.CharField(max_length=50, blank=True)
-    question = models.CharField(max_length=200, blank=True)
-    question_id = models.CharField(max_length=50, blank=True)
+    topics = models.CharField(max_length=100, blank=True)
+    question = models.CharField(max_length=250, blank=True)
+    question_id = models.CharField(max_length=100, blank=True)
     answer = models.TextField()
     slug = models.SlugField(unique=True, blank=True)
     keywords = models.TextField(blank=True)

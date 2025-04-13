@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
+from cloudinary.models import CloudinaryField
 
 
 class Category(models.Model):
@@ -32,7 +33,9 @@ class Stock(models.Model):
     price = models.DecimalField(max_digits=6, decimal_places=2)
     rating = models.IntegerField(validators=[MinValueValidator(1),
                                 MaxValueValidator(5)])
-    image = models.ImageField(null=True, blank=True)
+    image = CloudinaryField(
+        'image',
+        default="https://res.cloudinary.com/dqgc8opao/image/upload/v1744536831/default_image_akymrn.jpg")
 
     def __str__(self):
         return self.name

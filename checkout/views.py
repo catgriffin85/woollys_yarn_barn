@@ -61,24 +61,6 @@ def checkout(request):
             order.original_cart = json.dumps(cart)
             order.save()
 
-            # Send confirmation email
-            user_email = order_form.cleaned_data.get('email')
-            user_name = order_form.cleaned_data.get('full_name')
-            subject = 'Your Order Has Been Received'
-            message = (
-                f"Hi {user_name},\n\n"
-                "Thank you for your order.\n\n"
-                "Best regards,\nWoolly's Yarn Barn Team"
-            )
-
-            send_mail(
-                subject,
-                message,
-                settings.DEFAULT_FROM_EMAIL,
-                [user_email],
-                fail_silently=False,
-            )
-
             for item_id, item_data in cart.items():
                 try:
                     stock = Stock.objects.get(id=item_data['stock_id'])
@@ -98,7 +80,7 @@ def checkout(request):
                         order_line_item.save()
 
                 except Stock.DoesNotExist:
-                    messages.error(request, "One of the items in your cart is no longer available.")
+                    messages.error(request, "An item in your cart is no longer available.")
                     order.delete()
                     return redirect('view_cart')
 

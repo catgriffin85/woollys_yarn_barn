@@ -14,8 +14,6 @@ from pathlib import Path
 import os
 import dj_database_url
 import cloudinary
-import cloudinary.uploader
-import cloudinary.api
 
 if os.path.isfile('env.py'):
     import env
@@ -198,6 +196,7 @@ cloudinary.config(
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
 
 # Stipe
 FREE_DELIVERY_THRESHOLD = 30

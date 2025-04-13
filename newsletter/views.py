@@ -29,7 +29,3 @@ def newsletter_signup(request):
 
     return render(request, 'newsletter/signup.html', {'form': form})
 
-
-def media_test(request):
-    stock = Stock.objects.first()
-    return render(request, 'newsletter/signup.html', {'stock': stock})

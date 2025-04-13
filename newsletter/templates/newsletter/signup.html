@@ -22,14 +22,4 @@
         </div>
     </div>
 </div>
-
-
-<h1>Media Test</h1>
-{% if stock %}
-    <p>{{ stock.name }}</p>
-    <img src="{{ stock.image.url }}" alt="stock image">
-{% else %}
-    <p>No stock found</p>
-{% endif %}
-
 {% endblock %}

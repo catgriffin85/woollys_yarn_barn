@@ -8,7 +8,7 @@ from .forms import StockForm
 
 
 def shop_all(request):
-    """ A view to show all products, including sorting and search queries """
+    """ A view to show all stock, including sorting and search queries """
 
     stocks = Stock.objects.all()
     query = None
@@ -43,7 +43,7 @@ def shop_all(request):
             query = request.GET['q']
             if not query:
                 messages.error(request, "You didn't enter any search criteria!")
-                return redirect(reverse('products'))
+                return redirect(reverse('stock'))
                 
             queries = Q(name__icontains=query) | Q(description__icontains=query)
             stocks = stocks.filter(queries)
@@ -91,3 +91,44 @@ def add_stock(request):
     }
 
     return render(request, template, context)
+
+
+def edit_stock(request, stock_id):
+    """ Edit a stock in the store """
+    stock = get_object_or_404(Stock, pk=stock_id)
+    if request.method == 'POST':
+        form = StockForm(request.POST, request.FILES, instance=stock)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Successfully updated your stock!')
+            return redirect(reverse('stock_detail', args=[stock.id]))
+        else:
+            messages.error(request, 'Failed to update your stock. Please ensure the form is valid.')
+    else:
+        form = StockForm(instance=stock)
+
+        if not stock.weight:
+            form.fields.pop('weight')
+        if not stock.colour:
+            form.fields.pop('colour')
+        if not stock.size:
+            form.fields.pop('size')
+
+        messages.info(request, f'You are editing {stock.name}')
+
+    template = 'stock/edit_stock.html'
+    context = {
+        'form': form,
+        'stock': stock,
+    }
+
+    return render(request, template, context)
+
+
+def delete_stock(request, stock_id):
+    """ Delete a stock from the store """
+    stock = get_object_or_404(Stock, pk=stock_id)
+    stock.delete()
+    messages.success(request, 'Stock deleted!')
+
+    return redirect(reverse('stock'))

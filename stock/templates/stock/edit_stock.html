@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block page_header %}
+<div class="container header-container">
+    <div class="row">
+        <div class="col"></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="overlay"></div>
+<div class="container container-admin text-left justify-content-center">
+    <div class="text-center mb-0 mt-2">
+        <h3>Manage Stock</h3>
+        <h5>-- Edit existing stock --</h5>
+    </div>
+    <hr>
+    <div class="row justify-content-center mr-lg-3 ml-lg-3">
+        <div class="col-12 col-md-10 col-lg-8 mx-auto">
+            <form method="POST" action="{% url 'edit_stock' stock.id %}" class="form mb-2" enctype="multipart/form-data">
+                {% csrf_token %}
+                {% for field in form %}
+                    {% if field.name != 'image' %}
+                        {{ field | as_crispy_field }}
+                    {% else %}
+                        {{ field }}
+                    {% endif %}
+                {% endfor %}
+                <br>
+                <br>
+                <div class="text-right">
+                    <button class="btn btn-outline-success text-uppercase" type="submit">Update Stock</button>
+                    <a class="btn btn-outline-danger text-uppercase" href="{% url 'stock' %}">Cancel</a>
+                </div>
+            </form>
+        </div>  
+        
+    </div>
+</div>
+{% endblock %}

@@ -11,7 +11,7 @@
 
 {% block content %}
 <div class="overlay"></div>
-<div class="container-fluid">
+<div class="container-fluid container-stock">
     <div class="row">
         <div class="col-12 col-md-6 col-lg-4 offset-lg-2">
             <div class="image-container my-5">
@@ -27,103 +27,93 @@
             </div>
         </div>
         <div class="col-12 col-md-6 col-lg-4">
-            <div class="col-12 col-md-8 col-lg-10">
-                <div class="product-details-container mb-5 mt-md-5">
-                    <p class="mb-0 font-weight-bold">{{ stock.name }}</p>
-                    <p class="lead mb-0 text-left font-weight-bold">€{{ stock.price }}</p>
-                    {% if stock.category %}
-                    <p class="small mt-1 mb-0">
-                        <a class="text-muted" href="{% url 'stock' %}?category={{ stock.category.name }}">
-                            <i class="fas fa-search mr-1"></i>{{ stock.category.friendly_name }}
-                        </a>
-                    </p>
+            <div class="stock-details-container mb-5 mt-md-5">
+                <p class="mb-0 font-weight-bold">{{ stock.name }}</p>
+                <p class="lead mb-0 text-left font-weight-bold">€{{ stock.price }}</p>
+                {% if stock.category %}
+                <p class="small mt-1 mb-0">
+                    <a class="text-muted" href="{% url 'stock' %}?category={{ stock.category.name }}">
+                        <i class="fas fa-search mr-1"></i>{{ stock.category.friendly_name }}
+                    </a>
+                </p>
+                {% endif %}
+                <br>
+                <p class="mt-6">{{ stock.description }}</p>
+                {% if stock.rating %}
+                <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ stock.rating }} / 5</small>
+                {% else %}
+                <small class="text-muted">No Rating</small>
+                {% endif %}
+                <br>
+                <br>
+                <form class="form" action="{% url 'add_to_cart' stock.id %}" method="POST">
+                    {% csrf_token %}
+                    {% if stock.size %}
+                    <div class="col-12">
+                        <p><strong>Size:</strong></p>
+                        <select class="form-control rounded-0 w-50" name="stock_size" id="id_stock_size">
+                            {% for s in stock.size %}
+                            <option value="{{ s }}">{{ s }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
                     {% endif %}
-                    <br>
-                    <p class="mt-6">{{ stock.description }}</p>
-                    {% if stock.rating %}
-                    <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ stock.rating }} / 5</small>
-                    {% else %}
-                    <small class="text-muted">No Rating</small>
+                    {% if stock.weight %}
+                    <div class="col-12">
+                        <p><strong>Weight:</strong></p>
+                        <select class="form-control rounded-0 w-50" name="stock_weight" id="id_stock_weight">
+                            {% for w in stock.weight %}
+                            <option value="{{ w }}">{{ w|capfirst }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
                     {% endif %}
-                    <br>
-                    <br>
-                    <form class="form" action="{% url 'add_to_cart' stock.id %}" method="POST">
-                        {% csrf_token %}
-                        <div class="form-row">
-                            {% with stock.weight as w %}
-                            {% if w %}
-                                <div class="col-12">
-                                    <p><strong>Weight:</strong></p>
-                                    <select class="form-control rounded-0 w-50" name="stock_weight" id='id_stock_weight'>
-                                        <option value="dk">Double Knitting</option>
-                                        <option value="aran">Aran</option>
-                                        <option value="chunky" selected>Chunky</option>
-                                        <option value="super_chunky">Super Chunky</option>
-                                    </select>
-                                </div>
-                            {% endif %}
-                            {% endwith %}
-                            {% with stock.colour as c %}
-                            {% if c %}
-                                <div class="col-12">
-                                    <p><strong>Colour:</strong></p>
-                                    <select class="form-control rounded-0 w-50" name="stock_colour" id='id_stock_colour'>
-                                        <option value="blue">Blue</option>
-                                        <option value="pink">Pink</option>
-                                        <option value="green" selected>Green</option>
-                                        <option value="white">White</option>
-                                        <option value="black">Black</option>
-                                        <option value="grey">Grey</option>
-                                        <option value="yellow">Yellow</option>
-                                    </select>
-                                </div>
-                            {% endif %}
-                            {% endwith %}
-                            {% with stock.size as s %}
-                            {% if s %}
-                                <div class="col-12">
-                                    <p><strong>Size:</strong></p>
-                                    <select class="form-control rounded-0 w-50" name="stock_size" id='id_stock_size'>
-                                        <option value="3mm">3mm</option>
-                                        <option value="4mm">4mm</option>
-                                        <option value="4.5mm" selected>4.5mm</option>
-                                        <option value="5mm">5mm</option>
-                                        <option value="6mm">6mm</option>
-                                        <option value="7mm">7mm</option>
-                                        <option value="8mm">8mm</option>
-                                    </select>
-                                </div>
-                            {% endif %}
-                            {% endwith %}
-                            <div class="col-12">
-                                <p class="mt-3"><strong>Quantity:</strong></p>
-                                <div class="form-group w-50">
-                                    <div class="input-group">
-                                        <input class="form-control qty_input" type="number"
-                                            name="quantity" value="1" min="1" max="99"
-                                            data-item_id="{{ stock.id }}"
-                                            id="id_qty_{{ stock.id }}">
-                                    </div>
-                                </div>
-                            </div>
-                            <br>
-                            <div>
-                            <a href="{% url 'stock' %}" class="btn back-btn btn-outline-black rounded-0 btn-md">
-                                <span class="icon">
-                                    <i class="fas fa-chevron-left"></i>
-                                </span>
-                                <span class="text-uppercase">Back</span>
-                            </a>
-                            <input type="submit" class="btn btn-black back-btn rounded-0 text-uppercase" value="Add to Cart">
-                            </div>
-                            <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                    {% if stock.colour %}
+                    <div class="col-12">
+                        <p><strong>Colour:</strong></p>
+                        <select class="form-control rounded-0 w-50" name="stock_colour" id="id_stock_colour">
+                            {% for c in stock.colour %}
+                            <option value="{{ c }}">{{ c|capfirst }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    {% endif %}
+                    <div class="col-12">
+                        <p class="mt-3"><strong>Quantity:</strong></p>
+                        <div class="form-group w-50">
+                            <div class="input-group">
+                                <input class="form-control qty_input" type="number" name="quantity" value="1" min="1"
+                                    max="99" data-item_id="{{ stock.id }}" id="id_qty_{{ stock.id }}">
                             </div>
                         </div>
-                    </form>
-                </div>
+                    </div>
+                    <br>
+                    <div class="d-flex flex-wrap gap-2 mb-3 ml-3">
+                        <a href="{% url 'stock' %}" class="btn back-btn btn-outline-black rounded-0 btn-md">
+                            <span class="icon">
+                                <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="text-uppercase">Back</span>
+                        </a>
+                        <input type="submit" class="btn btn-black back-btn rounded-0 text-uppercase"
+                            value="Add to Cart">
+                        <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                    </div>
+                    <div class="col-12 col-md-8 col-lg-10">
+                        <div class="mt-1 mb-3">
+                            {% if request.user.is_superuser %}
+                            <small class="ml-3 d-block">
+                                <a href="{% url 'edit_stock' stock.id %}">Edit</a> |
+                                <a class="text-danger" href="{% url 'delete_stock' stock.id %}">Delete</a>
+                            </small>
+                            {% endif %}
+                        </div>
+                    </div>
             </div>
+            </form>
         </div>
     </div>
+</div>
 </div>
 </div>
 {% endblock %}

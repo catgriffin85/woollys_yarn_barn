@@ -79,12 +79,12 @@
                                 {% if item.stock.image %}
                                 <a href="{% url 'stock_detail' item.stock.id %}">
                                     <img class="img-fluid rounded" src="{{ item.stock.image.url }}"
-                                         alt="{{ item.stock.name }}" style="max-width: 100px;">
+                                        alt="{{ item.stock.name }}" style="max-width: 100px;">
                                 </a>
                                 {% else %}
                                 <a href="#">
                                     <img class="img-fluid rounded" src="{{ MEDIA_URL }}default_image.jpg"
-                                         alt="{{ item.stock.name }}" style="max-width: 100px;">
+                                        alt="{{ item.stock.name }}" style="max-width: 100px;">
                                 </a>
                                 {% endif %}
                             </div>
@@ -92,11 +92,11 @@
                             <div class="col-12 col-md-10">
                                 <div class="card-body card-cart">
                                     <p class="responsive-text"><strong>
-                                        {% if item.size %}{{ item.size }} {% endif %}
-                                        {% if item.weight %}{{ item.weight }} {% endif %}
-                                        {{ item.stock.name }}
-                                        {% if item.colour %}- {{ item.colour }}{% endif %}
-                                    </strong></p>
+                                            {% if item.size %}{{ item.size }} {% endif %}
+                                            {% if item.weight %}{{ item.weight }} {% endif %}
+                                            {{ item.stock.name }}
+                                            {% if item.colour %}- {{ item.colour }}{% endif %}
+                                        </strong></p>
                                     <p>Qty: {{ item.quantity }}</p>
                                     <p>Subtotal: €{{ item.stock.price|calc_subtotal:item.quantity }}</p>
                                 </div>
@@ -127,7 +127,8 @@
                 <!-- Total Reminder -->
                 <p class="small text-danger my-0 d-flex justify-content-end align-items-end">
                     <span class="icon"><i class="fas fa-exclamation-circle"></i></span>
-                    <span class="ml-1">Your card will be charged <strong>€{{ grand_total|floatformat:2 }}</strong></span>
+                    <span class="ml-1">Your card will be charged <strong>€{{ grand_total|floatformat:2
+                            }}</strong></span>
                 </p>
 
                 <!-- Buttons -->
@@ -143,6 +144,13 @@
             </form>
         </div>
     </div>
+</div>
+<div id="loading-overlay">
+    <h1 class="text-light logo-font loading-spinner">
+        <span class="icon">
+            <i class="fas fa-3x fa-sync-alt fa-spin"></i>
+        </span>
+    </h1>
 </div>
 {% endblock %}
 

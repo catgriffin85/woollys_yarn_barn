@@ -4,6 +4,7 @@ from django.db.models import Q
 from django.db.models.functions import Lower
 
 from .models import Stock, Category
+from .forms import StockForm
 
 
 def shop_all(request):
@@ -59,7 +60,6 @@ def shop_all(request):
     return render(request, 'stock/stock.html', context)
 
 
-
 def stock_detail(request, stock_id):
     """ A view to show individual stock details """
 
@@ -70,3 +70,14 @@ def stock_detail(request, stock_id):
     }
 
     return render(request, 'stock/stock_detail.html', context)
+
+
+def add_stock(request):
+    """"Add a stock to the store"""
+    form = StockForm()
+    template = 'stock/add_stock.html'
+    context = {
+        'form': form
+    }
+
+    return render(request, template, context)

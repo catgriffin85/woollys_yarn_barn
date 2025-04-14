@@ -232,6 +232,12 @@ ul {
     max-height: 80px;
 }
 
+/* Add/Edit product pages */
+
+.container-admin {
+    padding-bottom: 6rem;
+}
+
 /*   toast  */
 
 .message-container {

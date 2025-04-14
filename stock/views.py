@@ -74,7 +74,17 @@ def stock_detail(request, stock_id):
 
 def add_stock(request):
     """"Add a stock to the store"""
-    form = StockForm()
+    if request.method == 'POST':
+        form = StockForm(request.POST, request.FILES)
+        if form.is_valid():
+            stock = form.save()
+            messages.success(request, 'Successfully added new stock!')
+            return redirect(reverse('stock_detail', args=[stock.id]))
+        else:
+            messages.error(request, 'Failed to add any stock. Please ensure the form is valid.')
+    else:
+        form = StockForm()
+    
     template = 'stock/add_stock.html'
     context = {
         'form': form

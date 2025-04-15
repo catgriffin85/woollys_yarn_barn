@@ -53,13 +53,12 @@ class StockDetails(forms.ModelForm):
         fields = [
             'category', 'sku', 'name', 'description',
             'weight', 'colour', 'size',
-            'price', 'rating', 'image'
+            'price', 'image'
         ]
 
         widgets = {
             'description': forms.Textarea(attrs={'rows': 4}),
             'price': forms.NumberInput(attrs={'step': 0.01}),
-            'rating': forms.NumberInput(attrs={'min': 1, 'max': 5}),
             'image': forms.ClearableFileInput(),
         }
 
@@ -77,7 +76,7 @@ class StockForm(forms.ModelForm):
 
         self.fields['category'].choices = friendly_names
 
-        required_fields = ['category', 'sku', 'name', 'description', 'price', 'rating', 'image']
+        required_fields = ['category', 'sku', 'name', 'description', 'price', 'image']
 
         for field_name, field in self.fields.items():
             field.widget.attrs['class'] = 'border-black rounded-0'

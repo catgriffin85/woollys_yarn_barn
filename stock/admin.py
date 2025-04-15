@@ -8,11 +8,11 @@ class StockAdmin(admin.ModelAdmin):
         'sku',
         'name',
         'price',
-        'rating',
         'image',
     )
 
     ordering = ('sku',)
+
 
 class CategoryAdmin(admin.ModelAdmin):
     list_display = (

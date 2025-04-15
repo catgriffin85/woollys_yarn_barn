@@ -39,11 +39,6 @@
                 {% endif %}
                 <br>
                 <p class="mt-6">{{ stock.description }}</p>
-                {% if stock.rating %}
-                <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ stock.rating }} / 5</small>
-                {% else %}
-                <small class="text-muted">No Rating</small>
-                {% endif %}
                 <br>
                 <br>
                 <form class="form" action="{% url 'add_to_cart' stock.id %}" method="POST">

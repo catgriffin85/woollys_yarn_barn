@@ -1,5 +1,4 @@
 from django.db import models
-from django.core.validators import MinValueValidator, MaxValueValidator
 from cloudinary.models import CloudinaryField
 
 
@@ -31,8 +30,6 @@ class Stock(models.Model):
     colour = models.JSONField(default=list, null=True, blank=True)
     size = models.JSONField(default=list, null=True, blank=True)
     price = models.DecimalField(max_digits=6, decimal_places=2)
-    rating = models.IntegerField(validators=[MinValueValidator(1),
-                                MaxValueValidator(5)])
     image = CloudinaryField(
         'image',
         default="https://res.cloudinary.com/dqgc8opao/image/upload/v1744536831/default_image_akymrn.jpg")

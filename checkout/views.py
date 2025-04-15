@@ -86,6 +86,9 @@ def checkout(request):
 
                 order.update_total()
 
+            save_info = 'save_info' in request.POST
+            request.session['save_info'] = save_info
+
             request.session['cart'] = {}
             return redirect('order_complete', order_number=order.order_number)
         else:

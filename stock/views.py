@@ -126,9 +126,12 @@ def edit_stock(request, stock_id):
 
 
 def delete_stock(request, stock_id):
-    """ Delete a stock from the store """
+    """ Confirm and delete a stock from the store """
     stock = get_object_or_404(Stock, pk=stock_id)
-    stock.delete()
-    messages.success(request, 'Stock deleted!')
 
-    return redirect(reverse('stock'))
+    if request.method == 'POST':
+        stock.delete()
+        messages.success(request, 'Stock deleted!')
+        return redirect(reverse('stock'))
+
+    return render(request, 'stock/confirm_delete.html', {'stock': stock})

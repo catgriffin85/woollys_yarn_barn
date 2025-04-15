@@ -73,5 +73,14 @@ select option[value=""] {
 
     .checkout-page {
         padding-top: 3rem;
+        padding-bottom: 5rem;
+    }
+}
+
+@media (max-width: 800px) {
+
+    .checkout-page {
+        padding-top: 3rem;
+        padding-bottom: 5rem;
     }
 }

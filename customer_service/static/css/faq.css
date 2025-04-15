@@ -69,3 +69,26 @@
     color: white;
     border: none;
 }
+
+ /* Contact page */
+
+ .container-contact {
+    padding-top: 2rem;
+}
+
+@media (max-width: 300px) {
+
+    .container-customer-service,
+    .container-contact {
+        padding-top: 2rem;
+        padding-bottom: 3rem;
+    }
+}
+
+@media (max-width: 800px) {
+
+    .container-customer-service,
+    .container-contact {
+        padding-bottom: 5rem;
+    }
+}

@@ -340,11 +340,6 @@ ul {
         padding-top: 2rem;
     }
 
-    /* Contact page */
-
-    .container-contact {
-        padding-top: 2rem;
-    }
 
     /* Cart page */
 
@@ -368,5 +363,16 @@ ul {
     .homepage-intro {
     padding-top: 3rem;
     padding-bottom: 6rem;
+    }
+}
+
+@media (max-width: 1000px) {
+
+    body {
+        background: url('/media/homepage_ring_of_yarn.jpg') no-repeat center center fixed;
+        background-size: cover;
+        padding-top: 150px;
+        height: calc(80vh - 164px);
+        z-index: -1;
     }
 }

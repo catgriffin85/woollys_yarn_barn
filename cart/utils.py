@@ -1,8 +1,13 @@
-def format_cart_attributes(size, weight, colour):
+def format_cart_attributes(size=None, weight=None, colour=None):
     """
-    Format attributes consistently for cart keys.
+    Only include the attributes the customer actually selected.
+    Returns a string key or "default" if none.
     """
-    size = (size or 'None').strip().lower()
-    weight = (weight or 'None').strip().lower()
-    colour = (colour or 'None').strip().lower()
-    return f"{size}-{weight}-{colour}"
+    parts = []
+    if size:
+        parts.append(size.strip().lower())
+    if weight:
+        parts.append(weight.strip().lower())
+    if colour:
+        parts.append(colour.strip().lower())
+    return "_".join(parts) if parts else "default"

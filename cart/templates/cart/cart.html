@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% load cart_extras %}
+
 {% block page_header %}
 <div class="container header-container">
     <div class="row">
@@ -8,6 +9,7 @@
     </div>
 </div>
 {% endblock %}
+
 {% block content %}
 <div class="overlay"></div>
 <div class="container container-cart mb-2">
@@ -21,11 +23,10 @@
     <div class="row">
         {% if cart_items %}
         {% for item in cart_items %}
-        <div class="col-12">
+        <div class="col-12 ">
             <div class="card card-cart h-100 p-3">
                 <div class="row">
-                    <!-- Image Column -->
-                    <div class="col-12 col-md-2 d-flex justify-content-left mb-2 mb-md-0">
+                    <div class="col-2 force-hide d-md-block d-flex justify-content-center">
                         {% if item.stock.image %}
                         <a href="{% url 'stock_detail' item.stock.id %}">
                             <img class="img-fluid rounded" src="{{ item.stock.image.url }}" alt="{{ item.stock.name }}"
@@ -38,34 +39,26 @@
                         </a>
                         {% endif %}
                     </div>
-
-                    <!-- Item Info + Remove Button -->
-                    <div class="col-12 col-md-6 mb-2 mb-md-0">
+                    <div class="col-7 col-sm-5">
                         <div class="card-body card-cart">
                             <p class="responsive-text">
-                                <strong>
-                                    {% if item.size %}{{ item.size }} {% endif %}
-                                    {% if item.weight %}{{ item.weight }} {% endif %}
-                                    {{ item.stock.name }}
-                                    {% if item.colour %} - {{ item.colour }}{% endif %}
-                                </strong>
+                                <strong>{% if item.size %}
+                                    {{ item.size }}
+                                    {% endif %}
+                                    {% if item.weight %}
+                                    {{ item.weight }}
+                                    {% endif %}{{ item.stock.name }}
+                                    {% if item.colour %}
+                                    {{ item.colour }}
+                                    {% endif %}</strong>
                             </p>
                             {% include "cart/quantity_form.html" %}
-                            <!-- Remove button -->
-                            <button class="remove-item btn-link text-danger float-center btn btn-sm"
-                                data-item-id="{{ item.item_id }}" data-stock-size="{{ item.size|default_if_none:'' }}"
-                                data-stock-weight="{{ item.weight|default_if_none:'' }}"
-                                data-stock-colour="{{ item.colour|default_if_none:'' }}">
-                                <i class="fas fa-trash-alt remove-icon d-none d-sm-inline"></i> Remove
-                            </button>
                         </div>
                     </div>
-
-                    <!-- Subtotal -->
-                    <div class="col-12 col-md-4 d-flex justify-content-md-end align-items-end">
-                        <div class="card-body card-cart">
+                    <div class="col-3 col-sm-5">
+                        <div class="card-body card-cart d-flex justify-content-end align-items-end">
                             <p>
-                                <strong>Subtotal:</strong>
+                                <strong> Subtotal: </strong>
                                 <span id="subtotal_{{ item.item_id }}" class="subtotal">
                                     €{{ item.stock.price|calc_subtotal:item.quantity }}
                                 </span>
@@ -73,7 +66,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
         {% endfor %}
@@ -88,82 +80,85 @@
             </div>
             <div class="d-flex justify-content-end align-items-end">
                 <a href="{% url 'stock' %}" class="btn back-btn btn-outline-black rounded-0 btn-md">
-                    <span class="icon"><i class="fas fa-chevron-left"></i></span>
+                    <span class="icon">
+                        <i class="fas fa-chevron-left"></i>
+                    </span>
                     <span class="text-uppercase">Keep Shopping</span>
                 </a>
                 <a href="{% url 'checkout' %}" class="btn back-btn btn-outline-black rounded-0 btn-md">
                     <span class="text-uppercase">Secure Checkout</span>
-                    <span class="icon"><i class="fas fa-lock"></i></span>
+                    <span class="icon">
+                        <i class="fas fa-lock"></i>
+                    </span>
                 </a>
             </div>
             <input type="hidden" name="redirect_url" value="{{ request.path }}">
         </div>
         {% else %}
-        <div class="row"></div>
-        <div class="col-12 col-sm-6">
-            <p class="lead m-5 ml-5">Your cart is empty.</p>
-        </div>
+        <p class="lead m-5 ml-5">Your cart is empty.</p>
     </div>
-    <br>
-    <div class="row">
-        <div class="col-12 col-sm-6">
-            <a href="{% url 'stock' %}" class="btn back-btn btn-outline-black rounded-0 btn-md">
-                <span class="icon"><i class="fas fa-chevron-left"></i></span>
-                <span class="text-uppercase">Keep Shopping</span>
-            </a>
-        </div>
+    <div>
+        <a href="{% url 'stock' %}" class="btn btn-outline-black rounded-0 btn-lg">
+            <span class="icon">
+                <i class="fas fa-chevron-left"></i>
+            </span>
+            <span class="text-uppercase">Keep Shopping</span>
+        </a>
     </div>
     {% endif %}
+
 </div>
 </div>
+</div>
+</div>
+</div>
+</div>
+
 {% endblock %}
+
 {% block postloadjs %}
 {{ block.super }}
+
 <script type="text/javascript">
+
     $(document).ready(function () {
-        // Update quantity on click
-        $('.update-link').click(function (e) {
-            e.preventDefault();
-            var form = $(this).closest('.update-form');
-            var itemId = form.find('.qty_input').data('item_id');
-            var quantity = form.find('.qty_input').val();
-            var csrfToken = "{{ csrf_token }}";
-            var url = `/cart/adjust/${itemId}/`;
-            var data = {
-                'csrfmiddlewaretoken': csrfToken,
-                'quantity': quantity
-            };
-            $.post(url, data)
-                .done(function () {
-                    location.reload();
-                })
-                .fail(function (xhr, status, error) {
-                    alert("Error updating cart: " + error);
-                });
-        });
-        // Remove variant-specific item on click
-        $('.remove-item').click(function (e) {
-            e.preventDefault();
-            var itemId = $(this).data('item-id');
-            var size = $(this).data('stock-size');
-            var weight = $(this).data('stock-weight');
-            var colour = $(this).data('stock-colour');
-            var csrfToken = "{{ csrf_token }}";
-            var url = `/cart/remove/${itemId}/`;
-            var data = {
-                'csrfmiddlewaretoken': csrfToken,
-                'stock_size': size,
-                'stock_weight': weight,
-                'stock_colour': colour
-            };
-            $.post(url, data)
-                .done(function () {
-                    location.reload();
-                })
-                .fail(function (xhr, status, error) {
-                    alert("Error removing item: " + error);
-                });
-        });
+    // Update quantity on click
+    $('.update-link').click(function (e) {
+        e.preventDefault();
+        var form = $(this).closest('.update-form');
+        var itemId = form.find('.qty_input').data('item_id');
+        var quantity = form.find('.qty_input').val();
+        var csrfToken = "{{ csrf_token }}";
+        var url = `/cart/adjust/${itemId}/`;
+        var data = { 'csrfmiddlewaretoken': csrfToken, 'quantity': quantity };
+
+        $.post(url, data)
+            .done(function (response) {
+                location.reload();  // Reload to update totals
+            })
+            .fail(function (xhr, status, error) {
+                alert("Error updating cart: " + error);
+            });
     });
+
+    // Remove item and reload on click
+    $('.remove-item').click(function (e) {
+        e.preventDefault();
+        var itemId = $(this).data('item-id');
+        var csrfToken = "{{ csrf_token }}";
+        var url = `/cart/remove/${itemId}/`;
+        var data = { 'csrfmiddlewaretoken': csrfToken };
+
+        $.post(url, data)
+            .done(function () {
+                location.reload();
+            })
+            .fail(function (xhr, status, error) {
+                alert("Error removing item: " + error);
+            });
+    });
+});
+
+
 </script>
 {% endblock %}

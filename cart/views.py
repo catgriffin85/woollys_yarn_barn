@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect, reverse, HttpResponse, get_object_or_404
 from django.contrib import messages
-from cart.utils import format_cart_attributes
 
 from stock.models import Stock
 
@@ -24,7 +23,7 @@ def add_to_cart(request, item_id):
     colour = request.POST.get('stock_colour', None)
     size = request.POST.get('stock_size', None)
 
-    attributes = format_cart_attributes(size, weight, colour)
+    attributes = f"{size or 'None'}-{weight or 'None'}-{colour or 'None'}"
 
     if item_id not in cart:
         cart[item_id] = {
@@ -52,11 +51,12 @@ def add_to_cart(request, item_id):
 
 
 def adjust_cart(request, item_id):
-    """ Adjust the quantity of a specific attribute combination in the cart """
+    """ Adjust the quantity of the specified stock item in the cart """
 
     item_id = str(item_id)  # Ensure item_id is a string for session storage
     quantity = request.POST.get('quantity', '0')  # Default to '0' if missing
 
+    # Ensure quantity is an integer and handle errors
     try:
         quantity = int(quantity)
     except ValueError:
@@ -66,81 +66,45 @@ def adjust_cart(request, item_id):
     stock = get_object_or_404(Stock, pk=item_id)
     cart = request.session.get('cart', {})
 
-    # Extract attribute values from POST
     weight = request.POST.get('stock_weight', None)
     colour = request.POST.get('stock_colour', None)
     size = request.POST.get('stock_size', None)
 
-    # Format attributes into a consistent key
-    attributes = format_cart_attributes(size, weight, colour)
-    print("Adjusting attributes:", attributes)
+    attributes = f"{size or 'None'}-{weight or 'None'}-{colour or 'None'}"
 
+    # Ensure item exists in cart
     if item_id not in cart or not isinstance(cart[item_id], dict):
-        messages.warning(request, "Item not found in cart.")
-        return redirect(reverse('view_cart'))
+        cart[item_id] = {
+            "stock_id": int(item_id),
+            "quantity": 0,
+            "items_by_attributes": {}
+        }
 
-    if 'items_by_attributes' not in cart[item_id]:
-        cart[item_id]['items_by_attributes'] = {}
-
+    # Update quantity or remove item
     if quantity > 0:
-        cart[item_id]['items_by_attributes'][attributes] = quantity
-        cart[item_id]['quantity'] = sum(cart[item_id]['items_by_attributes'].values())
-        messages.success(request, f"Updated quantity of {stock.name} ({attributes}) to {quantity}.")
+        cart[item_id]["items_by_attributes"][attributes] = quantity
+        cart[item_id]["quantity"] = sum(cart[item_id]["items_by_attributes"].values())
     else:
-        if attributes in cart[item_id]['items_by_attributes']:
-            del cart[item_id]['items_by_attributes'][attributes]
+        del cart[item_id]  # Remove item if quantity is 0
 
-            # Recalculate total quantity
-            total_quantity = sum(cart[item_id]['items_by_attributes'].values())
+    request.session['cart'] = cart  # Save updated cart
+    messages.success(request, f'Updated quantity of {stock.name} in your cart!')
 
-            if total_quantity > 0:
-                cart[item_id]['quantity'] = total_quantity
-            else:
-                del cart[item_id]  # Remove the whole item if no attributes left
-
-            messages.success(request, f"Removed {stock.name} ({attributes}) from your cart.")
-        else:
-            messages.warning(request, "Attribute combination not found in cart.")
-
-    request.session['cart'] = cart
     return redirect(reverse('view_cart'))
 
 
 def remove_from_cart(request, item_id):
-    """ Remove a specific attribute combination of an item from the cart """
-
+    """ Remove an item from the cart """
+    
     stock = get_object_or_404(Stock, pk=item_id)
-
+    
     try:
         cart = request.session.get('cart', {})
 
-        item_id = str(item_id)
-        weight = request.POST.get('stock_weight', None)
-        colour = request.POST.get('stock_colour', None)
-        size = request.POST.get('stock_size', None)
-
-        attributes = format_cart_attributes(size, weight, colour)
-        print("Looking for attributes:", attributes)
-        print("Available keys:", cart[item_id]['items_by_attributes'].keys())
+        if item_id in cart:
+            cart.pop(item_id)
+            messages.success(request, f'{stock.name} removed in your cart!')
         
-        if item_id in cart and 'items_by_attributes' in cart[item_id]:
-            if attributes in cart[item_id]['items_by_attributes']:
-                del cart[item_id]['items_by_attributes'][attributes]
-
-                # Recalculate total quantity
-                total_quantity = sum(cart[item_id]['items_by_attributes'].values())
-
-                if total_quantity > 0:
-                    cart[item_id]['quantity'] = total_quantity
-                else:
-                    del cart[item_id]  # No variants left, remove the whole item
-
-                messages.success(request, f'Removed {stock.name} ({attributes}) from your cart!')
-            else:
-                messages.warning(request, f'Item with specified attributes not found in cart.')
-        else:
-            messages.warning(request, f'Item not found in cart.')
-
         request.session['cart'] = cart
         return HttpResponse(status=200)
 

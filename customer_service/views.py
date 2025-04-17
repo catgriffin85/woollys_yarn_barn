@@ -84,7 +84,7 @@ def contact(request):
     if request.method == 'POST' and not contact_form.is_valid():
         contact_form = ContactForm(request.POST)
 
-    faqs = Faq.objects.filter(topics=selected_topic) if selected_topic else None
+    faqs = Faq.objects.filter(topics=selected_topic, is_published=True) if selected_topic else None
 
     context = {
         'contact_form': contact_form,

@@ -23,12 +23,9 @@ class StripeWH_Handler:
     def _send_confirmation_email(self, order):
         """Send the user a confirmation email"""
         cust_email = order.email
-        subject = render_to_string(
-            'checkout/confirmation_emails/confirmation_email_subject.txt',
-            {'order': order})
-        body = render_to_string(
-            'checkout/confirmation_emails/confirmation_email_body.txt',
-            {'order': order, 'contact_email': settings.DEFAULT_FROM_EMAIL})
+        print("this email is used for order:" (cust_email))
+        subject = render_to_string('checkout/confirmation_emails/confirmation_email_subject.txt', {'order': order}).strip()
+        body = render_to_string('checkout/confirmation_emails/confirmation_email_body.txt', {'order': order, 'contact_email': settings.DEFAULT_FROM_EMAIL}).strip()
         
         send_mail(
             subject,
@@ -135,20 +132,17 @@ class StripeWH_Handler:
             )
             for item_id, item_data in json.loads(cart).items():
                 stock = Stock.objects.get(id=item_id)
-                if isinstance(item_data, int):
+                items = item_data.get("items_by_attributes", {})
+                for attribute_key, quantity in items.items():
+                    size, weight, colour = attribute_key.split("-")
                     OrderLineItem.objects.create(
                         order=order,
                         stock=stock,
-                        quantity=item_data,
+                        quantity=quantity,
+                        stock_size=size if size != "None" else None,
+                        stock_weight=weight if weight != "None" else None,
+                        stock_colour=colour if colour != "None" else None,
                     )
-                else:
-                    for size, quantity in item_data['items_by_size'].items():
-                        OrderLineItem.objects.create(
-                            order=order,
-                            stock=stock,
-                            quantity=quantity,
-                            product_size=size,
-                        )
         except Exception as e:
             if order:
                 order.delete()

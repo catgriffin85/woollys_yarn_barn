@@ -121,30 +121,30 @@
 
 <script type="text/javascript">
 
-    $(document).ready(function () {
-        $('.update-link').click(function (e) {
-            e.preventDefault();
-            var form = $(this).closest('.update-form');
-            var itemId = form.find('.qty_input').data('item_id');
-            var itemAttribute = form.find('.qty_input').data('item_attribute');
-            var quantity = form.find('.qty_input').val();
-            var csrfToken = "{{ csrf_token }}";
-            var url = `/cart/adjust/${itemId}/`;
-            var data = {
-                'csrfmiddlewaretoken': csrfToken,
-                'quantity': quantity,
-                'item_attribute': itemAttribute,
-            };
-            console.log("itemId:", itemId, "attribute:", itemAttribute, "quantity:", quantity); // for debugging
-            $.post(url, data)
-                .done(function () {
-                    location.reload();
-                })
-                .fail(function (xhr, status, error) {
-                    alert("Error updating cart: " + error);
-                });
-        });
+$(document).ready(function () {
+    $(document).on('click', '.update-link', function (e) {
+        e.preventDefault();
+        var form = $(this).closest('.update-form');
+        var itemId = form.data('item-id');
+        var quantity = form.find('.qty_input').val();
+        var itemAttribute = form.find('.qty_input').data('item_attribute');
+        var csrfToken = "{{ csrf_token }}";
+        var url = `/cart/adjust/${itemId}/`;
+        var data = {
+            'csrfmiddlewaretoken': csrfToken,
+            'quantity': quantity,
+            'item_attribute': itemAttribute,
+        };
+        console.log("Updating item:", itemId, "Attribute:", itemAttribute, "Qty:", quantity);
+        $.post(url, data)
+            .done(function () {
+                location.reload();
+            })
+            .fail(function (xhr, status, error) {
+                alert("Error updating cart: " + error);
+            });
     });
+});
 
     // Remove item and reload on click
     $('.remove-item').click(function (e) {

@@ -6,6 +6,7 @@ from django.conf import settings
 
 from stock.models import Stock
 from profiles.models import UserProfile
+from decimal import Decimal, ROUND_HALF_UP
 
 
 class Order(models.Model):
@@ -39,20 +40,16 @@ class Order(models.Model):
         return uuid.uuid4().hex[:8].upper()
     
     def update_total(self):
-        """
-        Update grand total each time a line item is added,
-        accounting for delivery costs.
-        """
         self.order_total = self.lineitems.aggregate(Sum('lineitem_total'))['lineitem_total__sum'] or 0
 
         if self.order_total < settings.FREE_DELIVERY_THRESHOLD:
-            self.delivery_cost = self.order_total * settings.STANDARD_DELIVERY_PERCENTAGE / 100
+            raw_delivery = self.order_total * settings.STANDARD_DELIVERY_PERCENTAGE / 100
+            self.delivery_cost = Decimal(raw_delivery).quantize(Decimal('0.01'), rounding=ROUND_HALF_UP)
         else:
-            self.delivery_cost = 0
+            self.delivery_cost = Decimal('0.00')
 
-        self.grand_total = self.order_total + self.delivery_cost
+        self.grand_total = (self.order_total + self.delivery_cost).quantize(Decimal('0.01'), rounding=ROUND_HALF_UP)
         self.save()
-
 
     def save(self, *args, **kwargs):
         """

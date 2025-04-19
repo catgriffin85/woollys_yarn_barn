@@ -7,7 +7,6 @@ from stock.models import Stock
 
 def view_cart(request):
     """ A view that renders the cart contents page """
-    print("Cart contents:", request.session.get('cart', {}))
     
     return render(request, 'cart/cart.html')
 
@@ -49,7 +48,6 @@ def add_to_cart(request, item_id):
 
     request.session['cart'] = cart
     request.session.modified = True
-    print("Cart after update:", cart)
 
     return redirect(redirect_url)
 
@@ -83,6 +81,7 @@ def adjust_cart(request, item_id):
     if quantity > 0:
         cart[item_id]["items_by_attributes"][attributes] = quantity
         cart[item_id]["quantity"] = sum(cart[item_id]["items_by_attributes"].values())
+
     else:
         # Remove specific attribute set if quantity is 0
         if attributes in cart[item_id]["items_by_attributes"]:
@@ -92,8 +91,8 @@ def adjust_cart(request, item_id):
         if not cart[item_id]["items_by_attributes"]:
             del cart[item_id]
 
-    request.session['cart'] = cart
     messages.success(request, f'Updated quantity of {stock.name} in your cart!')
+    request.session['cart'] = cart
 
     return redirect(reverse('view_cart'))
 
@@ -101,24 +100,18 @@ def adjust_cart(request, item_id):
 def remove_from_cart(request, item_id, item_attribute):
     """ Remove a specific item from the cart by its attribute """
 
-    print("Inside remove_from_cart function. item_id:", item_id, "item_attribute:", item_attribute)
-
     stock = get_object_or_404(Stock, pk=item_id)
     item_id = str(item_id)
 
     try:
         cart = request.session.get('cart', {})
 
-        print("Current cart contents:", cart)
-
         if item_id in cart:
             if item_attribute in cart[item_id]['items_by_attributes']:
                 del cart[item_id]['items_by_attributes'][item_attribute]
-                print(f"Removed {item_attribute} from item {item_id}")
 
                 if not cart[item_id]['items_by_attributes']:
                     del cart[item_id]
-                    print(f"Removed entire item {item_id} as it has no attributes left")
 
                 messages.success(request, f'{stock.name} removed from your cart!')
             else:
@@ -131,6 +124,5 @@ def remove_from_cart(request, item_id, item_attribute):
         return JsonResponse({"status": "success"})
 
     except Exception as e:
-        print(f"Error in remove_from_cart: {e}")
         messages.error(request, f'Error removing item: {e}')
         return JsonResponse({"status": "error", "message": str(e)}, status=500)

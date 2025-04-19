@@ -4,7 +4,7 @@
 
 {% block content %}
 <div class="overlay"></div>
-<div class="container container-order-complete mb-2">
+<div class="container-order-complete mb-2">
     <div class="row">
         <div class="col">
             <hr>
@@ -12,7 +12,8 @@
             <hr>
         </div>
     </div>
-    <div class="col-12">
+    <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-8">
         <div class="card-body card-cart w-100">
             <p class="responsive-text">
                 <strong>Your order number is:</strong> {{ order.order_number }}
@@ -25,7 +26,7 @@
             <div class="card card-cart w-100 p-3 mb-3">
                 <div class="row">
                     <!-- Product Image -->
-                    <div class="col-12 col-md-2 d-flex justify-content-center align-items-center mb-3 mb-md-0">
+                    <div class="col-12 col-md-2 d-flex justify-content-left align-items-left mb-3 mb-md-0">
                         {% if item.stock.image %}
                         <a href="{% url 'stock_detail' item.stock.id %}">
                             <img class="img-fluid rounded" src="{{ item.stock.image.url }}" alt="{{ item.stock.name }}"
@@ -33,14 +34,14 @@
                         </a>
                         {% else %}
                         <a href="#">
-                            <img class="img-fluid rounded" src="{{ MEDIA_URL }}default_image.jpg"
+                            <img class="img-fluid rounded"  src="{{ MEDIA_URL }}default_image.jpg"
                                 alt="{{ item.stock.name }}" style="max-width: 100px;">
                         </a>
                         {% endif %}
                     </div>
 
                     <!-- Product Details -->
-                    <div class="col-12 col-md-10">
+                    <div class="col-12 col-md-10 pl-md-5">
                         <div class="card-body p-0">
                             <p class="responsive-text mb-1"><strong>
                                     {% if item.stock_size %}{{ item.get_stock_size_display }} {% endif %}
@@ -68,10 +69,10 @@
             </div>
             <hr>
         </div>
-
     </div>
-    <div class="row justify-content-center align-items-center">
-        <div class="col-12 col-lg-7">
+    </div>
+    <div class="row text-right pr-5">
+        <div class="col-12 col-md-8 col-lg-8">
             {% if request.user.is_authenticated %}
             {% if from_profile %}
             <a href="{% url 'profile' %}" class="btn back-btn btn-outline-black rounded-0 btn-md">
@@ -101,6 +102,7 @@
             {% endif %}
         </div>
     </div>
+
 </div>
 
 {% endblock %}

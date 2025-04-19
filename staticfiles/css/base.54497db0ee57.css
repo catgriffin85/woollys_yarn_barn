@@ -1,0 +1,380 @@
+* {
+    font-family: "Quicksand", sans-serif;
+}
+
+html {
+    height: 100%;
+}
+
+.topnav {
+    margin-bottom: 0 !important;
+    margin-right: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+header {
+    position:fixed !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: white;
+}
+
+#delivery-banner {
+    background-color: rgb(146, 144, 144);
+    color: white;
+    padding: 0.5rem;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.navbar {
+    font-size: larger;
+    color: rgb(29, 29, 29);
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-wrap: wrap;
+}
+
+.homepage-intro {
+    background-color: rgb(236, 235, 235) !important;
+    color: rgb(29, 29, 29);
+    font-size: larger;
+    font-weight: 450;
+    max-width: 80%;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1.5rem;
+    border-radius: 10px !important;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    opacity: 0.9;
+}
+
+/* Footer */
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: rgb(146, 144, 144);
+    color: white;
+    text-align: center;
+}
+
+.copyright {
+    font-size: small;
+}
+
+/* Login Page */
+
+.login-btn,
+.logout-btn,
+.change-btn,
+.email-btn,
+.password-btn,
+.signup-btn {
+    background-color: none;
+    border: none;
+}
+
+.login-btn:hover,
+.logout-btn:hover,
+.change-btn:hover,
+.email-btn:hover,
+.password-btn:hover,
+.signup-btn:hover {
+    background-color: rgb(146, 144, 144);
+    color: white;
+    border: none;
+}
+
+ul {
+    list-style: none;
+}
+
+/* Stock page */ 
+
+.overlay {
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    position: fixed;
+    background: rgb(245, 244, 244) !important;
+    z-index: -1 !important;
+}
+
+.container-stock {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.stock-details-container {
+    margin-bottom: 5rem !important;
+}
+
+
+.shop-all-stock {
+    font-size: medium;
+    color: rgb(94, 93, 93);
+}
+
+.shop-all-stock:hover {
+    text-decoration: none;
+    color: rgb(12, 12, 12);
+    font-weight: 600;
+}
+
+.card {
+    border-color: grey;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.459);
+}
+
+.card:hover {
+    transform: scale(1.03); 
+    box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.6); 
+}
+
+.card-img-top {
+    min-width: 60%;
+    min-height: 80%;
+}
+
+.scroll-up-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: none;
+    padding: 10px 15px;
+    background-color: rgb(146, 144, 144);
+}
+
+.scroll-up-btn a {
+    color: white;
+    text-decoration: none;
+}
+
+.scroll-up-btn:hover {
+    background-color: rgb(12, 12, 12);
+    color: white;
+}
+
+/* Stock Details Page */
+
+.back-btn {
+    background-color: none;
+}
+
+.back-btn:hover {
+    background-color: rgb(146, 144, 144);
+    color: white;
+}
+
+/* Shopping Cart Page */
+
+.container-cart {
+    padding-bottom: 5rem;
+    text-align: left !important;
+}
+
+.keep-shopping-btn {
+    text-transform: none !important;
+    background-color: none;
+}
+
+.keep-shopping-btn:hover {
+    background-color: rgb(146, 144, 144);
+    color: white;
+}
+
+.card-cart {
+    background: rgb(245, 244, 244) !important;
+    border-color: rgb(245, 244, 244) !important;
+    box-shadow: none !important;
+}
+
+.card-cart:hover {
+    background: rgb(245, 244, 244) !important;
+    transform: none !important; 
+    box-shadow: none !important;
+}
+
+.quantity-field {
+    border-color: none !important;
+}
+
+.btn-link {
+    cursor: pointer;
+    text-decoration: none !important;
+}
+
+/* Order Complete Page */
+
+.container-order-complete {
+    padding-bottom: 5rem;
+}
+
+.order-summary {
+    list-style-type: none;
+}
+
+.summary-img {
+    max-width: 60px;
+    max-height: 80px;
+}
+
+/* Add/Edit product pages */
+
+.container-admin {
+    padding-bottom: 6rem;
+}
+
+/*   toast  */
+
+.message-container {
+    position: fixed;
+    top: 72px;
+    right: 15px;
+    z-index: 999999;
+    max-width: 300px;
+}
+
+.custom-toast {
+    overflow: visible;
+}
+
+.toast-capper {
+    height: 2px;
+}
+
+/* from CSS-tricks.com: https://css-tricks.com/snippets/css/css-triangle/ */
+.arrow-up {
+    width: 0; 
+    height: 0; 
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent; 
+    border-bottom: 10px solid black;
+    position: absolute;
+    top: -10px;
+    right: 36px;
+}
+
+/* Convenience classes - colors copied from Bootstrap */
+.arrow-primary {
+    border-bottom-color: #007bff !important;
+}
+
+.arrow-secondary {
+    border-bottom-color: #6c757d !important;
+}
+
+.arrow-success {
+    border-bottom-color: #28a745 !important;
+}
+
+.arrow-danger {
+    border-bottom-color: #dc3545 !important;
+}
+
+.arrow-warning {
+    border-bottom-color: #ffc107 !important;
+}
+
+.arrow-info {
+    border-bottom-color: #17a2b8 !important;
+}
+
+.arrow-light {
+    border-bottom-color: #f8f9fa !important;
+}
+
+.arrow-dark {
+    border-bottom-color: #343a40 !important;
+}
+
+
+.spend-more-msg {
+    background-color: rgb(247, 243, 215) !important;
+    color: rgb(29, 29, 29) !important;
+}
+
+.go-to-cart {
+    background-color: rgb(146, 144, 144) !important;
+    color: white !important;
+}
+
+@media (max-width: 350px) {
+
+    /* auth pages */
+    .container-auth {
+        padding-top: 10rem;
+    }
+
+    #delivery-banner {
+        text-transform: none !important;
+    }
+
+    /* homepage */
+
+    h2 {
+        font-size: 1.2em;
+      }
+
+    .homepage-intro {
+        padding-bottom: 5rem;
+    }
+
+    .list-inline-item {
+        font-size: medium;
+    }
+
+    /* Cart page */
+
+    .container-cart {
+        text-align: left !important;
+    }
+
+    .quantity-field {
+        max-width: 100%;
+    }
+
+    .remove-item {
+        padding: 0%;
+    }
+}
+
+@media (max-width: 768px) {
+
+    /* homepage */
+
+    h2 {
+        font-size: 1.3em;
+      }
+
+    .homepage-intro {
+        padding-bottom: 5rem;
+    } 
+
+}
+
+@media (max-width: 1000px) {
+
+    body {
+        padding-top: 150px;
+        height: calc(80vh - 164px);
+        z-index: -1;
+    }
+}

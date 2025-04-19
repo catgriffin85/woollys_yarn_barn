@@ -16,7 +16,7 @@
 
 {% block content %}
 <div class="overlay"></div>
-<div class="container checkout-page text-left">
+<div class="container-checkout checkout-page text-left">
     <div class="text-center mt-3 mb-3">
         <h3>Checkout</h3>
         {% if free_delivery_delta > 0 %}
@@ -27,7 +27,7 @@
     </div>
 
     <div class="row justify-content-center">
-        <div class="col-12 col-md-10 col-lg-8">
+        <div class="col-12 col-md-10 col-lg-6">
             <form action="{% url 'checkout' %}" method="POST" id="payment-form">
                 {% csrf_token %}
 
@@ -75,7 +75,7 @@
                     {% for item in cart_items %}
                     <div class="card card-cart h-100 p-3 mb-3">
                         <div class="row">
-                            <div class="col-12 col-md-2 d-flex justify-content-center mb-2 mb-md-0">
+                            <div class="col-12 col-md-2 d-flex justify-content-left mb-2 mb-md-0">
                                 {% if item.stock.image %}
                                 <a href="{% url 'stock_detail' item.stock.id %}">
                                     <img class="img-fluid rounded" src="{{ item.stock.image.url }}"

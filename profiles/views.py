@@ -1,6 +1,5 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, reverse, HttpResponseRedirect, get_object_or_404
-from django.views.decorators.http import require_http_methods
 from django.contrib import messages
 from django.contrib.auth import logout
 
@@ -11,7 +10,6 @@ from checkout.models import Order
 
 
 @login_required
-@require_http_methods(["GET", "POST"])
 def profile(request):
     """Display the user's profile"""
     profile = get_object_or_404(UserProfile, user=request.user)
@@ -37,7 +35,6 @@ def profile(request):
     return render(request, template, context)
 
 
-@require_http_methods(["GET"])
 def order_history(request, order_number):
     order = get_object_or_404(Order, order_number=order_number)
 
@@ -56,7 +53,6 @@ def order_history(request, order_number):
 
 
 @login_required
-@require_http_methods(["POST"])
 def delete_profile(request):
     """Allow a user to delete their account and profile"""
     if request.method == 'POST':

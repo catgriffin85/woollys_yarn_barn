@@ -241,6 +241,18 @@ ul {
     max-height: 80px;
 }
 
+/* Profiles page */
+
+.order-history {
+    max-height: 416px;
+    overflow: auto;
+}
+
+.update-profile:hover {
+    color: white !important;
+}
+
+
 /* Add/Edit product pages */
 
 .container-admin {

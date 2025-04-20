@@ -257,8 +257,7 @@ ul {
 /* Add/Edit product pages */
 
 .container-admin {
-    margin-bottom: 6rem;
-    margin-top: 2rem;
+    padding-bottom: 6rem;
 }
 
 /*   toast  */

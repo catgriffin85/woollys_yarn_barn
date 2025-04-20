@@ -37,6 +37,7 @@ header {
 
 body {
     padding-top: 27vh;
+    padding-bottom: 15vh;
 }
 
 .container {
@@ -256,7 +257,8 @@ ul {
 /* Add/Edit product pages */
 
 .container-admin {
-    padding-bottom: 6rem;
+    margin-bottom: 6rem;
+    margin-top: 2rem;
 }
 
 /*   toast  */

@@ -12,21 +12,19 @@
 
 {% block content %}
 <div class="overlay"></div>
-<div class="container container-cart mb-2">
-    <div class="row">
-        <div class="col">
+<div class="container container-cart">
+    <div class="col col-12 text-center mt-3 mb-3">
             <hr>
-            <h2 class="logo-font mb-4">Shopping Cart</h2>
+            <h3 class="logo-font mb-4">Shopping Cart</h3>
             <hr>
-        </div>
     </div>
-    <div class="row">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-10 col-lg-10">
         {% if cart_items %}
         {% for item in cart_items %}
-        <div class="col-12 ">
             <div class="card card-cart h-100 p-3">
                 <div class="row">
-                    <div class="col-2 force-hide d-md-block d-flex justify-content-center">
+                    <div class="col-12 col-md-2 d-md-flex justify-content-center mb-2 mb-md-0">
                         {% if item.stock.image %}
                         <a href="{% url 'stock_detail' item.stock.id %}">
                             <img class="img-fluid rounded" src="{{ item.stock.image.url }}" alt="{{ item.stock.name }}"
@@ -39,7 +37,7 @@
                         </a>
                         {% endif %}
                     </div>
-                    <div class="col-7 col-sm-5">
+                    <div class="col-12 col-md-6 mb-2">
                         <div class="card-body card-cart">
                             <p class="responsive-text">
                                 <strong>{% if item.size %}
@@ -55,7 +53,7 @@
                             {% include "cart/quantity_form.html" %}
                         </div>
                     </div>
-                    <div class="col-3 col-sm-5">
+                    <div class="col-12 col-md-4 d-flex justify-content-md-end align-items-end">
                         <div class="card-body card-cart d-flex justify-content-end align-items-end">
                             <p>
                                 <strong> Subtotal: </strong>
@@ -71,8 +69,6 @@
         {% endfor %}
         <div class="col-12">
             <hr>
-        </div>
-        <div class="col-12">
             <div class="card card-cart p-3 d-flex align-items-end">
                 <p><strong>Subtotal:</strong> €{{ total }}</p>
                 <p><strong>Delivery:</strong> €{{ delivery }}</p>
@@ -95,10 +91,12 @@
             <input type="hidden" name="redirect_url" value="{{ request.path }}">
         </div>
         {% else %}
-        <p class="lead m-5 ml-5">Your cart is empty.</p>
+        <span class="col text-center">
+            <p class="lead m-5 ml-5">Your cart is empty.</p>
+        </span>
     </div>
-    <div>
-        <a href="{% url 'stock' %}" class="btn btn-outline-black rounded-0 btn-lg">
+    <div class="row">
+        <a href="{% url 'stock' %}" class="btn back-btn btn-outline-black rounded-0 btn-md">
             <span class="icon">
                 <i class="fas fa-chevron-left"></i>
             </span>
@@ -106,13 +104,6 @@
         </a>
     </div>
     {% endif %}
-
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
 
 {% endblock %}
 

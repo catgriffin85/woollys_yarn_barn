@@ -90,25 +90,19 @@
                             </span>
                             <span class="text-uppercase">Back</span>
                         </a>
-                        <input type="submit" class="btn btn-black back-btn rounded-0 text-uppercase"
-                            value="Add to Cart">
+                        <input type="submit" class="btn btn-black back-btn rounded-0 text-uppercase" value="Add to Cart">
                         <input type="hidden" name="redirect_url" value="{{ request.path }}">
                     </div>
-                    <div class="col-12 col-md-8 col-lg-10">
-                        <div class="mt-1 mb-3">
-                            {% if request.user.is_superuser %}
-                            <small class="ml-3 d-block">
-                                <a href="{% url 'edit_stock' stock.id %}">Edit</a> |
-                                <a class="text-danger" href="{% url 'delete_stock' stock.id %}">Delete</a>
-                            </small>
-                            {% endif %}
-                        </div>
+                </form> 
+                
+                {% if request.user.is_superuser %}
+                <div class="col-12 col-md-8 col-lg-10">
+                    <div class="mt-1 mb-3">
+                        <small class="ml-3 d-block">
+                            <a href="{% url 'edit_stock' stock.id %}">Edit</a> |
+                            <a class="text-danger" href="{% url 'delete_stock' stock.id %}">Delete</a>
+                        </small>
                     </div>
-            </div>
-            </form>
-        </div>
-    </div>
-</div>
-</div>
-</div>
+                </div>
+                {% endif %}                
 {% endblock %}

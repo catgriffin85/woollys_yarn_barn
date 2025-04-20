@@ -122,6 +122,7 @@ ul {
 }
 
 .container-stock {
+    margin-bottom: 10vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -257,8 +258,7 @@ ul {
 /* Add/Edit product pages */
 
 .container-admin {
-    margin-bottom: 6rem;
-    margin-top: 2rem;
+    padding-bottom: 6rem;
 }
 
 /*   toast  */

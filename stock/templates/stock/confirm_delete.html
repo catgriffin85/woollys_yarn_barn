@@ -12,15 +12,15 @@
 
 {% block content %}
 <div class="overlay"></div>
-<div class="container container-admin text-left justify-content-center">
+<div class="container-admin text-left justify-content-center">
     <div class="text-center mb-0 mt-2">
         <h3>Delete</h3>
         <h5>-- Delete existing stock --</h5>
     </div>
     <hr>
-    <div class="row justify-content-center mr-lg-3 ml-lg-3">
-        <div class="col-12 col-md-10 col-lg-8 mx-auto">
-            <h3>Are you sure you want to delete "{{ stock.name }}"?</h3>
+    <div class="row justify-content-center mr-3 ml-3">
+        <div class="col-12 col-md-10 col-lg-8 mx-auto text-center">
+            <h4>Are you sure you want to delete "{{ stock.name }}"?</h4>
             <br>
             <form method="post">
                 {% csrf_token %}

@@ -178,6 +178,10 @@ ul {
     color: white;
 }
 
+.container-admin {
+    padding-bottom: 5rem;
+}
+
 /* Stock Details Page */
 
 .back-btn {
@@ -208,7 +212,6 @@ ul {
 
 .card-cart {
     background: rgb(245, 244, 244) !important;
-    border-color: rgb(245, 244, 244) !important;
     box-shadow: none !important;
 }
 
@@ -259,6 +262,7 @@ ul {
 .container-admin {
     margin-bottom: 6rem;
     margin-top: 2rem;
+    padding-bottom: 3rem;
 }
 
 /*   toast  */

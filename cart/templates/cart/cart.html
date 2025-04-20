@@ -14,17 +14,17 @@
 <div class="overlay"></div>
 <div class="container container-cart">
     <div class="col col-12 text-center mt-3 mb-3">
-            <hr>
-            <h3 class="logo-font mb-4">Shopping Cart</h3>
-            <hr>
+        <hr>
+        <h3 class="logo-font mb-4">Shopping Cart</h3>
+        <hr>
     </div>
     <div class="row justify-content-center">
-        <div class="col-12 col-md-10 col-lg-10">
-        {% if cart_items %}
-        {% for item in cart_items %}
-            <div class="card card-cart h-100 p-3">
-                <div class="row">
-                    <div class="col-12 col-md-2 d-md-flex justify-content-center mb-2 mb-md-0">
+        <div class="col-12 col-md-10 col-lg-12">
+            {% if cart_items %}
+            {% for item in cart_items %}
+            <div class="card card-cart p-3">
+                    <div class="row">
+                    <div class="col col-12 col-md-2 d-md-flex justify-content-center mb-2 mb-md-0">
                         {% if item.stock.image %}
                         <a href="{% url 'stock_detail' item.stock.id %}">
                             <img class="img-fluid rounded" src="{{ item.stock.image.url }}" alt="{{ item.stock.name }}"
@@ -37,7 +37,7 @@
                         </a>
                         {% endif %}
                     </div>
-                    <div class="col-12 col-md-6 mb-2">
+                    <div class="col col-12 col-md-6 mb-2">
                         <div class="card-body card-cart">
                             <p class="responsive-text">
                                 <strong>{% if item.size %}
@@ -47,13 +47,13 @@
                                     {{ item.weight }}
                                     {% endif %}{{ item.stock.name }}
                                     {% if item.colour %}
-                                     - {{ item.colour }}
+                                    - {{ item.colour }}
                                     {% endif %}</strong>
                             </p>
                             {% include "cart/quantity_form.html" %}
                         </div>
                     </div>
-                    <div class="col-12 col-md-4 d-flex justify-content-md-end align-items-end">
+                    <div class="col col-12 col-md-4 d-flex justify-content-md-end align-items-end">
                         <div class="card-body card-cart d-flex justify-content-end align-items-end">
                             <p>
                                 <strong> Subtotal: </strong>
@@ -63,10 +63,10 @@
                             </p>
                         </div>
                     </div>
-                </div>
+                    </div>
+            {% endfor %}
             </div>
-        </div>
-        {% endfor %}
+        
         <div class="col-12">
             <hr>
             <div class="card card-cart p-3 d-flex align-items-end">
@@ -74,6 +74,7 @@
                 <p><strong>Delivery:</strong> €{{ delivery }}</p>
                 <p><strong>Total:</strong> €{{ grand_total }}</p>
             </div>
+        </div>
             <div class="d-flex justify-content-end align-items-end">
                 <a href="{% url 'stock' %}" class="btn back-btn btn-outline-black rounded-0 btn-md">
                     <span class="icon">
@@ -105,60 +106,60 @@
     </div>
     {% endif %}
 
-{% endblock %}
+    {% endblock %}
 
-{% block postloadjs %}
-{{ block.super }}
+    {% block postloadjs %}
+    {{ block.super }}
 
-<script type="text/javascript">
+    <script type="text/javascript">
 
-$(document).ready(function () {
-    $(document).on('click', '.update-link', function (e) {
-        e.preventDefault();
-        var form = $(this).closest('.update-form');
-        var itemId = form.data('item-id');
-        var quantity = form.find('.qty_input').val();
-        var itemAttribute = form.find('.qty_input').data('item_attribute');
-        var csrfToken = "{{ csrf_token }}";
-        var url = `/cart/adjust/${itemId}/`;
-        var data = {
-            'csrfmiddlewaretoken': csrfToken,
-            'quantity': quantity,
-            'item_attribute': itemAttribute,
-        };
-        console.log("Updating item:", itemId, "Attribute:", itemAttribute, "Qty:", quantity);
-        $.post(url, data)
-            .done(function () {
-                location.reload();
-            })
-            .fail(function (xhr, status, error) {
-                alert("Error updating cart: " + error);
+        $(document).ready(function () {
+            $(document).on('click', '.update-link', function (e) {
+                e.preventDefault();
+                var form = $(this).closest('.update-form');
+                var itemId = form.data('item-id');
+                var quantity = form.find('.qty_input').val();
+                var itemAttribute = form.find('.qty_input').data('item_attribute');
+                var csrfToken = "{{ csrf_token }}";
+                var url = `/cart/adjust/${itemId}/`;
+                var data = {
+                    'csrfmiddlewaretoken': csrfToken,
+                    'quantity': quantity,
+                    'item_attribute': itemAttribute,
+                };
+                console.log("Updating item:", itemId, "Attribute:", itemAttribute, "Qty:", quantity);
+                $.post(url, data)
+                    .done(function () {
+                        location.reload();
+                    })
+                    .fail(function (xhr, status, error) {
+                        alert("Error updating cart: " + error);
+                    });
             });
-    });
-});
+        });
 
-    // Remove item and reload on click
-    $('.remove-item').click(function (e) {
-        e.preventDefault();
-        var itemId = $(this).data('item-id'); 
-        var itemAttribute = $(this).data('item-attribute');
+        // Remove item and reload on click
+        $('.remove-item').click(function (e) {
+            e.preventDefault();
+            var itemId = $(this).data('item-id');
+            var itemAttribute = $(this).data('item-attribute');
 
-        console.log(`Item ID: ${itemId}, Item Attribute: ${itemAttribute}`);  // Log for debugging
+            console.log(`Item ID: ${itemId}, Item Attribute: ${itemAttribute}`);  // Log for debugging
 
-        var csrfToken = "{{ csrf_token }}";
-        var url = `/cart/remove/${itemId}/${itemAttribute}/`;
-        var data = { 'csrfmiddlewaretoken': csrfToken };
+            var csrfToken = "{{ csrf_token }}";
+            var url = `/cart/remove/${itemId}/${itemAttribute}/`;
+            var data = { 'csrfmiddlewaretoken': csrfToken };
 
-        $.post(url, data)
-            .done(function () {
-                location.reload();
-            })
-            .fail(function (xhr, status, error) {
-                alert("Error removing item: " + error);
-            });
+            $.post(url, data)
+                .done(function () {
+                    location.reload();
+                })
+                .fail(function (xhr, status, error) {
+                    alert("Error removing item: " + error);
+                });
             console.log(url);
-    });
+        });
 
 
-</script>
-{% endblock %}
+    </script>
+    {% endblock %}

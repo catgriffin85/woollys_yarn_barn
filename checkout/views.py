@@ -15,7 +15,6 @@ from cart.contexts import cart_contents
 import stripe
 import json
 
-
 @require_POST
 def cache_checkout_data(request):
     try:
@@ -56,11 +55,15 @@ def checkout(request):
     if request.method == 'POST':
         order_form = OrderForm(request.POST)
         if order_form.is_valid():
-            order = order_form.save(commit=False)
             pid = request.POST.get('client_secret').split('_secret')[0]
-            order.stripe_pid = pid
-            order.original_cart = json.dumps(cart)
-            order.save()
+
+            order = Order.objects.filter(stripe_pid=pid).first()
+
+            if not order:
+                order = order_form.save(commit=False)
+                order.stripe_pid = pid
+                order.original_cart = json.dumps(cart)
+                order.save()
 
             for item_id, item_data in cart.items():
                 try:

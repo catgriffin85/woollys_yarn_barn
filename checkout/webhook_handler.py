@@ -106,9 +106,6 @@ class StripeWH_Handler:
                 time.sleep(1)
 
         if order_exists:
-            print(f"Sending confirmation email to: {cust_email}")
-            self._send_confirmation_email(order)
-            print("Confirmation email sent (or attempted to send).")
             return HttpResponse(
                 content=f'Webhook received: {event["type"]} | SUCCESS: Verified order already in database',
                 status=200)

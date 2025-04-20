@@ -186,6 +186,7 @@ ul {
 
 .back-btn {
     background-color: none;
+    border: none;
 }
 
 .back-btn:hover {
@@ -203,6 +204,7 @@ ul {
 .keep-shopping-btn {
     text-transform: none !important;
     background-color: none;
+    border: none;
 }
 
 .keep-shopping-btn:hover {
@@ -212,6 +214,7 @@ ul {
 
 .card-cart {
     background: rgb(245, 244, 244) !important;
+    border: none;
     box-shadow: none !important;
 }
 
@@ -219,6 +222,7 @@ ul {
     background: rgb(245, 244, 244) !important;
     transform: none !important; 
     box-shadow: none !important;
+    border: none;
 }
 
 .quantity-field {

@@ -32,6 +32,7 @@ class Order(models.Model):
     original_cart = models.TextField(null=False, blank=False, default='')
     stripe_pid = models.CharField(max_length=254, null=False, blank=False,
                                   default='')
+    email_sent = models.BooleanField(default=False)
 
     def _generate_order_number(self):
         """

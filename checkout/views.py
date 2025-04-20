@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect, get_object_or_404, HttpResponse
 from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.conf import settings
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
 
 from .models import Order, OrderLineItem
 from stock.models import Stock
@@ -144,8 +146,17 @@ def order_complete(request, order_number):
             if user_profile_form.is_valid():
                 user_profile_form.save()
 
-    context = {
-        'order': order,
-    }
+    if not order.email_sent:
+        subject = render_to_string(
+            'checkout/confirmation_emails/confirmation_email_subject.txt', {'order': order}).strip()
+        body = render_to_string(
+            'checkout/confirmation_emails/confirmation_email_body.txt', {
+                'order': order,
+                'contact_email': settings.DEFAULT_FROM_EMAIL,
+            }).strip()
 
-    return render(request, 'checkout/order_complete.html', context)
+        send_mail(subject, body, settings.DEFAULT_FROM_EMAIL, [order.email])
+        order.email_sent = True
+        order.save()
+
+    return render(request, 'checkout/order_complete.html', {'order': order})

@@ -5,8 +5,8 @@
         justify-content: center !important;
     }
 
-.faq-section {
-    background-color: rgb(245, 244, 244) !important;
+.faq-section .card-header {
+    background-color: rgba(220, 222, 224, 0.952);
     border-bottom: none;
 }
 

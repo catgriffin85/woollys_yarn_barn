@@ -128,6 +128,9 @@ class StripeWH_Handler:
                         stock_weight=weight if weight != "None" else None,
                         stock_colour=colour if colour != "None" else None,
                     )
+            
+            self._send_confirmation_email(order)
+            
         except Exception as e:
             if order:
                 order.delete()

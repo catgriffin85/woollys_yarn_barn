@@ -15,6 +15,7 @@ from cart.contexts import cart_contents
 import stripe
 import json
 
+
 @require_POST
 def cache_checkout_data(request):
     try:
@@ -56,45 +57,18 @@ def checkout(request):
         order_form = OrderForm(request.POST)
         if order_form.is_valid():
             pid = request.POST.get('client_secret').split('_secret')[0]
+            print(f"Received client_secret: {pid}")  # Debugging line
+            pid = pid.split('_secret')[0]
+            print(f"Extracted stripe_pid: {pid}")  # Debugging line
 
-            order = Order.objects.filter(stripe_pid=pid).first()
-
-            if not order:
-                order = order_form.save(commit=False)
-                order.stripe_pid = pid
-                order.original_cart = json.dumps(cart)
-                order.save()
-
-            for item_id, item_data in cart.items():
-                try:
-                    stock = Stock.objects.get(id=item_data['stock_id'])
-                    attributes = item_data.get('items_by_attributes', {})
-
-                    for attr_key, quantity in attributes.items():
-                        stock_size, stock_weight, stock_colour = attr_key.split('-')
-
-                        order_line_item = OrderLineItem(
-                            order=order,
-                            stock=stock,
-                            quantity=quantity,
-                            stock_size=stock_size if stock_size != "None" else None,
-                            stock_weight=stock_weight if stock_weight != "None" else None,
-                            stock_colour=stock_colour if stock_colour != "None" else None,
-                        )
-                        order_line_item.save()
-
-                except Stock.DoesNotExist:
-                    messages.error(request, "An item in your cart is no longer available.")
-                    order.delete()
-                    return redirect('view_cart')
-
-                order.update_total()
+            order = None
 
             save_info = 'save_info' in request.POST
             request.session['save_info'] = save_info
-
             request.session['cart'] = {}
-            return redirect('order_complete', order_number=order.order_number)
+
+            return redirect('order_complete', stripe_pid=pid)
+        
         else:
             messages.error(request, "Form error. Please try again.")
     else:
@@ -126,9 +100,14 @@ def checkout(request):
     return render(request, 'checkout/checkout.html', context)
 
 
-def order_complete(request, order_number):
+def order_complete(request, stripe_pid):
     save_info = request.session.get('save_info')
-    order = get_object_or_404(Order, order_number=order_number)
+    print(f"Received stripe_pid: {stripe_pid}")  # Debugging line
+    order = Order.objects.filter(stripe_pid=stripe_pid).first()
+
+    if not order:
+        messages.info(request, "Your order is still being processed. Please refresh this page in a few seconds.")
+        return render(request, 'checkout/order_complete_pending.html', {'stripe_pid': stripe_pid})
 
     if request.user.is_authenticated:
         profile = UserProfile.objects.get(user=request.user)

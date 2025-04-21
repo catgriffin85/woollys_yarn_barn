@@ -1,8 +1,7 @@
 .container-customer-service,
 .container-contact {
-        padding-bottom: 1.5rem;
-        margin-bottom: 5rem;
-        justify-content: center !important;
+        margin-top: 0;
+        margin-bottom: 3rem;
     }
 
 .faq-section {
@@ -74,22 +73,4 @@
 .submit-btn:hover {
     font-weight: bolder;
     border: none !important;
-}
-
- /* Contact page */
-
-@media (max-width: 300px) {
-
-    .container-customer-service,
-    .container-contact {
-        padding-bottom: 3rem;
-    }
-}
-
-@media (max-width: 800px) {
-
-    .container-customer-service,
-    .container-contact {
-        padding-bottom: 5rem;
-    }
 }

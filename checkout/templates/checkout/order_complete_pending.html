@@ -18,7 +18,6 @@
             <p class="responsive-text">
                 We're just waiting for confirmation from the payment provider. This may take a few seconds.
             </p>
-            <p>Order Number: {{ stripe_pid }}</p>  <!-- Debugging line -->
             <p class="responsive-text">
                 <a href="{% url 'order_complete' stripe_pid %}">Click here</a> to refresh the page.
             </p>

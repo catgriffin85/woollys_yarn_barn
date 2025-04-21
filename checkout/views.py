@@ -57,9 +57,7 @@ def checkout(request):
         order_form = OrderForm(request.POST)
         if order_form.is_valid():
             pid = request.POST.get('client_secret').split('_secret')[0]
-            print(f"Received client_secret: {pid}")  # Debugging line
             pid = pid.split('_secret')[0]
-            print(f"Extracted stripe_pid: {pid}")  # Debugging line
 
             order = None
 
@@ -102,7 +100,6 @@ def checkout(request):
 
 def order_complete(request, stripe_pid):
     save_info = request.session.get('save_info')
-    print(f"Received stripe_pid: {stripe_pid}")  # Debugging line
     order = Order.objects.filter(stripe_pid=stripe_pid).first()
 
     if not order:

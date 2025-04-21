@@ -46,10 +46,14 @@
                 <a href="{% url 'stock' %}" class="dropdown-item">Full Collection</a>
             </div>
         </li>
-        <li class="nav-item">
-            <a class="logo-font font-weight-bold nav-link text-black mr-5" href="{% url 'faqs' %}" id="faq-link" aria-haspopup="true" aria-expanded="false">
+        <li class="nav-item dropdown">
+            <a class="logo-font font-weight-bold nav-link text-black mr-5" id="faq-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Help Centre
             </a>
+            <div class="dropdown-menu border-0" aria-labelledby="help-links">
+                <a href="{% url 'faqs' %}" class="dropdown-item">FAQs</a>
+                <a href="https://www.termsfeed.com/live/f4e0d863-fc4d-4a7e-a91f-d635e4f3e995" class="dropdown-item">Our Privacy Policy</a>
+            </div>
         </li>
         <li class="nav-item">
         {% if request.user.is_authenticated %}

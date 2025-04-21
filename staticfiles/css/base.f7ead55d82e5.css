@@ -78,17 +78,13 @@ body {
     text-align: center;
 }
 
-.facebook-link a {
+.footer a {
     color: rgb(4, 4, 250)
 }
 
-.copyright {
-    font-size: small;
-}
-
+.copyright,
 .privacy-policy {
     font-size: small;
-    color: rgb(4, 4, 250)
 }
 
 /* Login Page */

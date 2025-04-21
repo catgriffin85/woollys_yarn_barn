@@ -16,7 +16,7 @@
     <p>Are you sure you want to delete your profile? This action cannot be undone and you will not longer have access to your order history.</p>
     <form method="post">
       {% csrf_token %}
-      <button type="submit" class="btn btn-danger">Yes, delete my profile</button>
+      <button type="submit" class="btn btn-danger" aria-label="delete profile">Yes, delete my profile</button>
       <a href="{% url 'profile' %}" class="btn btn-secondary">Cancel</a>
     </form>
   </div>

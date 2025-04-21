@@ -24,7 +24,7 @@
             <br>
             <form method="post">
                 {% csrf_token %}
-                <button class="btn btn-outline-danger text-uppercase" type="submit">Yes, delete</button>
+                <button class="btn btn-outline-danger text-uppercase" type="submit" aria-label="delete existing stock">Yes, delete</button>
                 <a class="btn back-btn btn-outline-black rounded-0 btn-md text-uppercase" href="{% url 'stock' %}">Cancel</a>
             </form>
         </div>

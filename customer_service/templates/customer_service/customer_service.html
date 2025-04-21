@@ -18,13 +18,13 @@
 <div class="overlay"></div>
 <div class="container-contact text-left">
     <div class="row justify-content-center">
-    <div class="col col-lg-8 col-md-12 col-sm-12">
+    <div class="col col-lg-8 col-md-10 col-sm-12">
     <div class="text-center mb-0 mt-3">
         <h3>Contact Us</h3>
     </div>
     <hr>
     <div class="row contact-form pl-3 pr-3">
-        <div class="col col-lg-10 col-sm-12">
+        <div class="col col-lg-8 col-m-8 col-sm-12">
             <form method="post" id="contactForm">
                 {% csrf_token %}
                 {{ contact_form.full_name|as_crispy_field }}
@@ -63,11 +63,11 @@
                     <div class="mt-3">
                         <p>Did these articles help answer your question?</p>
                         <div id="faq-response">
-                            <button type="button" id="yes-thanks-btn" class="contact-btn rounded-0">
+                            <button type="button" id="yes-thanks-btn" class="contact-btn rounded-0" aria-label="finished thank-you">
                                 <span class="icon">
                                     <i class="fas fa-check"></i>
                                 </span>Yes, thank you!</button>
-                            <button type="button" id="no-help-btn" class="contact-btn rounded-0">No, I still need help
+                            <button type="button" id="no-help-btn" class="contact-btn rounded-0" aria-label="more help">No, I still need help
                                 <span class="icon">
                                     <i class="fas fa-x"></i>
                                 </span></button>
@@ -76,7 +76,7 @@
                         <div id="additional-query" style="display:none;">
                             <label for="id_customer_question">Please describe your query:</label>
                             {{ contact_form.customer_question|as_crispy_field }}
-                            <button type="submit" class="submit-btn rounded-0">Submit your query</button>
+                            <button type="submit" class="submit-btn rounded-0" aria-label="submit query">Submit your query</button>
                         </div>
                         <br>
                     </div>

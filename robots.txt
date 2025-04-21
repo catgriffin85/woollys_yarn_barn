@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: https://woollys-yarn-barn-c013ed10e4a8.herokuapp.com/sitemap.xml

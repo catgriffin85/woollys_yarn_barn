@@ -17,7 +17,7 @@
             <form method="POST">
                 {% csrf_token %}
                 {{ form.as_p }}
-                <span><button type="submit" class="btn back-btn btn-outline-black rounded-0 btn-md text-center">Unsubscribe</button></span>
+                <span><button type="submit" class="btn back-btn btn-outline-black rounded-0 btn-md text-center" aria-label="unsubscribe">Unsubscribe</button></span>
             </form>
         </div>
     </div>

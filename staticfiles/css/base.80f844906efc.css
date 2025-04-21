@@ -1,6 +1,5 @@
 * {
     font-family: "Quicksand", sans-serif;
-    color: rgb(17, 17, 17);
 }
 
 html {
@@ -8,18 +7,19 @@ html {
 }
 
 .main-nav {
-    background-color: rgb(221, 219, 219) !important;
-    color: rgb(0, 0, 0) !important;
+    background-color: rgb(146, 144, 144) !important;
+    color: rgb(255, 255, 255) !important;    
 }
 
 .topnav {
-    margin: 0 !important;
+    margin-bottom: 0 !important;
+    margin-right: 0 !important;
     padding-bottom: 0 !important;
 }
 
 .navbar {
     margin-top: 0 !important;
-    padding: 0 !important;
+    padding-top: 0 !important;
 }
 
 header {
@@ -31,9 +31,9 @@ header {
 }
 
 #delivery-banner {
+    background-color: rgb(236, 235, 235) !important;
     color: rgb(29, 29, 29);
-    background-color: white;
-    padding-top: 0.5rem;
+    padding: 0.5rem;
     text-transform: uppercase;
     text-align: center;
 }
@@ -69,23 +69,20 @@ body {
     opacity: 0.9;
 }
 
-.start-shopping-button {
-    color: white !important;
-}
 /* Footer */
 
-footer {
+.footer {
     position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: rgb(221, 219, 219) !important;
-    color: white !important;
+    background-color: rgb(146, 144, 144);
+    color: white;
     text-align: center;
 }
 
-.facebook-link a i {
-    color: rgb(4, 4, 250);
+.facebook-link a {
+    color: rgb(4, 4, 250)
 }
 
 .copyright {
@@ -110,7 +107,7 @@ footer {
 .email-btn:hover,
 .password-btn:hover,
 .signup-btn:hover {
-    background-color: rgb(221, 219, 219) !important;
+    background-color: rgb(146, 144, 144);
     color: white;
     border: none;
 }
@@ -127,7 +124,7 @@ ul {
     top: 0;
     left: 0;
     position: fixed;
-    background: rgb(255, 255, 255) !important;
+    background: rgb(245, 244, 244) !important;
     z-index: -1 !important;
 }
 
@@ -155,6 +152,7 @@ ul {
 }
 
 .card {
+    border-color: grey;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.459);
 }
 
@@ -183,7 +181,7 @@ ul {
 }
 
 .scroll-up-btn:hover {
-    background-color: rgb(221, 219, 219) !important;
+    background-color: rgb(12, 12, 12);
     color: white;
 }
 
@@ -199,7 +197,7 @@ ul {
 }
 
 .back-btn:hover {
-    background-color: rgb(221, 219, 219) !important;
+    background-color: rgb(146, 144, 144);
     color: white;
 }
 
@@ -217,18 +215,18 @@ ul {
 }
 
 .keep-shopping-btn:hover {
-    background-color: rgb(221, 219, 219) !important;
+    background-color: rgb(146, 144, 144);
     color: white;
 }
 
 .card-cart {
-    background: rgb(255, 255, 255) !important;
+    background: rgb(245, 244, 244) !important;
     border: none;
     box-shadow: none !important;
 }
 
 .card-cart:hover {
-    background: rgb(255, 255, 255) !important;
+    background: rgb(245, 244, 244) !important;
     transform: none !important; 
     box-shadow: none !important;
     border: none;
@@ -348,7 +346,7 @@ ul {
 }
 
 .go-to-cart {
-    background-color: rgb(221, 219, 219) !important;
+    background-color: rgb(146, 144, 144) !important;
     color: white !important;
 }
 

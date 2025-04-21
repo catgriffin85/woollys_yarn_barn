@@ -1,12 +1,12 @@
 .container-customer-service,
-    .container-contact {
+.container-contact {
         padding-bottom: 1.5rem;
         margin-bottom: 5rem;
         justify-content: center !important;
     }
 
 .faq-section {
-    background-color: rgb(245, 244, 244) !important;
+    background-color: rgb(255, 255, 255) !important;
     border-bottom: none;
 }
 
@@ -40,6 +40,7 @@
 
 .card-header {
     padding: 15px;
+    background-color: rgb(241, 240, 240) !important ;
 }
 
 .card-body {
@@ -65,15 +66,14 @@
 
 .contact-btn,
 .submit-btn {
-    background-color: none;
+    background-color: white !important;
     border: none;
 }
 
 .contact-btn:hover,
 .submit-btn:hover {
-    background-color: rgb(146, 144, 144);
-    color: white;
-    border: none;
+    font-weight: bolder;
+    border: none !important;
 }
 
  /* Contact page */

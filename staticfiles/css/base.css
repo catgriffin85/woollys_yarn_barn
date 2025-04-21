@@ -1,15 +1,25 @@
 * {
     font-family: "Quicksand", sans-serif;
+    color: rgb(17, 17, 17);
 }
 
 html {
     height: 100%;
 }
 
+.main-nav {
+    background-color: rgb(221, 219, 219) !important;
+    color: rgb(0, 0, 0) !important;
+}
+
 .topnav {
-    margin-bottom: 0 !important;
-    margin-right: 0 !important;
+    margin: 0 !important;
     padding-bottom: 0 !important;
+}
+
+.navbar {
+    margin-top: 0 !important;
+    padding: 0 !important;
 }
 
 header {
@@ -21,18 +31,11 @@ header {
 }
 
 #delivery-banner {
-    background-color: rgb(146, 144, 144);
-    color: white;
-    padding: 0.5rem;
+    color: rgb(29, 29, 29);
+    background-color: white;
+    padding-top: 0.5rem;
     text-transform: uppercase;
     text-align: center;
-}
-
-.navbar {
-    font-size: larger;
-    color: rgb(20, 20, 20);
-    margin-top: 0 !important;
-    padding-top: 0 !important;
 }
 
 body {
@@ -66,29 +69,27 @@ body {
     opacity: 0.9;
 }
 
+.start-shopping-button {
+    color: white !important;
+}
 /* Footer */
 
-.footer {
+footer {
     position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: rgb(146, 144, 144);
-    color: white;
+    background-color: rgb(221, 219, 219) !important;
+    color: white !important;
     text-align: center;
 }
 
-.facebook-link a {
-    color: rgb(4, 4, 250)
+.facebook-link a i {
+    color: rgb(4, 4, 250);
 }
 
 .copyright {
     font-size: small;
-}
-
-.privacy-policy {
-    font-size: small;
-    color: rgb(4, 4, 250)
 }
 
 /* Login Page */
@@ -109,7 +110,7 @@ body {
 .email-btn:hover,
 .password-btn:hover,
 .signup-btn:hover {
-    background-color: rgb(146, 144, 144);
+    background-color: rgb(221, 219, 219) !important;
     color: white;
     border: none;
 }
@@ -126,7 +127,7 @@ ul {
     top: 0;
     left: 0;
     position: fixed;
-    background: rgb(245, 244, 244) !important;
+    background: rgb(255, 255, 255) !important;
     z-index: -1 !important;
 }
 
@@ -154,7 +155,6 @@ ul {
 }
 
 .card {
-    border-color: grey;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.459);
 }
 
@@ -183,7 +183,7 @@ ul {
 }
 
 .scroll-up-btn:hover {
-    background-color: rgb(12, 12, 12);
+    background-color: rgb(221, 219, 219) !important;
     color: white;
 }
 
@@ -199,7 +199,7 @@ ul {
 }
 
 .back-btn:hover {
-    background-color: rgb(146, 144, 144);
+    background-color: rgb(221, 219, 219) !important;
     color: white;
 }
 
@@ -217,18 +217,18 @@ ul {
 }
 
 .keep-shopping-btn:hover {
-    background-color: rgb(146, 144, 144);
+    background-color: rgb(221, 219, 219) !important;
     color: white;
 }
 
 .card-cart {
-    background: rgb(245, 244, 244) !important;
+    background: rgb(255, 255, 255) !important;
     border: none;
     box-shadow: none !important;
 }
 
 .card-cart:hover {
-    background: rgb(245, 244, 244) !important;
+    background: rgb(255, 255, 255) !important;
     transform: none !important; 
     box-shadow: none !important;
     border: none;
@@ -348,7 +348,7 @@ ul {
 }
 
 .go-to-cart {
-    background-color: rgb(146, 144, 144) !important;
+    background-color: rgb(221, 219, 219) !important;
     color: white !important;
 }
 

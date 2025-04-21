@@ -23,8 +23,8 @@
         <h3>Contact Us</h3>
     </div>
     <hr>
-    <div class="row contact-form pl-3 pr-3">
-        <div class="col col-lg-8 col-m-8 col-sm-12">
+    <div class="row contact-form justify-content-center pl-3 pr-3">
+        <div class="col-12 col-lg-10 col-m-8 col-sm-10">
             <form method="post" id="contactForm">
                 {% csrf_token %}
                 {{ contact_form.full_name|as_crispy_field }}

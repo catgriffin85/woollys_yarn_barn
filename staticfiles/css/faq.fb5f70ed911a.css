@@ -6,7 +6,7 @@
     }
 
 .faq-section {
-    background-color: rgb(255, 255, 255) !important;
+    background-color: rgb(245, 244, 244) !important;
     border-bottom: none;
 }
 
@@ -40,7 +40,6 @@
 
 .card-header {
     padding: 15px;
-    background-color: rgb(241, 240, 240) !important ;
 }
 
 .card-body {
@@ -66,14 +65,15 @@
 
 .contact-btn,
 .submit-btn {
-    background-color: white !important;
+    background-color: none;
     border: none;
 }
 
 .contact-btn:hover,
 .submit-btn:hover {
-    font-weight: bolder;
-    border: none !important;
+    background-color: rgb(146, 144, 144);
+    color: white;
+    border: none;
 }
 
  /* Contact page */

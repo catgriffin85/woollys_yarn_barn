@@ -33,10 +33,16 @@ def all_faqs(request):
 
 def faq_view(request):
     faqs_delivery = Faq.objects.filter(topics="delivery", is_published=True)
-    faqs_returns_refunds = Faq.objects.filter(topics="returns_refunds", is_published=True)
-    faqs_order_issues = Faq.objects.filter(topics="order_issues", is_published=True)
+    faqs_returns_refunds = Faq.objects.filter(
+        topics="returns_refunds", is_published=True
+    )
+    faqs_order_issues = Faq.objects.filter(
+        topics="order_issues", is_published=True
+    )
     faqs_stock = Faq.objects.filter(topics="stock", is_published=True)
-    faqs_payment_queries = Faq.objects.filter(topics="payment_queries", is_published=True)
+    faqs_payment_queries = Faq.objects.filter(
+        topics="payment_queries", is_published=True
+    )
 
     context = {
         'faqs_delivery': faqs_delivery,
@@ -63,7 +69,7 @@ def contact(request):
             message = (
                 f"Hi {user_name},\n\n"
                 "Thank you for getting in touch with us. "
-                "We've received your query and will respond as soon as possible.\n\n"
+                "We will respond as soon as possible.\n\n"
                 "Best regards,\nThe Support Team"
             )
 
@@ -75,7 +81,11 @@ def contact(request):
                 fail_silently=False,
             )
 
-            messages.success(request, "We have received your query and our Customer Service Team will be in touch shortly!")
+            messages.success(
+                request,
+                "We have received your query."
+                "Our Customer Service Team will be in touch shortly!"
+            )
             return redirect('home')
 
     else:
@@ -84,7 +94,10 @@ def contact(request):
     if request.method == 'POST' and not contact_form.is_valid():
         contact_form = ContactForm(request.POST)
 
-    faqs = Faq.objects.filter(topics=selected_topic, is_published=True) if selected_topic else None
+    faqs = (
+        Faq.objects.filter(topics=selected_topic, is_published=True)
+        if selected_topic else None
+    )
 
     context = {
         'contact_form': contact_form,

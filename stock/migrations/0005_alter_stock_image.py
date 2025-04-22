@@ -14,6 +14,10 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='stock',
             name='image',
-            field=cloudinary.models.CloudinaryField(default='https://res.cloudinary.com/dqgc8opao/image/upload/v1744536831/default_image_akymrn.jpg', max_length=255, verbose_name='image'),
+            field=cloudinary.models.CloudinaryField(
+                default='https://res.cloudinary.com/dqgc8opao/image/upload/v1744536831/default_image_akymrn.jpg',
+                max_length=255,
+                verbose_name='image'
+            ),
         ),
     ]

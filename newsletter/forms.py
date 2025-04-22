@@ -13,7 +13,7 @@ class NewsletterSignupForm(forms.ModelForm):
 
         if existing and not existing.unsubscribed:
             raise forms.ValidationError("This email is already subscribed.")
-        
+
         return email
 
 

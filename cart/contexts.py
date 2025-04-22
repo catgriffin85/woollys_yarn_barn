@@ -33,7 +33,7 @@ def cart_contents(request):
     for item_id, item_data in cart.items():
         if not item_id.isdigit():
             print(f"Invalid item_id {item_id} in cart — skipping.")
-            continue  # skip this item if item_id is not a valid number
+            continue
         stock = get_object_or_404(Stock, pk=item_id)
 
         # Simple quantity format (no attributes)
@@ -53,17 +53,14 @@ def cart_contents(request):
             items_by_attributes = item_data.get('items_by_attributes', {})
 
             if not isinstance(items_by_attributes, dict):
-                print(f"Warning: Skipping item_id {item_id} — items_by_attributes is not a dict.")
                 continue
 
             for attributes, quantity in items_by_attributes.items():
                 if attributes.count('-') != 2:
-                    print(f"Invalid attributes format for item_id {item_id}: {attributes}")
-                    continue 
+                    continue
                 try:
                     size, weight, colour = attributes.split('-')
                 except ValueError:
-                    print(f"Invalid attribute format for item_id {item_id}: {attributes}")
                     continue
 
                 friendly_weight = WEIGHT_FRIENDLY_NAMES.get(weight, weight)

@@ -23,15 +23,21 @@ class StripeWH_Handler:
     def _send_confirmation_email(self, order):
         """Send the user a confirmation email"""
         cust_email = order.email
-        subject = render_to_string('checkout/confirmation_emails/confirmation_email_subject.txt', {'order': order}).strip()
-        body = render_to_string('checkout/confirmation_emails/confirmation_email_body.txt', {'order': order, 'contact_email': settings.DEFAULT_FROM_EMAIL}).strip()
-        
+        subject = render_to_string(
+            'checkout/confirmation_emails/confirmation_email_subject.txt',
+            {'order': order}
+        ).strip()
+        body = render_to_string(
+            'checkout/confirmation_emails/confirmation_email_body.txt',
+            {'order': order, 'contact_email': settings.DEFAULT_FROM_EMAIL}
+        ).strip()
+
         send_mail(
             subject,
             body,
             settings.DEFAULT_FROM_EMAIL,
             [cust_email]
-        )  
+        )
 
     def handle_event(self, event):
         """
@@ -40,7 +46,7 @@ class StripeWH_Handler:
         return HttpResponse(
             content=f'Unhandled webhook received: {event["type"]}',
             status=200)
-    
+
     def handle_payment_intent_succeeded(self, event):
         intent = event.data.object
         pid = intent.id
@@ -71,10 +77,14 @@ class StripeWH_Handler:
                 if save_info:
                     profile.default_phone_number = shipping_details.phone
                     profile.default_country = shipping_details.address.country
-                    profile.default_postcode = shipping_details.address.postal_code
-                    profile.default_town_or_city = shipping_details.address.city
-                    profile.default_street_address1 = shipping_details.address.line1
-                    profile.default_street_address2 = shipping_details.address.line2
+                    profile.default_postcode = (
+                        shipping_details.address.postal_code)
+                    profile.default_town_or_city = (
+                        shipping_details.address.city)
+                    profile.default_street_address1 = (
+                        shipping_details.address.line1)
+                    profile.default_street_address2 = (
+                        shipping_details.address.line2)
                     profile.default_county = shipping_details.address.state
                     profile.save()
             except User.DoesNotExist:
@@ -92,10 +102,10 @@ class StripeWH_Handler:
             except Order.DoesNotExist:
                 attempt += 1
                 time.sleep(1)
-        
+
         if order_exists:
             return HttpResponse(
-                content=f'Webhook received: {event["type"]} | SUCCESS: Order already exists',
+                content=f'Webhook received: {event["type"]} | Order exists',
                 status=200
             )
 
@@ -128,9 +138,9 @@ class StripeWH_Handler:
                         stock_weight=weight if weight != "None" else None,
                         stock_colour=colour if colour != "None" else None,
                     )
-            
+
             self._send_confirmation_email(order)
-            
+
         except Exception as e:
             if order:
                 order.delete()
@@ -139,7 +149,7 @@ class StripeWH_Handler:
                 status=500)
 
         return HttpResponse(
-            content=f'Webhook received: {event["type"]} | SUCCESS: Created order in webhook',
+            content=f'Webhook received: {event["type"]} | Order created',
             status=200)
 
     def handle_payment_intent_payment_failed(self, event):

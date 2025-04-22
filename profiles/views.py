@@ -1,5 +1,7 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, reverse, HttpResponseRedirect, get_object_or_404
+from django.shortcuts import (
+    render, reverse, HttpResponseRedirect, get_object_or_404
+)
 from django.contrib import messages
 from django.contrib.auth import logout
 
@@ -18,9 +20,15 @@ def profile(request):
         form = UserProfileForm(request.POST, instance=profile)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Your profile has been updated successfully')
+            messages.success(
+                request,
+                'Your profile has been updated successfully'
+            )
         else:
-            messages.error(request, 'Failed to update your profile. Please ensure the form is valid.')    
+            messages.error(
+                request,
+                'Failed to update your profile. Please check your details.'
+            )
     else:
         form = UserProfileForm(instance=profile)
     orders = profile.orders.all()

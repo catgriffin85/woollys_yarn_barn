@@ -2,7 +2,7 @@ from django.db import models
 
 
 class Topic(models.Model):
-        
+
     name = models.CharField(max_length=254, default='')
     friendly_name = models.CharField(max_length=254, null=True, blank=True)
 
@@ -48,7 +48,9 @@ class Contact(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.contact_id:
-            last_contact = Contact.objects.exclude(contact_id='').order_by('-id').first()
+            last_contact = Contact.objects.exclude(
+                contact_id=''
+            ).order_by('-id').first()
             if not last_contact or not last_contact.contact_id[1:].isdigit():
                 new_id = 'C0001'
             else:
@@ -56,6 +58,6 @@ class Contact(models.Model):
                 new_id = f'C{last_id + 1:04d}'
             self.contact_id = new_id
         super().save(*args, **kwargs)
-        
+
     def __str__(self):
         return f"{self.full_name} - {self.contact_id}"

@@ -25,14 +25,14 @@ class TopicAdmin(admin.ModelAdmin):
 
 class ContactAdmin(admin.ModelAdmin):
     list_display = (
-        'contact_id', 
-        'full_name', 
-        'email', 
-        'topic', 
+        'contact_id',
+        'full_name',
+        'email',
+        'topic',
         'created_on')
     search_fields = (
-        'full_name', 
-        'email', 
+        'full_name',
+        'email',
         'topic',
     )
 

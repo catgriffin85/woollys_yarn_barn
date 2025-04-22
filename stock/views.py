@@ -13,7 +13,6 @@ def shop_all(request):
     stocks = Stock.objects.all()
     query = None
     categories = None
-    sort = None
     direction = None
 
     if request.GET:
@@ -22,8 +21,7 @@ def shop_all(request):
 
             if sortkey == 'reset':
                 return redirect(reverse('stock'))
-    
-            sort = sortkey
+
             if sortkey == 'name':
                 sortkey = 'lower_name'
                 stocks = stocks.annotate(lower_name=Lower('name'))
@@ -42,13 +40,20 @@ def shop_all(request):
         if 'q' in request.GET:
             query = request.GET['q']
             if not query:
-                messages.error(request, "You didn't enter any search criteria!")
+                messages.error(
+                    request,
+                    "You didn't enter any search criteria!"
+                )
                 return redirect(reverse('stock'))
-                
-            queries = Q(name__icontains=query) | Q(description__icontains=query)
+
+            queries = (
+                Q(name__icontains=query) | Q(description__icontains=query)
+            )
             stocks = stocks.filter(queries)
 
-    current_sorting = f"{request.GET.get('sort', 'None')}_{request.GET.get('direction', 'None')}"
+    current_sorting = (
+        f"{request.GET.get('sort', 'None')}_{request.GET.get('direction', 'None')}"
+    )
 
     context = {
         'stocks': stocks,
@@ -81,10 +86,13 @@ def add_stock(request):
             messages.success(request, 'Successfully added new stock!')
             return redirect(reverse('stock_detail', args=[stock.id]))
         else:
-            messages.error(request, 'Failed to add any stock. Please ensure the form is valid.')
+            messages.error(
+                request,
+                'Failed to add any stock. Please ensure the form is valid.'
+            )
     else:
         form = StockForm()
-    
+
     template = 'stock/add_stock.html'
     context = {
         'form': form
@@ -103,7 +111,10 @@ def edit_stock(request, stock_id):
             messages.success(request, 'Successfully updated your stock!')
             return redirect(reverse('stock_detail', args=[stock.id]))
         else:
-            messages.error(request, 'Failed to update your stock. Please ensure the form is valid.')
+            messages.error(
+                request,
+                'Failed to update your stock. Please ensure the form is valid.'
+            )
     else:
         form = StockForm(instance=stock)
 

@@ -1,13 +1,12 @@
-from django.shortcuts import render, redirect, get_object_or_404, HttpResponse
+from django.shortcuts import render, redirect, HttpResponse
 from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.conf import settings
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
 
-from .models import Order, OrderLineItem
-from stock.models import Stock
 from .forms import OrderForm
+from .models import Order
 from profiles.models import UserProfile
 from profiles.forms import UserProfileForm
 from cart.contexts import cart_contents
@@ -28,7 +27,10 @@ def cache_checkout_data(request):
         })
         return HttpResponse(status=200)
     except Exception as e:
-        messages.error(request, 'Sorry, your payment cannot be processed right now. Please try again later.')
+        messages.error(
+            request,
+            'Sorry, your payment cannot be processed. Please try again later.'
+        )
         return HttpResponse(content=e, status=400)
 
 
@@ -49,7 +51,10 @@ def checkout(request):
         currency=settings.STRIPE_CURRENCY,
         metadata={
             'cart': json.dumps(cart),
-            'username': request.user.username if request.user.is_authenticated else 'anonymous',
+            'username': (
+                request.user.username
+                if request.user.is_authenticated else 'anonymous'
+            ),
         },
     )
 
@@ -59,14 +64,12 @@ def checkout(request):
             pid = request.POST.get('client_secret').split('_secret')[0]
             pid = pid.split('_secret')[0]
 
-            order = None
-
             save_info = 'save_info' in request.POST
             request.session['save_info'] = save_info
             request.session['cart'] = {}
 
             return redirect('order_complete', stripe_pid=pid)
-        
+
         else:
             messages.error(request, "Form error. Please try again.")
     else:
@@ -103,8 +106,14 @@ def order_complete(request, stripe_pid):
     order = Order.objects.filter(stripe_pid=stripe_pid).first()
 
     if not order:
-        messages.info(request, "Your order is still being processed. Please refresh this page in a few seconds.")
-        return render(request, 'checkout/order_complete_pending.html', {'stripe_pid': stripe_pid})
+        messages.info(
+            request,
+            "Your order is being processed. Refresh this page for update."
+        )
+        return render(
+            request,
+            'checkout/order_complete_pending.html', {'stripe_pid': stripe_pid}
+        )
 
     if request.user.is_authenticated:
         profile = UserProfile.objects.get(user=request.user)
@@ -127,7 +136,9 @@ def order_complete(request, stripe_pid):
 
     if not order.email_sent:
         subject = render_to_string(
-            'checkout/confirmation_emails/confirmation_email_subject.txt', {'order': order}).strip()
+            'checkout/confirmation_emails/confirmation_email_subject.txt', {
+                'order': order
+            }).strip()
         body = render_to_string(
             'checkout/confirmation_emails/confirmation_email_body.txt', {
                 'order': order,

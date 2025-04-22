@@ -21,7 +21,11 @@ def newsletter_signup(request):
                     signup.date_unsubscribed = None
                     signup.date_subscribed = now()
                     signup.save()
-                    messages.success(request, 'Welcome back! You have been resubscribed to our newsletter.')
+                    messages.success(
+                        request,
+                        "Welcome back!n\n"
+                        "You have been resubscribed to our newsletter."
+                    )
                 else:
                     messages.info(request, 'This email is already subscribed.')
                     return redirect('home')
@@ -30,15 +34,20 @@ def newsletter_signup(request):
                 signup = form.save(commit=False)
                 signup.date_subscribed = now()
                 signup.save()
-                messages.success(request, 'Thank you for signing up for our newsletter!')
+                messages.success(
+                    request,
+                    'Thank you for signing up for our newsletter!'
+                )
 
             # Send confirmation email
             subject = 'Newsletter Signup Confirmation'
             message = (
-                f"Hi there,\n\n"
+                "Hi there,\n\n"
                 "Thank you for signing up for our newsletter!\n\n"
-                "We’ll be sending you updates, offers, and all things woolly.\n\n"
-                "If you ever wish to unsubscribe, you can do so at any time on our website\n\n"
+                "We’ll be sending you updates, offers, "
+                "and all things yarn.\n\n"
+                "If you ever wish to unsubscribe, "
+                "you can do so on our website\n\n"
                 "Best regards,\nWoolly's Yarn Barn Team"
             )
 
@@ -68,13 +77,18 @@ def newsletter_unsubscribe(request):
                     signup.unsubscribed = True
                     signup.date_unsubscribed = now()
                     signup.save()
-                    messages.success(request, 'You have successfully unsubscribed.')
+                    messages.success(
+                        request,
+                        'You have successfully unsubscribed.'
+                    )
 
                     subject = 'You Have Unsubscribed from Our Newsletter'
                     message = (
-                        f"Hi there,\n\n"
-                        "We're sorry to see you go! You’ve been unsubscribed from our newsletter and will no longer receive updates.\n\n"
-                        "If this was a mistake or you change your mind, you can resubscribe anytime on our website.\n\n"
+                        "Hi there,\n\n"
+                        "We're sorry to see you go!"
+                        "You’ve been unsubscribed from our newsletter.\n\n"
+                        "If this was a mistake or you change your mind, "
+                        "you can resubscribe anytime on our website.\n\n"
                         "Best wishes,\nWoolly's Yarn Barn Team"
                     )
 

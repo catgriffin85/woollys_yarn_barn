@@ -7,7 +7,7 @@ from stock.models import Stock
 
 def view_cart(request):
     """ A view that renders the cart contents page """
-    
+
     return render(request, 'cart/cart.html')
 
 
@@ -34,17 +34,26 @@ def add_to_cart(request, item_id):
             "stock_id": int(item_id),
             "items_by_attributes": {attributes: quantity}
         }
-        messages.success(request, f'Added {quantity} of {stock.name} to your cart!')
+        messages.success(
+            request,
+            f'Added {quantity} of {stock.name} to your cart!'
+        )
     else:
         if 'items_by_attributes' not in cart[item_id]:
             cart[item_id]['items_by_attributes'] = {}
 
         if attributes in cart[item_id]['items_by_attributes']:
             cart[item_id]['items_by_attributes'][attributes] += quantity
-            messages.success(request, f'Updated quantity of {stock.name} in your cart!')
+            messages.success(
+                request,
+                f'Updated quantity of {stock.name} in your cart!'
+            )
         else:
             cart[item_id]['items_by_attributes'][attributes] = quantity
-            messages.success(request, f'Added {quantity} of {stock.name} to your cart!')
+            messages.success(
+                request,
+                f'Added {quantity} of {stock.name} to your cart!'
+            )
 
     request.session['cart'] = cart
     request.session.modified = True
@@ -57,7 +66,7 @@ def adjust_cart(request, item_id):
 
     if item_id == 'undefined' or not item_id.isdigit():
         return HttpResponseBadRequest("Invalid item ID provided.")
-    
+
     item_id = str(item_id)
     quantity = request.POST.get('quantity', '0')
 
@@ -80,7 +89,9 @@ def adjust_cart(request, item_id):
 
     if quantity > 0:
         cart[item_id]["items_by_attributes"][attributes] = quantity
-        cart[item_id]["quantity"] = sum(cart[item_id]["items_by_attributes"].values())
+        cart[item_id]["quantity"] = sum(
+            cart[item_id]["items_by_attributes"].values()
+        )
 
     else:
         # Remove specific attribute set if quantity is 0
@@ -91,7 +102,10 @@ def adjust_cart(request, item_id):
         if not cart[item_id]["items_by_attributes"]:
             del cart[item_id]
 
-    messages.success(request, f'Updated quantity of {stock.name} in your cart!')
+    messages.success(
+        request,
+        f'Updated quantity of {stock.name} in your cart!'
+    )
     request.session['cart'] = cart
 
     return redirect(reverse('view_cart'))
@@ -113,9 +127,15 @@ def remove_from_cart(request, item_id, item_attribute):
                 if not cart[item_id]['items_by_attributes']:
                     del cart[item_id]
 
-                messages.success(request, f'{stock.name} removed from your cart!')
+                messages.success(
+                    request,
+                    f'{stock.name} removed from your cart!'
+                )
             else:
-                messages.error(request, f'Attribute {item_attribute} not found in cart.')
+                messages.error(
+                    request,
+                    f'Attribute {item_attribute} not found in cart.'
+                )
         else:
             messages.error(request, f'Item {stock.name} not found in cart.')
 

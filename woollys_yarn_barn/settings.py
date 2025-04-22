@@ -27,12 +27,12 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-#DEBUG = 'DEVELOPMENT' in os.environ
+
 
 ALLOWED_HOSTS = [
-    '127.0.0.1', #vs code preview
-    'localhost', #listen for stripe webhooks
-    'woollys-yarn-barn-c013ed10e4a8.herokuapp.com', #heroku application
+    '127.0.0.1',  # vs code preview
+    'localhost',  # listen for stripe webhooks
+    'woollys-yarn-barn-c013ed10e4a8.herokuapp.com',  # heroku application
 ]
 
 
@@ -65,7 +65,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware', 
+    'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -89,7 +89,7 @@ TEMPLATES = [
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
-                'django.template.context_processors.request', # required by allauth
+                'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'cart.contexts.cart_contents',
@@ -134,7 +134,7 @@ if 'DATABASE_URL' in os.environ:
     DATABASES = {
         'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
     }
-else: 
+else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
@@ -187,10 +187,10 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-cloudinary.config( 
-  cloud_name = os.getenv('CLOUDINARY_CLOUD_NAME'), 
-  api_key = os.getenv('CLOUDINARY_API_KEY'), 
-  api_secret = os.getenv('CLOUDINARY_API_SECRET') 
+cloudinary.config(
+  cloud_name=os.getenv('CLOUDINARY_CLOUD_NAME'),
+  api_key=os.getenv('CLOUDINARY_API_KEY'),
+  api_secret=os.getenv('CLOUDINARY_API_SECRET'),
 )
 
 # Use Cloudinary for media storage

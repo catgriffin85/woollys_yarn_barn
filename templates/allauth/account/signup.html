@@ -6,9 +6,9 @@
 
 {% block content %}
 <div class="overlay"></div>
-<div class="container-fluid container-auth">
+<div class="container-fluid container-auth mt-md-4 mb-md-5">
   <div class="row">
-    <div class="col text-center mt-3">
+    <div class="col text-center mt-md-3 mb-md-5">
       <h2>{% trans "Sign Up" %}</h2>
       <hr>
       <p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}
@@ -21,6 +21,7 @@
         <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
         {% endif %}
         <button class="signup-btn" type="submit">{% trans "Sign Up" %} &raquo;</button>
+        <br>
       </form>
     </div>
   </div>

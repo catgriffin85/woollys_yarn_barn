@@ -1,7 +1,12 @@
+.information-overlay {
+    background-color: rgb(248, 247, 247) !important;
+    border-radius: 25px;
+}
+
 .container-customer-service,
 .container-contact {
         margin-top: 0;
-        margin-bottom: 3rem;
+        margin-bottom: 4rem;
     }
 
 .faq-section {

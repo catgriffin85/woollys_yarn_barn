@@ -1,26 +1,25 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 {% load static %}
+{% load cart_extras %}
+
 {% block content %}
-    <div class="container header-container">
-        <div class="row">
-            <div class="col"></div>
+<div class="overlay"></div>
+<div class="container-newsletter mb-2 mt-md-3">
+    <div class="row">
+        <div class="col col-12">
+            <hr>
+            <h3 class="text-center logo-font mb-4">Unsubscribe from Newsletter</h3>
+            <hr>
         </div>
     </div>
-    <div class="container text-left mt-md-5">
-        <div class="row justify-content-center">
-            <div class="col col-lg-6 col-md-10 col-sm-12">
-                <div class="text-center mb-0 mt-3">
-                    <h3>The page you are looking for isn't available</h3>
-                    <div class="my-5">
-                        <h4>
-                            <a href="{% url 'home' %}" 
-                                class="start-shopping-button btn btn-lg text-uppercase btn-dark py-1">
-                                    Return to website
-                            </a>
-                        </h4>
-                    </div>
-                </div>
-            </div>
+    <div class="row">
+        <div class="col d-flex justify-content-center text-center">
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <span><button type="submit" class="btn back-btn btn-outline-black rounded-0 btn-md text-center" aria-label="unsubscribe">Unsubscribe</button></span>
+            </form>
         </div>
     </div>
+</div>
 {% endblock %}

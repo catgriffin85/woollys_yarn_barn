@@ -35,7 +35,9 @@
                             <select name="topic" id="id_topic" onchange="this.form.submit()">
                                 <option value="">-- Select --</option>
                                 {% for key, value in topic_choices %}
-                                <option value="{{ key }}" {% if key==selected_topic %}selected{% endif %}>{{ value }}</option>
+                                <option value="{{ key }}" {% if key == selected_topic %}selected{% endif %}>
+                                    {{ value }}
+                                </option>
                                 {% endfor %}
 
                             </select>

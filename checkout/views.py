@@ -134,19 +134,4 @@ def order_complete(request, stripe_pid):
             if user_profile_form.is_valid():
                 user_profile_form.save()
 
-    if not order.email_sent:
-        subject = render_to_string(
-            'checkout/confirmation_emails/confirmation_email_subject.txt', {
-                'order': order
-            }).strip()
-        body = render_to_string(
-            'checkout/confirmation_emails/confirmation_email_body.txt', {
-                'order': order,
-                'contact_email': settings.DEFAULT_FROM_EMAIL,
-            }).strip()
-
-        send_mail(subject, body, settings.DEFAULT_FROM_EMAIL, [order.email])
-        order.email_sent = True
-        order.save()
-
     return render(request, 'checkout/order_complete.html', {'order': order})

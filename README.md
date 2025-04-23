@@ -460,14 +460,80 @@ I created this website with a user-friendly design with the hope of offering a s
 
 5. <strong>Shopping Cart</strong>
 
+    When "Add to Cart" is selected the user will see a success message confirming their item has beena added to the cart and a link to the cart. The message will also advise how much more the user will need to spend to avoid the delivery charge. 
+
+    ![Add to cart success message with delivery note](static/images/README_images/add_to_cart_message_delivery.png)
+    ![Add to cart success message](static/images/README_images/add_to_cart_message.png)
+
+    ![Items in cart](static/images/README_images/shopping_cart_options.png)
+
+    From the cart users can update the quantity of their items and also remove any unwanted items.
+
+    ![Add to cart success message](static/images/README_images/cart_update.png)
+
+    ![Updated cart](static/images/README_images/cart_full_pic.png)
+
+    Once in the cart, the user has the option to click the "Keep Shopping" button to return to the stock page or they can choose "Secure Checkout" and complete their purchase.
+
+6. <strong>Checkout</strong>
+
+    The checkout is comprised of 4 sections - Your Details, Delivery Details, Order Summary and Payment. If the user has no profile or not logged in the form will be blank. If the user is logged in to their profile and has previously saved their details, their email address and delivery address will be pre-populated.
+
+    ![Your Details](static/images/README_images/checkout_your_details.png)
+
+    ![Delivery Details](static/images/README_images/checkout_delivery_details_blank.png)
+
+    ![Order Summary](static/images/README_images/checkout_order_summary.png)
+
+    ![Payment](static/images/README_images/checkout_payment.png)
+
+    Once the user has complete the form they can either "Return to Cart" or "Complete Order".
+
+    If the checkout form is completed correctly and all fields are valid the order will be processed when "Complete Order" is clicked. To avoid creating duplicate orders from the checkout and the webhook I had to add an additional step so only the webhook created the order. Because of the delay between the checkout view and the webhook, orders were failing so the user is now directed to an order is processing page and once they refresh the page the order will have been created and they can view the order complete page.
+
+    ![Order Processing](static/images/README_images/order_processing.png)
+
+    If the user is not logged into a profile, they will be encouraged to create an account. 
+
+    ![Order Complete](static/images/README_images/order_confirmation_logged_out.png)
+
+    If the user is logged into their profile, they will be provided with a link to view their profile and their orders.
+
+    ![Order Complete](static/images/README_images/order_confirmation_logged_in.png)
+
+    When the order is complete the user will receive an order confirmation email.
+
+    ![Order Confirmation Email](static/images/README_images/confirmation_email.png)
+
+7. <strong>User Profile</strong>
+
+    The profile page is only available to logged in users. This page will show the users saved phone number, delivery address and the users order history.
+
+    ![Profile](static/images/README_images/profile_page.png)
+
+    Phone number and delivery address can be updated from this page. A success message will display once update has been saved. 
+
+    ![Profile Update](static/images/README_images/profile_update_message.png)
+
+    A user may also delete their profile. When "Delete Profile" is clicked the user will be brought to a confirmation page so they can confirm the delete.
+
+    ![Profile Delete](static/images/README_images/profile_confirm_delete.png)
+
+    The user can click into their past orders and review the order complete page again for that order with a message to advise the user is looking at a past order confirmation.
+
+    ![Past Order](static/images/README_images/past_order_confirmation.png)
+
+    Clicking "Back to Profile" will bring the user back to their profile page.
+
+8. <strong>Customer Service</strong>
 
 
 
+9. <strong>404 Page</strong>
 
 
 
-
-
+10. <strong>Super User</strong>
 
 
 

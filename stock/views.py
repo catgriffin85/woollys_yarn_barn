@@ -145,4 +145,4 @@ def delete_stock(request, stock_id):
         messages.success(request, 'Stock deleted!')
         return redirect(reverse('stock'))
 
-    return render(request, 'stock/confirm_delete.html', {'stock': stock})
+    return render(request, 'stock/stock.html', {'stock': stock})

@@ -18,8 +18,9 @@ Link to admin panel: [here](https://woollys-yarn-barn-c013ed10e4a8.herokuapp.com
 
 username: superuser
 
-password: SuperUser1
+password: WoollysYarnBarn
 
+![Responsive](static/images/README_images/responsive.png)
 
 ## Project Goals
 
@@ -527,20 +528,41 @@ I created this website with a user-friendly design with the hope of offering a s
 
 8. <strong>Customer Service</strong>
 
+    If the user is having issues and would like some assistance they can click on Help Center in the navigation bar and select FAQs. The FAQ page has 5 sections -
+
+    * Delivery
+    * Returns & Refunds
+    * Help with my Order
+    * Item & Stock Queries
+    * Payments
 
     ![FAQ Page](static/images/README_images/faqs_closed.png)
 
+    To see the answer to the FAQ the user must click on the question and the card expands to show the answer.
+
     ![FAQ Page Open](static/images/README_images/faqs_open.png)
+
+    If the user scrolls to the end of the page they will see a link to contact the Customer Service team. This website encourages the user to self service before offering the user a contact method. 
 
     ![FAQs link to CS](static/images/README_images/faqs_link_cs.png)
 
+    The user will go through to a blank Contact form. They will be asked for their name and email address and to select a reason for their contact. 
+
     ![Contact Form](static/images/README_images/contact_blank_form.png)
+
+    Once a reason has been selected the user will be shown related FAQs in a final attempt to get the user to resolve their query before contacting the company.
 
     ![Contact Form FAQs](static/images/README_images/contact_topic_selected.png)
 
+    If an FAQ has helped the user and they no longer need to contact the company they can select "Yes, thank you" and the form will close and the user will be redirected back to the homepage.
+
     ![Contact Form No More Help](static/images/README_images/contact_finished.png)
 
+    If the user still requires assistance, they can click "No, I still need help" and a text box will open for them to type up their query.
+
     ![Contact Form Need More Help](static/images/README_images/contact_still_need_help.png)
+
+    The user will then click submit and the contact will be logged in the database. The user will receive on onscreen success messages as well as an email confirmation.
 
     ![Contact Form](static/images/README_images/contact_success_message.png)
     
@@ -556,21 +578,104 @@ I created this website with a user-friendly design with the hope of offering a s
 
 10. <strong>Super User</strong>
 
+    Super users can log into the admin panel where they have full control over the databases and users.
 
+    ![Admin Panel](static/images/README_images/django_admin_panel.png)
 
+    On this website, the admin panel has a number of database for the super user to manage: 
 
+    Stock Categories:
 
+    ![Admin Categories](static/images/README_images/admin_category.png)
 
+    Stock:
 
+    ![Admin Stock](static/images/README_images/admin_stock.png)
+
+    Users:
+
+    ![Admin Users](static/images/README_images/admin_users.png)
+
+    FAQ Topics:
+
+    ![FAQ Topics](static/images/README_images/admin_faq_topics.png)
+
+    FAQs:
+
+    ![Admin FAQs](static/images/README_images/admin_faqs.png)
+
+    All FAQ's have a "published" flag. Only questions that have this box ticked will show on the website.
+
+    ![Admin FAQs Publish](static/images/README_images/faq_publish_box.png)
+
+    User Contacts:
+
+    ![Admin Contacts](static/images/README_images/admin_contacts.png)
+
+    A super user has an additional option when logged into their profile in the My Account section - Stock Management. From here the superuser can create new stock items for the website.
+
+    ![Add Stock](static/images/README_images/add_stock.png)
+
+    ![Add Stock 2](static/images/README_images/add_stock_2.png)
+
+    They can also edit or delete existing items on the website without going into the admin panel. They have 2 options, they can update from the item cards on the stock page or in the stock detail page.
+
+    ![Edit & Delete Option on Card](static/images/README_images/stock_page_edit_delete_options.png)
+
+    ![Edit & Delete Option on Stock Details](static/images/README_images/stock_details_page_edit_delete_options.png)
+
+    When "Edit" is clicked the super user is brought to a new form that will allow them to edit the item they have selected.
+
+    ![Edit Stock](static/images/README_images/edit_stock.png)
+
+    ![Edit Stock 2](static/images/README_images/edit_stock_2.png)
+
+    When "Delete" is clicked, they will be brought to a delete confirmation page before the item is deleted.
+
+    ![Delete Stock](static/images/README_images/delete_stock_confirmation.png)
 
 
 ### Future Features
 
+I would like to set up a section for reviews. Unfortunately, time constrains impacted my ability to include an option for users to review products and read other users reviews. 
 
+I would also like to include a returns section. To allow users to go into orders and have an option for a return. Once return is selected, they would receive an email with a return label attached and the order would be updated with a return flag.
 
 ## Testing
 
+To ensure the website meets all functional and usability requirements, a series of User Acceptance Tests (UAT) were conducted. These tests focused on critical features of the website, including the homepage layout, navigation links, and key user interactions. The objective was to verify that each feature behaves as expected and delivers a seamless experience for users.
 
+Each test case includes the expected outcome and the actual result. These tests help identify potential issues and ensure the website provides an optimal user experience.
+
+Link to testing document: [here](https://docs.google.com/spreadsheets/d/1UMBrraRjk3qJwyAmRRb6Vx1KmlkfqZYi1BrFD7Zkei0/edit?gid=84845225#gid=84845225)
+
+![Testing - Navigation Bar](static/images/README_images/testing_navigation_bar.png)
+
+![Testing - Footer & Newsletter](static/images/README_images/testing_footer_newsletter.png)
+
+![Testing - Homepage](static/images/README_images/testing_homepage.png)
+
+![Testing - Stock](static/images/README_images/testing_stock.png)
+
+![Testing - Cart](static/images/README_images/testing_cart.png)
+
+![Testing - Checkout](static/images/README_images/testing_checkout.png)
+
+![Testing - Profile](static/images/README_images/testing_profile.png)
+
+![Testing - FAQs](static/images/README_images/testing_faqs.png)
+
+![Testing - Contact Form](static/images/README_images/testing_contact.png)
+
+![Testing - Stock Management](static/images/README_images/testing_stock_mangement.png)
+
+I used "python -m flake8 --exclude .venv,.vscode,migrations" in my terminal to check for any linting errors and to ensure my code was PEP8 compliant. There are still some errors showing for lines to long in my settings file but they cannot be fixed due the type of code that it is. There are also errors showing for the project level urls.py file, this is due to the addition of the 404 error page code. I have included an example of some of this code below.
+
+![Testing - Flake8](static/images/README_images/flake8.png)
+
+![Testing - Error Example settings.py](static/images/README_images/example_error.png)
+
+![Testing - Error Example urls.py](static/images/README_images/error_404code.png)
 
 ## Bugs
 

@@ -528,9 +528,30 @@ I created this website with a user-friendly design with the hope of offering a s
 8. <strong>Customer Service</strong>
 
 
+    ![FAQ Page](static/images/README_images/faqs_closed.png)
+
+    ![FAQ Page Open](static/images/README_images/faqs_open.png)
+
+    ![FAQs link to CS](static/images/README_images/faqs_link_cs.png)
+
+    ![Contact Form](static/images/README_images/contact_blank_form.png)
+
+    ![Contact Form FAQs](static/images/README_images/contact_topic_selected.png)
+
+    ![Contact Form No More Help](static/images/README_images/contact_finished.png)
+
+    ![Contact Form Need More Help](static/images/README_images/contact_still_need_help.png)
+
+    ![Contact Form](static/images/README_images/contact_success_message.png)
+    
+    ![Contact Form](static/images/README_images/contact_email_confirmation.png)
+
 
 9. <strong>404 Page</strong>
 
+    If a URL is mistyped or if a user tries to access pages that are moved or deleted without redirection then they will receive a 404 page. This page will bring the user back to the homepage.
+
+    ![404 Page](static/images/README_images/404_page.png)
 
 
 10. <strong>Super User</strong>

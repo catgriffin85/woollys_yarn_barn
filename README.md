@@ -819,9 +819,9 @@ Before deploying to Heroku, set up version control with GitHub:
 * Scroll down to the Config Vars section and click Reveal Config Vars.
 * Add the following variables:
 
-    1. Key: CREDS - Value: Paste the entire contents of your creds.json file.
+        1. Key: CREDS - Value: Paste the entire contents of your creds.json file.
 
-    2. Key: PORT - Value: 8000
+        2. Key: PORT - Value: 8000
 
 * Click Add after entering each pair.
 

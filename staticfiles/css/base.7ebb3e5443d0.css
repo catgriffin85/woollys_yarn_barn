@@ -264,12 +264,6 @@ a.remove-item {
     color: red !important;
 }
 
-a.remove-item:hover {
-    color: red !important;
-    text-decoration: underline;
-}
-
-
 /* Order Complete Page */
 
 .container-order-complete {

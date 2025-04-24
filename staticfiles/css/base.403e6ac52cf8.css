@@ -27,10 +27,6 @@ html {
     padding: 0 !important;
 }
 
-.dropdown {
-    color: rgb(17, 17, 17) !important;
-}
-
 header {
     position:fixed !important;
     top: 0;
@@ -58,10 +54,6 @@ body {
     justify-content: center;
     text-align: center;
     flex-wrap: wrap;
-}
-
-a:focus {
-    outline: none;
 }
 
 .homepage-intro {
@@ -257,11 +249,11 @@ ul {
 }
 
 .adjust-cart {
-    color: blue !important;
+    color: blue;
 }
 
 .remove-item {
-    color: red !important;
+    color: red;
 }
 
 /* Order Complete Page */

@@ -12,6 +12,6 @@
                    data-item_attribute="{{ item.size|default:'None' }}-{{ item.weight|default:'None' }}-{{ item.colour|default:'None' }}">
         </div>
     </div>
-    <a class="adjust-cart update-link btn-link text-info"><small>Update</small></a>
-    <a class="remove-item btn-link text-danger float-right" data-item-id="{{ item.stock.id }}" data-item-attribute="{{ item.attribute_key }}"><small>Remove</small></a>
+    <a class="adjust-cart update-link btn-link"><small>Update</small></a>
+    <a class="remove-item btn-link float-right" data-item-id="{{ item.stock.id }}" data-item-attribute="{{ item.attribute_key }}"><small>Remove</small></a>
 </form>

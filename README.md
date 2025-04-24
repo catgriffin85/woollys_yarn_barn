@@ -709,12 +709,12 @@ I used "View Page Source" for the html as the Django tags were causing invalid e
 * add_stock.html - Document checking completed. No errors or warnings to show.
 * edit_stock.html - Document checking completed. No errors or warnings to show.
 * cart.html - Document checking completed. No errors or warnings to show.
-* checkout.html - One error showing: Attribute placeholder not allowed on element select at this point. "<select name="country" placeholder="Country *" class="stripe-style-input lazyselect form-control" required id="id_country">". I can't find this element to fix it. In my checkout html this is showing as: {{ order_form.country | as_crispy_field }}.
+* checkout.html - One error showing: Attribute placeholder not allowed on element select at this point. select name="country" placeholder="Country *" class="stripe-style-input lazyselect form-control" required id="id_country". I can't find this element to fix it. In my checkout html this is showing as: {{ order_form.country | as_crispy_field }}.
 * order_complete_pending.html - Document checking completed. No errors or warnings to show. 
 * order_complete.html - Document checking completed. No errors or warnings to show.
 * faqs.html - Document checking completed. No errors or warnings to show.
 * customer_service.html - Document checking completed. No errors or warnings to show.
-* profiles.html - One error showing and it is the placeholder for country error again: Attribute placeholder not allowed on element select at this point. "<select name="country" placeholder="Country *" class="stripe-style-input lazyselect form-control" required id="id_country">". I can't find this element to fix it. In my checkout html this is showing as: {{ order_form.country | as_crispy_field }}.
+* profiles.html - One error showing and it is the placeholder for country error again: Attribute placeholder not allowed on element select at this point. select name="country" placeholder="Country *" class="stripe-style-input lazyselect form-control" required id="id_country". I can't find this element to fix it. In my checkout html this is showing as: {{ order_form.country | as_crispy_field }}.
 
 To check my CSS file I used: [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/#validate_by_input)
 
@@ -738,6 +738,11 @@ I used "python -m flake8 --exclude .venv,.vscode, migrations" in my terminal to 
 
 ![Testing - Error Example urls.py](static/images/README_images/error_404code.png)
 
+Lighthouse report for the homepage:
+
+Best Practices scored low. This project uses Stripe for secure payment processing, which involves loading Stripe’s JavaScript SDK from js.stripe.com. As a result, Lighthouse flags the use of third-party cookies set by Stripe (e.g., __Host-session, cookie-perms) and lowers the “Best Practices” score. These cookies are necessary for secure transaction handling, fraud prevention, and maintaining session state. While this warning does not indicate a security issue, it reflects broader browser trends toward limiting third-party cookies. Stripe is a PCI-compliant service, and its cookie usage aligns with industry standards for secure online payments.
+
+![Lighthouse Report](static/images/README_images/lighthouse_homepage.png)
 
 ## Bugs
 

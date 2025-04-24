@@ -762,52 +762,92 @@ Update and remove cart items - as many of the items on my site have attributes e
 
 Success messages not showing after some actions - while majority of my messages are working, there are 2 that were picked up during testing that are not working - when item quantity in the cart is updated and when an existing stock item has been deleted. I've checked the code and can see no obvious issues as to why these messages are not showing when others are. As I am close to submission date I've decided to leave these bugs. The functionality that should be triggering these messages is working so I'm ok to leave them as bugs for now.
 
+
+## Set Up GitHub Repository
+
+Before deploying to Heroku, set up version control with GitHub:
+
+1. Create a GitHub repository:
+
+* Go to [github.com](https://github.com/) and log in or sign up.
+* Click the New button to create a new repository.
+* Give your repo a name, choose visibility (public or private), and create it.
+
+2. Connect your local project to GitHub:
+
+    git remote add origin https://github.com/your-username/your-repo-name.git
+
+3. Add and commit your project files:
+
+    git add .
+
+    git commit -m "Initial commit"
+
+4. Push to GitHub:
+
+    git push -u origin main
+
 ## Deployment to Heroku
 
-### Update the requirements.txt File
+1. Update the requirements.txt File
 
-* Open your project in an IDE or terminal.
-* Ensure all required dependencies are installed in your environment.
-* Run the following command to update requirements.txt: pip3 freeze > requirements.txt
-* This command generates a list of all installed Python packages and their versions.
+    Ensure all dependencies are installed in your environment.
 
-### Push Changes to GitHub
+    Run: pip3 freeze > requirements.txt
 
-* Commit the updated requirements.txt file to your repository.
+    Add and commit the updated requirements.txt:
 
-### Sign Up or Log In to Heroku
+    git add requirements.txt
 
-* Go to Heroku's website and log in or create a free account.
+    git commit -m "Update requirements.txt"
 
-### Create a New App
+    git push
+
+2. Sign Up or Log In to Heroku
+
+    Go to Heroku's website and log in or create a free account.
+
+3. Create a New App
 
 * From the Heroku dashboard, click the Create New App button.
 * Enter a unique name for your app and select your region (e.g., United States or Europe).
 * Click Create App.
 
-### Set Up Config Vars
+4. Set Up Config Vars
 
 * Navigate to the Settings tab of your newly created app.
 * Scroll down to the Config Vars section and click Reveal Config Vars.
 * Add the following variables:
-    1. Key: CREDS
 
- Value: Paste the entire contents of your creds.json file.
+    1. Key: CREDS - Value: Paste the entire contents of your creds.json file.
 
-    2. Key: PORT
-
- Value: 8000
+    2. Key: PORT - Value: 8000
 
 * Click Add after entering each pair.
 
-### Configure Buildpacks
+5. Configure Buildpacks
 
 * Scroll down to the Buildpacks section.
 * Click Add Buildpack and select Python. Save changes.
 * Click Add Buildpack again and select Node.js. Save changes.
 * Ensure Python is listed above Node.js. If not, drag Python to the top.
 
-### Connect to GitHub
+6. Create a Procfile
+
+    In your project root, create a file named Procfile (no extension) with this content:
+
+    web: gunicorn your_project_name.wsgi
+
+    Add, commit, and push the Procfile:
+
+    git add Procfile
+
+    git commit -m "Add Procfile for Heroku deployment"
+
+    git push
+
+
+7. Connect to GitHub
 
 * Go to the Deploy tab in Heroku.
 * Under the Deployment Method section, select GitHub.
@@ -815,23 +855,25 @@ Success messages not showing after some actions - while majority of my messages 
 * In the search bar, enter the name of your GitHub repository and click Search.
 * Once your repository appears, click Connect.
 
-### Deploy Your App
+8. Deploy Your App
 
 * Scroll down to the Manual Deploy section.
 * Select the branch you want to deploy (e.g., main or master) from the dropdown.
 * Click the Deploy Branch button.
 * Wait for Heroku to build and deploy your app. Once complete, you’ll see a success message with a View App button to preview your app.
 
-### Enable Automatic Deploys (Optional)
+9. Enable Automatic Deploys (Optional)
 
 * To enable automatic deployment from GitHub, toggle the Enable Automatic Deploys option under the Automatic Deploys section.
 * This ensures your app rebuilds automatically every time you push new changes to GitHub.
 
-### Test Your App
+10. Test Your App
 
 * Click the View App button in Heroku to verify your app is running correctly.
 
 
 ## Conclusion
 
-Woolly's Yarn Barn was inspired by my own passion for knitting and crochet, and I wanted to create a project that combined my personal interests with the technical skills developed throughout this module. Building a full stack e-commerce site gave me the chance to apply concepts in a practical, meaningful way, and helped reinforce many of the more complex areas of the course. While the module was challenging and content-heavy, working through this project significantly deepened my understanding and confidence. I'm pleased with the final outcome and grateful for the opportunity to bring something I'm passionate about into my learning journey.
+Woolly's Yarn Barn was inspired by my own passion for knitting and crochet, and I wanted to create a project that combined my personal interests with the technical skills developed throughout this course. Building a full stack e-commerce site gave me the chance to apply concepts in a practical, meaningful way, and helped reinforce many of the more complex areas of the course. While the module was challenging and content-heavy, working through this project significantly deepened my understanding and confidence. I'm pleased with the final outcome and grateful for the opportunity to bring something I'm passionate about into my learning journey.
+
+I also want to give a special shout out to my mentor Spencer Barriball. He was such a big help on this project and gave me great direction and support. He is clearly passionate about helping his students and has been an absolute pleasure to deal with.

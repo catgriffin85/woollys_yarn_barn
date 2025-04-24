@@ -758,6 +758,8 @@ Order confirmation emails sent twice - after fixing the duplicate order issue I 
 
 Update and remove cart items - as many of the items on my site have attributes eg. size, weight and colour I encountered issues when trying to update or remove them from the cart. I was originally using just the item_id so it would remove all items even if some of the items had different attributes eg. 5mm Circular Knitting Needles and 6mm Circular Knitting Needles and updating them would cause a new item to be added to the cart with the new quantity and the original item would be unchanged. This bug required a lot of troubleshooting and many iterations of code before I got it working.
 
+Update & Remove buttons in Cart - the CSS was not working for these buttons and both were showing just black. Moving the CSS targetted classes from the "a" tag to the "small" tag resolved the issue. (Screenshots for this README were taken before the fix).
+
 <strong>Unfixed Bugs</strong>
 
 Success messages not showing after some actions - while majority of my messages are working, there are 2 that were picked up during testing that are not working - when item quantity in the cart is updated and when an existing stock item has been deleted. I've checked the code and can see no obvious issues as to why these messages are not showing when others are. As I am close to submission date I've decided to leave these bugs. The functionality that should be triggering these messages is working so I'm ok to leave them as bugs for now.

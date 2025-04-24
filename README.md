@@ -28,7 +28,7 @@ Woolly’s Yarn Barn is an e-commerce platform dedicated to serving the knitting
 
 Woolly’s Yarn Barn operates on a B2C (Business-to-Consumer) model, providing:
 
-* Product Sales: Yarn in various weights and materials, knitting needles, crochet hooks, stitch markers, and other crafting tools.
+* Product Sales: Yarn in various weights and colours, knitting needles, crochet hooks, and other crafting tools.
 * Niche Targeting: Focused on hobbyists, small craft businesses, and fiber art enthusiasts who value quality and variety.
 * Customer Accounts: Optional registration allows users to manage orders, save addresses, and subscribe to newsletters.
 * Secure Transactions: Integrated Stripe payment gateway ensures secure, reliable payments.
@@ -38,7 +38,6 @@ To attract, convert, and retain customers, Woolly’s Yarn Barn employs the foll
 Search Engine Optimization (SEO)
 
 * Descriptive, keyword-rich product names and meta tags for better discoverability.
-* Friendly URL slugs and structured data to improve Google indexing.
 
 Email Marketing
 
@@ -265,7 +264,7 @@ ________________________________________
 
 <strong>Look and feel</strong>
 
-For the design of this website, I wanted to create a fun-looking website that was still professional. The image on the homepage is bright and colourful to encourage users to stay and browse the website. The sales pages a  bright and structured making it easy for users to find what they are looking for. 
+For the design of this website, I wanted to create a fun-looking website that was still professional. The image on the homepage is bright and colourful to encourage users to stay and browse the website. The sales pages are bright and structured making it easy for users to find what they are looking for. 
 
 <strong>Font</strong>
 
@@ -331,7 +330,7 @@ Before starting the project, I created wireframes to map out the initial design 
 This project was created using the following languages and frameworks:
 
 * Django as the Python web framework.
-    * Python as the backend programming language.
+    * Python as the backend programming language.
 * JavaScript as the front-end programming language and scripting language for dynamic web content.
 * HTML as the markup language and templating language.
 * CSS as the style sheet language.
@@ -453,7 +452,7 @@ I created this website with a user-friendly design with the hope of offering a s
  [Facebook Link](https://www.facebook.com/profile.php?id=61573637325603)
 
  ![Facebook Page](static/images/README_images/facebook_page.png)
-    
+
  I decided to go with my own newsletter links instead of setting up one through mailchimp. A user can enter their email address to subscribe. These details are saved to a database and can be viewed in the admin panel. If a user wants to unsubscribe they can follow the link to the unsubscribe page and enter their email address again. The admin panel will be updated to show the user has unsubscibed. 
 
  ![Newsletter Subscribe](static/images/README_images/newsletter.png)
@@ -533,6 +532,10 @@ I created this website with a user-friendly design with the hope of offering a s
 
  ![Order Confirmation Email](static/images/README_images/confirmation_email.png)
 
+ The Stripe dashboard should be checked to ensure the payment intent was successful.
+
+ ![Stripe Dashboard](static/images/README_images/stripe_webhooks.png)
+
 7. <strong>User Profile</strong>
 
  The profile page is only available to logged-in users. This page will show the user's saved phone number, delivery address and the users order history.
@@ -557,11 +560,11 @@ I created this website with a user-friendly design with the hope of offering a s
 
  If the user is having issues and would like some assistance they can click on Help Center in the navigation bar and select FAQs. The FAQ page has 5 sections -
 
-    * Delivery
-    * Returns & Refunds
-    * Help with my Order
-    * Item & Stock Queries
-    * Payments
+* Delivery
+* Returns & Refunds
+* Help with my Order
+* Item & Stock Queries
+* Payments
 
  ![FAQ Page](static/images/README_images/faqs_closed.png)
 
@@ -639,7 +642,7 @@ I created this website with a user-friendly design with the hope of offering a s
 
  ![Admin Contacts](static/images/README_images/admin_contacts.png)
 
- A super user has an additional option when logged into their profile in the My Account section - Stock Management. From here the superuser can create new stock items for the website.
+ A super user has an additional option when logged into their profile in the My Account section - Stock Management. From here the superuser can create new stock items for the website without the need to access the admin panel.
 
  ![Add Stock](static/images/README_images/add_stock.png)
 
@@ -696,15 +699,24 @@ Link to testing document: [here](https://docs.google.com/spreadsheets/d/1UMBrraR
 
 ![Testing - Stock Management](static/images/README_images/testing_stock_mangement.png)
 
-I used "python -m flake8 --exclude .venv,.vscode, migrations" in my terminal to check my python code for any linting errors and to ensure my code was PEP8 compliant. There are still some errors showing for lines too long in my settings file but they cannot be fixed due to the type of code that it is. There are also errors showing for the project-level urls.py file, this is due to the addition of the 404 error page code. I have included an example of some of this code below.
+To check my HTML files I used: [W3C Markup Validation Service](https://validator.w3.org/#validate_by_input)
 
-![Testing - Flake8](static/images/README_images/flake8.png)
+I used "View Page Source" for the html as the Django tags were causing invalid errors.
 
-![Testing - Error Example settings.py](static/images/README_images/example_error.png)
+* index.html - Document checking completed. No errors or warnings to show.
+* stock.html - Document checking completed. No errors or warnings to show.
+* stock_detail.html - Document checking completed. No errors or warnings to show.
+* add_stock.html - Document checking completed. No errors or warnings to show.
+* edit_stock.html - Document checking completed. No errors or warnings to show.
+* cart.html - Document checking completed. No errors or warnings to show.
+* checkout.html - One error showing: Attribute placeholder not allowed on element select at this point. "<select name="country" placeholder="Country *" class="stripe-style-input lazyselect form-control" required id="id_country">". I can't find this element to fix it. In my checkout html this is showing as: {{ order_form.country | as_crispy_field }}.
+* order_complete_pending.html - Document checking completed. No errors or warnings to show. 
+* order_complete.html - Document checking completed. No errors or warnings to show.
+* faqs.html - Document checking completed. No errors or warnings to show.
+* customer_service.html - Document checking completed. No errors or warnings to show.
+* profiles.html - One error showing and it is the placeholder for country error again: Attribute placeholder not allowed on element select at this point. "<select name="country" placeholder="Country *" class="stripe-style-input lazyselect form-control" required id="id_country">". I can't find this element to fix it. In my checkout html this is showing as: {{ order_form.country | as_crispy_field }}.
 
-![Testing - Error Example urls.py](static/images/README_images/error_404code.png)
-
-To check my CSS files I used: [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/#validate_by_input)
+To check my CSS file I used: [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/#validate_by_input)
 
 Both my CSS files came back with no errors
 
@@ -717,6 +729,14 @@ stripe_elements.js
 17 warnings came back but no errors. The warnings were either 'const' is available in ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz) or 'template literal syntax' is only available in ES6 (use 'esversion: 6').
 
 ![Testing - JS](static/images/README_images/js_error_check.png)
+
+I used "python -m flake8 --exclude .venv,.vscode, migrations" in my terminal to check my python code for any linting errors and to ensure my code was PEP8 compliant. There are still some errors showing for lines too long in my settings file but they cannot be fixed due to the type of code that it is. There are also errors showing for the project-level urls.py file, this is due to the addition of the 404 error page code. I have included an example of some of this code below.
+
+![Testing - Flake8](static/images/README_images/flake8.png)
+
+![Testing - Error Example settings.py](static/images/README_images/example_error.png)
+
+![Testing - Error Example urls.py](static/images/README_images/error_404code.png)
 
 
 ## Bugs
@@ -808,3 +828,5 @@ Success messages not showing after some actions - while majority of my messages 
 
 
 ## Conclusion
+
+Woolly's Yarn Barn was inspired by my own passion for knitting and crochet, and I wanted to create a project that combined my personal interests with the technical skills developed throughout this module. Building a full stack e-commerce site gave me the chance to apply concepts in a practical, meaningful way, and helped reinforce many of the more complex areas of the course. While the module was challenging and content-heavy, working through this project significantly deepened my understanding and confidence. I'm pleased with the final outcome and grateful for the opportunity to bring something I'm passionate about into my learning journey.

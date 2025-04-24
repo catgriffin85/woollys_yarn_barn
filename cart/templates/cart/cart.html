@@ -23,7 +23,7 @@
             {% if cart_items %}
             {% for item in cart_items %}
             <div class="card card-cart p-3">
-                    <div class="row">
+                <div class="row">
                     <div class="col col-12 col-md-2 d-md-flex justify-content-center mb-2 mb-md-0">
                         {% if item.stock.image %}
                         <a href="{% url 'stock_detail' item.stock.id %}">
@@ -63,10 +63,11 @@
                             </p>
                         </div>
                     </div>
-                    </div>
-            {% endfor %}
+                </div>
             </div>
-        
+            {% endfor %}
+            
+        </div>
         <div class="col-12">
             <hr>
             <div class="card card-cart p-3 d-flex align-items-end">
@@ -105,7 +106,7 @@
         </a>
     </div>
     {% endif %}
-
+</div>
     {% endblock %}
 
     {% block postloadjs %}

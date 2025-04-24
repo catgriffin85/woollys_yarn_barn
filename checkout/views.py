@@ -2,8 +2,6 @@ from django.shortcuts import render, redirect, HttpResponse
 from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.conf import settings
-from django.core.mail import send_mail
-from django.template.loader import render_to_string
 
 from .forms import OrderForm
 from .models import Order

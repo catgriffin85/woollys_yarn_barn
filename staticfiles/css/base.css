@@ -432,6 +432,10 @@ a.remove-item:hover {
         font-size: 1.3em;
       }
 
+    h3 {
+    font-size: 1.2em;
+    }
+
     .homepage-intro {
         padding-bottom: 5rem;
     } 

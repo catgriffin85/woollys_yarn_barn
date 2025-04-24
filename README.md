@@ -2,7 +2,7 @@
 
 ## Introduction to Woolly's Yarn Barn Website
 
-Woolly's Yarn Barn an eCommerce website designed to bring the cozy charm of knitting and crochet into the digital age. This website showcases a fully functional online store that sells a curated selection of yarns, knitting and crochet supplies for crafters of all skill levels.
+Woolly's Yarn Barn is an eCommerce website designed to bring the cozy charm of knitting and crochet into the digital age. This website showcases a fully functional online store that sells a curated selection of yarns, knitting and crochet supplies for crafters of all skill levels.
 
 The site demonstrates practical implementation of features such as product listings, cart functionality, secure checkout with Stripe integration, and responsive design. 
 
@@ -21,6 +21,32 @@ username: superuser
 password: WoollysYarnBarn
 
 ![Responsive](static/images/README_images/responsive.png)
+
+## Business Model & Marketing Strategy
+
+Woolly’s Yarn Barn is an e-commerce platform dedicated to serving the knitting and crochet community with high-quality yarns, needles, hooks, and essential accessories. Built with Django and deployed on Heroku, this platform offers a seamless online shopping experience, complete with user authentication, a customizable cart system, secure Stripe payments, and admin-side order management.
+
+Woolly’s Yarn Barn operates on a B2C (Business-to-Consumer) model, providing:
+
+* Product Sales: Yarn in various weights and materials, knitting needles, crochet hooks, stitch markers, and other crafting tools.
+* Niche Targeting: Focused on hobbyists, small craft businesses, and fiber art enthusiasts who value quality and variety.
+* Customer Accounts: Optional registration allows users to manage orders, save addresses, and subscribe to newsletters.
+* Secure Transactions: Integrated Stripe payment gateway ensures secure, reliable payments.
+
+To attract, convert, and retain customers, Woolly’s Yarn Barn employs the following digital marketing techniques:
+
+Search Engine Optimization (SEO)
+
+* Descriptive, keyword-rich product names and meta tags for better discoverability.
+* Friendly URL slugs and structured data to improve Google indexing.
+
+Email Marketing
+
+* Newsletter sign-ups with welcome confirmation emails.
+
+Community Building
+
+* FAQ and contact forms help streamline customer support and build trust.
 
 ## Project Goals
 
@@ -100,14 +126,14 @@ As a returning user, I want to log in so that I can access my account and order 
 Acceptance Criteria:
 * Login form with email and password validation.
 * Error message for incorrect credentials.
-* Successful login redirects to the user dashboard.
+* Successful log in redirects to the user dashboard.
 
 As an admin, I want to manage products and orders so that I can update inventory and track sales.
 
 Acceptance Criteria:
 * Admin dashboard with CRUD functionality for products.
 * Role-based access control preventing non-admin users from accessing the admin panel.
-* Order management system displaying status and details.
+* The order management system displays status and details.
 ________________________________________
 
 <strong>Stock Management</strong>
@@ -187,7 +213,7 @@ As a customer, I want to leave reviews and ratings for products so that I can sh
 Acceptance Criteria:
 * Customers can submit reviews with a rating (1-5 stars).
 * Reviews are displayed on product pages.
-* Admin has the ability to moderate reviews.
+* Admin can moderate reviews.
 
 As a customer, I want to read reviews from other buyers so that I can make informed decisions.
 
@@ -239,7 +265,7 @@ ________________________________________
 
 <strong>Look and feel</strong>
 
-For the design of this website, I wanted to create a fun looking website that was still professional. The image on the homepage is bright and colourful to encourage users to stay and browse the website. The sales pages a  bright and structured making it easy for users to find what they are looking for. 
+For the design of this website, I wanted to create a fun-looking website that was still professional. The image on the homepage is bright and colourful to encourage users to stay and browse the website. The sales pages a  bright and structured making it easy for users to find what they are looking for. 
 
 <strong>Font</strong>
 
@@ -250,7 +276,7 @@ Quicksand was used as the font for this website. I chose this font because I fel
 
 ## Wireframes
 
-Before starting the project, I created wireframes to map out the initial design and functionality. These wireframes served as a blueprint to guide the development process. I stuck witht the orginal design for the majority of the project, however, I deviated from the original plan in some areas. By not sticking rigidly to my wireframes I was able to improve on the look and feel as the project progressed which I feel elevate the project's quality beyond the initial concept.
+Before starting the project, I created wireframes to map out the initial design and functionality. These wireframes served as a blueprint to guide the development process. I stuck with the original design for the majority of the project, however, I deviated from the original plan in some areas. By not sticking rigidly to my wireframes I was able to improve on the look and feel as the project progressed which I feel elevated the project's quality beyond the initial concept.
 
 <strong>Homepage wireframe</strong>
 
@@ -305,25 +331,25 @@ Before starting the project, I created wireframes to map out the initial design 
 This project was created using the following languages and frameworks:
 
 * Django as the Python web framework.
-    * Python as the backend programming language.
-* JavaScript as the frontend programming language and scripting language for dynamic web content.
+    * Python as the backend programming language.
+* JavaScript as the front-end programming language and scripting language for dynamic web content.
 * HTML as the markup language and templating language.
 * CSS as the style sheet language.
 * Bootstrap 5 as the CSS framework.
 
 <strong>Django Packages</strong>
 
-Django installs some packages by default and some packages I installed. Below are a list of the main packages I used and a description. Description taken from the web.
+Django installs some packages by default, and I installed some packages. Below is a list of the main packages I used and a description. Description taken from the web.
 
 Django Python - pip3 install Django~=4.2.1
 
 _Gunicorn_
 
-gunicorn is a production equivalent of the manage.py runserver used in development but with speed and security optimisation.
+gunicorn is a production equivalent of the manage.py run server used in development but with speed and security optimisation.
 
 _Whitenoise_
 
-WhiteNoise works with any WSGI-compatible app but has some special auto-configuration features for Django. WhiteNoise takes care of best-practices.
+WhiteNoise works with any WSGI-compatible app but has some special auto-configuration features for Django. WhiteNoise takes care of best practices.
 
 _Psycopg2_
 
@@ -335,7 +361,7 @@ Django-allauth is a Django package that provides a set of views, templates, and 
 
 _Django-crispy-forms_
 
-Django-crispy-forms provides you with a |crispy filter and {% crispy %} tag that will let you control the rendering behavior of your Django forms in a very elegant and DRY way. Have full control without writing custom form templates.
+Django-crispy-forms provides you with a |crispy filter and {% crispy %} tag that will let you control the rendering behavior of your Django forms in a very elegant and DRY way. Have full control over custom form templates without writing them.
 
 _cloudinary_
 
@@ -347,7 +373,7 @@ A Django storage backend that integrates Cloudinary for managing media files.
 
 _pillow_
 
-A Python imaging library (PIL fork) for opening, manipulating, and saving image files.
+A Python imaging library (PIL fork) for opening, manipulating and saving image files.
 
 _stripe_
 
@@ -357,6 +383,7 @@ The official Python library for integrating Stripe’s payment processing APIs i
 
 * [Font Awesome](https://fontawesome.com/) was used for all icons.
 * [Favicon.io](https://favicon.io/) was used to create the favicon.
+* [Cloudinary](https://cloudinary.com/) for image storage.
 * [GitHub](https://github.com/) for hosting repositories.
 * [Heroku](https://www.heroku.com/home) where the website is deployed.
 
@@ -367,279 +394,279 @@ I created this website with a user-friendly design with the hope of offering a s
 
 1. <strong>Navigation Bar</strong>
 
-    The navigation bar is designed to provide users with a seamless and intuitive browsing experience. At the top of every page, the navigation bar ensures easy access to the website’s key features. For new users, it includes options to Sign Up or Sign In, allowing them to quickly create an account or log in to their existing one. Once logged in, the navigation bar dynamically updates, offering a personalized link to My Profile where users can view and manage their delivery details and also view previous orders. This adaptive design ensures a user-friendly experience, guiding visitors to the most relevant options based on their needs and enhancing the overall functionality of the website.
+ The navigation bar is designed to provide users with a seamless and intuitive browsing experience. At the top of every page, the navigation bar ensures easy access to the website’s key features. For new users, it includes options to Sign Up or Sign In, allowing them to quickly create an account or log in to their existing one. Once logged in, the navigation bar dynamically updates, offering a personalized link to My Profile where users can view and manage their delivery details and also view previous orders. This adaptive design ensures a user-friendly experience, guiding visitors to the most relevant options based on their needs and enhancing the overall functionality of the website.
 
-    View of nav bar before a user logs in:
+ View of nav bar before a user logs in:
 
-    ![Nav bar before login](static/images/README_images/nav_bar.png)
+ ![Nav bar before login](static/images/README_images/nav_bar.png)
 
-    ![Shop Now](static/images/README_images/shop_now.png)
+ ![Shop Now](static/images/README_images/shop_now.png)
 
-    ![Yarn](static/images/README_images/yarn.png)
+ ![Yarn](static/images/README_images/yarn.png)
 
-    ![Accessories](static/images/README_images/accessories.png)
+ ![Accessories](static/images/README_images/accessories.png)
 
-    ![Shop by](static/images/README_images/shop_by.png)
+ ![Shop by](static/images/README_images/shop_by.png)
 
-    ![Help Center](static/images/README_images/help_center.png)
+ ![Help Center](static/images/README_images/help_center.png)
 
-    View of nav bar on a smaller screen:
+ View of the nav bar on a smaller screen:
 
-    ![Smaller Screen](static/images/README_images/nav_bar_small_screen.png)
+ ![Smaller Screen](static/images/README_images/nav_bar_small_screen.png)
 
-    ![Smaller Screen Dropdown](static/images/README_images/nav_bar_small_screen_dropdown.png)
+ ![Smaller Screen Dropdown](static/images/README_images/nav_bar_small_screen_dropdown.png)
 
-    The user has the option to sign up a new account or sign in.
+ The user has the option to sign up a new account or sign in.
 
-    ![My Account](static/images/README_images/my_account_logged_out.png)
+ ![My Account](static/images/README_images/my_account_logged_out.png)
 
-    If the user selects Sign Up,  it will bring them to the Sign Up page: 
+ If the user selects Sign Up,  it will bring them to the Sign Up page: 
 
-    ![Sign Up](static/images/README_images/sign_up.png)
+ ![Sign Up](static/images/README_images/sign_up.png)
 
-    If the user selects Sign In, it will bring them to the Sign In page:
+ If the user selects Sign In, it will bring them to the Sign In page:
 
-    ![Sign In](static/images/README_images/sign_in.png)
+ ![Sign In](static/images/README_images/sign_in.png)
 
-    After registering a new account or logging into an existing one, users will be redirected to the homepage, where the navigation bar dynamically updates to display personalised links.
+ After registering a new account or logging into an existing one, users will be redirected to the homepage, where the navigation bar dynamically updates to display personalised links.
 
-    ![Nav bar after Signed In](static/images/README_images/nav_bar_logged_in.png)
+ ![Nav bar after Signed In](static/images/README_images/nav_bar_logged_in.png)
 
-    ![My Account Signed In](static/images/README_images/my_account_logged_in.png)
+ ![My Account Signed In](static/images/README_images/my_account_logged_in.png)
 
-    If the user is a superuser they will see additional options for Stock Management
+ If the user is a superuser they will see additional options for Stock Management.
 
-    ![My Account Signed In as a superuser](static/images/README_images/my_account_logged_in_superuser.png)
+ ![My Account Signed In as a superuser](static/images/README_images/my_account_logged_in_superuser.png)
 
-    The user now has a direct link to their profile and also an option to log out. 
+ The user now has a direct link to their profile and also an option to log out. 
 
-    ![Sign out page](static/images/README_images/sign_out.png)
+ ![Sign out page](static/images/README_images/sign_out.png)
 
 2. <strong>Footer</strong>
 
-    I went with a simplistic footer that contains the website name, a link to the Facebook page and a link to sign up to the newsletter.
+ I went with a simplistic footer that contains the website name, a link to the Facebook page and a link to sign up for the newsletter.
 
-    ![Footer](static/images/README_images/footer.png)
+ ![Footer](static/images/README_images/footer.png)
 
-    Clicking on the Facebook link with open Woolly's Yarn Barn Facebook page in a new tab.
+ Clicking on the Facebook link with open Woolly's Yarn Barn Facebook page in a new tab.
 
-    [Facebook Link](https://www.facebook.com/profile.php?id=61573637325603)
+ [Facebook Link](https://www.facebook.com/profile.php?id=61573637325603)
 
-    ![Facebook Page](static/images/README_images/facebook_page.png)
-    
-    I decided to go with my own newletter links instead of setting up one through mailchimp. A user can enter their email address to subscribe. These details are saved to a database and can be viewed in the admin panel. If a user wants to unsubscribe they can follow the link to the unsubscibe page and enter their email address again. The admin panel will be updated to show the user has unsubscibed. 
+ ![Facebook Page](static/images/README_images/facebook_page.png)
+    
+ I decided to go with my own newsletter links instead of setting up one through mailchimp. A user can enter their email address to subscribe. These details are saved to a database and can be viewed in the admin panel. If a user wants to unsubscribe they can follow the link to the unsubscribe page and enter their email address again. The admin panel will be updated to show the user has unsubscibed. 
 
-    ![Newsletter Subscribe](static/images/README_images/newsletter.png)
+ ![Newsletter Subscribe](static/images/README_images/newsletter.png)
 
-    ![Newsletter Unsubscribe](static/images/README_images/newsletter_unsubscribe.png)
+ ![Newsletter Unsubscribe](static/images/README_images/newsletter_unsubscribe.png)
 
-    ![Admin Panel Newsletter](static/images/README_images/admin_panel_newsletter.png)
+ ![Admin Panel Newsletter](static/images/README_images/admin_panel_newsletter.png)
 
 3. <strong>Homepage</strong>
 
-    The homepage serves as the welcoming face of the website, featuring a bright and fun design that reflects the brand's identity. It offers visitors an immediate sense of what the business is all about.
+ The homepage serves as the welcoming face of the website, featuring a bright and fun design that reflects the brand's identity. It offers visitors an immediate sense of what the business is all about.
 
-    I kept the homepage simple with just a small introduction to the website and a button to follow for users to start shopping. 
+ I kept the homepage simple with just a small introduction to the website and a button to follow for users to start shopping. 
 
-    ![Homepage](static/images/README_images/homepage.png)
+ ![Homepage](static/images/README_images/homepage.png)
 
 4. <strong>Stock Page</strong>
 
-    Using either the homepage button or the navigation bar, users can view the items for sale on the website. There are 3 main categories of items - yarn, yarn packs and accessories. Users can use the search bar, the navigation bar dropdowns or the sort filter to find the item they are looking for. Each item is in it's own responsive card and once clicked it will bring the user to a new page that will provide more detail on the item. 
+ Using either the homepage button or the navigation bar, users can view the items for sale on the website. There are 3 main categories of items - yarn, yarn packs and accessories. Users can use the search bar, the navigation bar dropdowns or the sort filter to find the item they are looking for. Each item is in its own responsive card and once clicked it will bring the user to a new page that will provide more detail on the item. 
 
-    Most items will have additional options eg. yarn will give users the option to select a weight and a colour and knitting needles and crochet hooks will give users the option of sizes. Yarn packs and accessory packs do not have an options.
+ Most items will have additional options eg. yarn will give users the option to select a weight and a colour and knitting needles and crochet hooks will give users the option of sizes. Yarn packs and accessory packs do not have options.
 
-    ![Stock Page](static/images/README_images/stock_page.png)
+ ![Stock Page](static/images/README_images/stock_page.png)
 
-    ![Stock Detail - Yarn](static/images/README_images/stock_detail_knitting_needle.png)
+ ![Stock Detail - Yarn](static/images/README_images/stock_detail_knitting_needle.png)
 
-    ![Stock Detail - Knitting Needle](static/images/README_images/stock_detail_yarn.png)
+ ![Stock Detail - Knitting Needle](static/images/README_images/stock_detail_yarn.png)
 
-    ![Stock Detail - Accessory](static/images/README_images/stock_detail_accessory.png)
+ ![Stock Detail - Accessory](static/images/README_images/stock_detail_accessory.png)
 
-    From here the user can search other items in the same catagory, go back to the stock page or add the item to the cart.
+ From here the user can search other items in the same category, go back to the stock page or add the item to the cart.
 
 5. <strong>Shopping Cart</strong>
 
-    When "Add to Cart" is selected the user will see a success message confirming their item has beena added to the cart and a link to the cart. The message will also advise how much more the user will need to spend to avoid the delivery charge. 
+ When "Add to Cart" is selected the user will see a success message confirming their item has been added to the cart and a link to the cart. The message will also advise how much more the user will need to spend to avoid the delivery charge. 
 
-    ![Add to cart success message with delivery note](static/images/README_images/add_to_cart_message_delivery.png)
-    ![Add to cart success message](static/images/README_images/add_to_cart_message.png)
+ ![Add to cart success message with delivery note](static/images/README_images/add_to_cart_message_delivery.png)
+ ![Add to cart success message](static/images/README_images/add_to_cart_message.png)
 
-    ![Items in cart](static/images/README_images/shopping_cart_options.png)
+ ![Items in cart](static/images/README_images/shopping_cart_options.png)
 
-    From the cart users can update the quantity of their items and also remove any unwanted items.
+ From the cart, users can update the quantity of their items and also remove any unwanted items.
 
-    ![Add to cart success message](static/images/README_images/cart_update.png)
+ ![Add to cart success message](static/images/README_images/cart_update.png)
 
-    ![Updated cart](static/images/README_images/cart_full_pic.png)
+ ![Updated cart](static/images/README_images/cart_full_pic.png)
 
-    Once in the cart, the user has the option to click the "Keep Shopping" button to return to the stock page or they can choose "Secure Checkout" and complete their purchase.
+ Once in the cart, the user has the option to click the "Keep Shopping" button to return to the stock page or they can choose "Secure Checkout" and complete their purchase.
 
 6. <strong>Checkout</strong>
 
-    The checkout is comprised of 4 sections - Your Details, Delivery Details, Order Summary and Payment. If the user has no profile or not logged in the form will be blank. If the user is logged in to their profile and has previously saved their details, their email address and delivery address will be pre-populated.
+ The checkout is comprised of 4 sections - Your Details, Delivery Details, Order Summary and Payment. If the user has no profile or is not logged in the form will be blank. If the user is logged in to their profile and has previously saved their details, their email address and delivery address will be pre-populated.
 
-    ![Your Details](static/images/README_images/checkout_your_details.png)
+ ![Your Details](static/images/README_images/checkout_your_details.png)
 
-    ![Delivery Details](static/images/README_images/checkout_delivery_details_blank.png)
+ ![Delivery Details](static/images/README_images/checkout_delivery_details_blank.png)
 
-    ![Order Summary](static/images/README_images/checkout_order_summary.png)
+ ![Order Summary](static/images/README_images/checkout_order_summary.png)
 
-    ![Payment](static/images/README_images/checkout_payment.png)
+ ![Payment](static/images/README_images/checkout_payment.png)
 
-    Once the user has complete the form they can either "Return to Cart" or "Complete Order".
+ Once the user has completed the form they can either "Return to Cart" or "Complete Order".
 
-    If the checkout form is completed correctly and all fields are valid the order will be processed when "Complete Order" is clicked. To avoid creating duplicate orders from the checkout and the webhook I had to add an additional step so only the webhook created the order. Because of the delay between the checkout view and the webhook, orders were failing so the user is now directed to an order is processing page and once they refresh the page the order will have been created and they can view the order complete page.
+ If the checkout form is completed correctly and all fields are valid the order will be processed when "Complete Order" is clicked. To avoid creating duplicate orders from the checkout and the webhook I had to add a step so only the webhook created the order. Because of the delay between the checkout view and the webhook, orders were failing so the user is now directed to an order is processing page and once they refresh the page the order will have been created and they can view the order complete page.
 
-    ![Order Processing](static/images/README_images/order_processing.png)
+ ![Order Processing](static/images/README_images/order_processing.png)
 
-    If the user is not logged into a profile, they will be encouraged to create an account. 
+ If the user is not logged into a profile, they will be encouraged to create an account. 
 
-    ![Order Complete](static/images/README_images/order_confirmation_logged_out.png)
+ ![Order Complete](static/images/README_images/order_confirmation_logged_out.png)
 
-    If the user is logged into their profile, they will be provided with a link to view their profile and their orders.
+ If the user is logged into their profile, they will be provided with a link to view their profile and their orders.
 
-    ![Order Complete](static/images/README_images/order_confirmation_logged_in.png)
+ ![Order Complete](static/images/README_images/order_confirmation_logged_in.png)
 
-    When the order is complete the user will receive an order confirmation email.
+ When the order is complete the user will receive an order confirmation email.
 
-    ![Order Confirmation Email](static/images/README_images/confirmation_email.png)
+ ![Order Confirmation Email](static/images/README_images/confirmation_email.png)
 
 7. <strong>User Profile</strong>
 
-    The profile page is only available to logged in users. This page will show the users saved phone number, delivery address and the users order history.
+ The profile page is only available to logged-in users. This page will show the user's saved phone number, delivery address and the users order history.
 
-    ![Profile](static/images/README_images/profile_page.png)
+ ![Profile](static/images/README_images/profile_page.png)
 
-    Phone number and delivery address can be updated from this page. A success message will display once update has been saved. 
+ Phone number and delivery address can be updated from this page. A success message will display once the update has been saved. 
 
-    ![Profile Update](static/images/README_images/profile_update_message.png)
+ ![Profile Update](static/images/README_images/profile_update_message.png)
 
-    A user may also delete their profile. When "Delete Profile" is clicked the user will be brought to a confirmation page so they can confirm the delete.
+ A user may also delete their profile. When "Delete Profile" is clicked the user will be brought to a confirmation page so they can confirm the delete.
 
-    ![Profile Delete](static/images/README_images/profile_confirm_delete.png)
+ ![Profile Delete](static/images/README_images/profile_confirm_delete.png)
 
-    The user can click into their past orders and review the order complete page again for that order with a message to advise the user is looking at a past order confirmation.
+ The user can click into their past orders and review the order complete page again for that order with a message to advise the user is looking at past order confirmation.
 
-    ![Past Order](static/images/README_images/past_order_confirmation.png)
+ ![Past Order](static/images/README_images/past_order_confirmation.png)
 
-    Clicking "Back to Profile" will bring the user back to their profile page.
+ Clicking "Back to Profile" will bring the user back to their profile page.
 
 8. <strong>Customer Service</strong>
 
-    If the user is having issues and would like some assistance they can click on Help Center in the navigation bar and select FAQs. The FAQ page has 5 sections -
+ If the user is having issues and would like some assistance they can click on Help Center in the navigation bar and select FAQs. The FAQ page has 5 sections -
 
-    * Delivery
-    * Returns & Refunds
-    * Help with my Order
-    * Item & Stock Queries
-    * Payments
+    * Delivery
+    * Returns & Refunds
+    * Help with my Order
+    * Item & Stock Queries
+    * Payments
 
-    ![FAQ Page](static/images/README_images/faqs_closed.png)
+ ![FAQ Page](static/images/README_images/faqs_closed.png)
 
-    To see the answer to the FAQ the user must click on the question and the card expands to show the answer.
+ To see the answer to the FAQ the user must click on the question and the card expands to show the answer.
 
-    ![FAQ Page Open](static/images/README_images/faqs_open.png)
+ ![FAQ Page Open](static/images/README_images/faqs_open.png)
 
-    If the user scrolls to the end of the page they will see a link to contact the Customer Service team. This website encourages the user to self service before offering the user a contact method. 
+ If the user scrolls to the end of the page they will see a link to contact the Customer Service team. This website encourages the user to self-service before offering the user a contact method. 
 
-    ![FAQs link to CS](static/images/README_images/faqs_link_cs.png)
+ ![FAQs link to CS](static/images/README_images/faqs_link_cs.png)
 
-    The user will go through to a blank Contact form. They will be asked for their name and email address and to select a reason for their contact. 
+ The user will go through to a blank Contact form. They will be asked for their name and email address and to select a reason for their contact. 
 
-    ![Contact Form](static/images/README_images/contact_blank_form.png)
+ ![Contact Form](static/images/README_images/contact_blank_form.png)
 
-    Once a reason has been selected the user will be shown related FAQs in a final attempt to get the user to resolve their query before contacting the company.
+ Once a reason has been selected the user will be shown related FAQs in a final attempt to get the user to resolve their query before contacting the company.
 
-    ![Contact Form FAQs](static/images/README_images/contact_topic_selected.png)
+ ![Contact Form FAQs](static/images/README_images/contact_topic_selected.png)
 
-    If an FAQ has helped the user and they no longer need to contact the company they can select "Yes, thank you" and the form will close and the user will be redirected back to the homepage.
+ If an FAQ has helped the user and they no longer need to contact the company they can select "Yes, thank you" and the form will close and the user will be redirected back to the homepage.
 
-    ![Contact Form No More Help](static/images/README_images/contact_finished.png)
+ ![Contact Form No More Help](static/images/README_images/contact_finished.png)
 
-    If the user still requires assistance, they can click "No, I still need help" and a text box will open for them to type up their query.
+ If the user still requires assistance, they can click "No, I still need help" and a text box will open for them to type up their query.
 
-    ![Contact Form Need More Help](static/images/README_images/contact_still_need_help.png)
+ ![Contact Form Need More Help](static/images/README_images/contact_still_need_help.png)
 
-    The user will then click submit and the contact will be logged in the database. The user will receive on onscreen success messages as well as an email confirmation.
+ The user will then click submit and the contact will be logged in the database. The user will receive onscreen success messages as well as an email confirmation.
 
-    ![Contact Form](static/images/README_images/contact_success_message.png)
-    
-    ![Contact Form](static/images/README_images/contact_email_confirmation.png)
+ ![Contact Form](static/images/README_images/contact_success_message.png)
+    
+ ![Contact Form](static/images/README_images/contact_email_confirmation.png)
 
 
 9. <strong>404 Page</strong>
 
-    If a URL is mistyped or if a user tries to access pages that are moved or deleted without redirection then they will receive a 404 page. This page will bring the user back to the homepage.
+ If a URL is mistyped or if a user tries to access pages that are moved or deleted without redirection then they will receive a 404 page. This page will bring the user back to the homepage.
 
-    ![404 Page](static/images/README_images/404_page.png)
+ ![404 Page](static/images/README_images/404_page.png)
 
 
 10. <strong>Super User</strong>
 
-    Super users can log into the admin panel where they have full control over the databases and users.
+ Super users can log into the admin panel where they have full control over the databases and users.
 
-    ![Admin Panel](static/images/README_images/django_admin_panel.png)
+ ![Admin Panel](static/images/README_images/django_admin_panel.png)
 
-    On this website, the admin panel has a number of database for the super user to manage: 
+ On this website, the admin panel has several databases for the super user to manage: 
 
-    Stock Categories:
+ Stock Categories:
 
-    ![Admin Categories](static/images/README_images/admin_category.png)
+ ![Admin Categories](static/images/README_images/admin_category.png)
 
-    Stock:
+ Stock:
 
-    ![Admin Stock](static/images/README_images/admin_stock.png)
+ ![Admin Stock](static/images/README_images/admin_stock.png)
 
-    Users:
+ Users:
 
-    ![Admin Users](static/images/README_images/admin_users.png)
+ ![Admin Users](static/images/README_images/admin_users.png)
 
-    FAQ Topics:
+ FAQ Topics:
 
-    ![FAQ Topics](static/images/README_images/admin_faq_topics.png)
+ ![FAQ Topics](static/images/README_images/admin_faq_topics.png)
 
-    FAQs:
+ FAQs:
 
-    ![Admin FAQs](static/images/README_images/admin_faqs.png)
+ ![Admin FAQs](static/images/README_images/admin_faqs.png)
 
-    All FAQ's have a "published" flag. Only questions that have this box ticked will show on the website.
+ All FAQs have a "published" flag. Only questions that have this box ticked will show on the website.
 
-    ![Admin FAQs Publish](static/images/README_images/faq_publish_box.png)
+ ![Admin FAQs Publish](static/images/README_images/faq_publish_box.png)
 
-    User Contacts:
+ User Contacts:
 
-    ![Admin Contacts](static/images/README_images/admin_contacts.png)
+ ![Admin Contacts](static/images/README_images/admin_contacts.png)
 
-    A super user has an additional option when logged into their profile in the My Account section - Stock Management. From here the superuser can create new stock items for the website.
+ A super user has an additional option when logged into their profile in the My Account section - Stock Management. From here the superuser can create new stock items for the website.
 
-    ![Add Stock](static/images/README_images/add_stock.png)
+ ![Add Stock](static/images/README_images/add_stock.png)
 
-    ![Add Stock 2](static/images/README_images/add_stock_2.png)
+ ![Add Stock 2](static/images/README_images/add_stock_2.png)
 
-    They can also edit or delete existing items on the website without going into the admin panel. They have 2 options, they can update from the item cards on the stock page or in the stock detail page.
+ They can also edit or delete existing items on the website without going into the admin panel. They have 2 options, they can update from the item cards on the stock page or the stock detail page.
 
-    ![Edit & Delete Option on Card](static/images/README_images/stock_page_edit_delete_options.png)
+ ![Edit & Delete Option on Card](static/images/README_images/stock_page_edit_delete_options.png)
 
-    ![Edit & Delete Option on Stock Details](static/images/README_images/stock_details_page_edit_delete_options.png)
+ ![Edit & Delete Option on Stock Details](static/images/README_images/stock_details_page_edit_delete_options.png)
 
-    When "Edit" is clicked the super user is brought to a new form that will allow them to edit the item they have selected.
+ When "Edit" is clicked the superuser is brought to a new form that will allow them to edit the item they have selected.
 
-    ![Edit Stock](static/images/README_images/edit_stock.png)
+ ![Edit Stock](static/images/README_images/edit_stock.png)
 
-    ![Edit Stock 2](static/images/README_images/edit_stock_2.png)
+ ![Edit Stock 2](static/images/README_images/edit_stock_2.png)
 
-    When "Delete" is clicked, they will be brought to a delete confirmation page before the item is deleted.
+ When "Delete" is clicked, they will be brought to a delete confirmation page before the item is deleted.
 
-    ![Delete Stock](static/images/README_images/delete_stock_confirmation.png)
+ ![Delete Stock](static/images/README_images/delete_stock_confirmation.png)
 
 
 ### Future Features
 
-I would like to set up a section for reviews. Unfortunately, time constrains impacted my ability to include an option for users to review products and read other users reviews. 
+I would like to set up a section for reviews. Unfortunately, time constraints impacted my ability to include an option for users to review products and read other users' reviews. 
 
-I would also like to include a returns section. To allow users to go into orders and have an option for a return. Once return is selected, they would receive an email with a return label attached and the order would be updated with a return flag.
+I would also like to include a returns section. To allow users to go into orders and have an option for a return. Once a return is selected, they would receive an email with a return label attached and the order would be updated with a return flag.
 
 ## Testing
 
@@ -669,7 +696,7 @@ Link to testing document: [here](https://docs.google.com/spreadsheets/d/1UMBrraR
 
 ![Testing - Stock Management](static/images/README_images/testing_stock_mangement.png)
 
-I used "python -m flake8 --exclude .venv,.vscode,migrations" in my terminal to check for any linting errors and to ensure my code was PEP8 compliant. There are still some errors showing for lines to long in my settings file but they cannot be fixed due the type of code that it is. There are also errors showing for the project level urls.py file, this is due to the addition of the 404 error page code. I have included an example of some of this code below.
+I used "python -m flake8 --exclude .venv,.vscode, migrations" in my terminal to check my python code for any linting errors and to ensure my code was PEP8 compliant. There are still some errors showing for lines too long in my settings file but they cannot be fixed due to the type of code that it is. There are also errors showing for the project-level urls.py file, this is due to the addition of the 404 error page code. I have included an example of some of this code below.
 
 ![Testing - Flake8](static/images/README_images/flake8.png)
 
@@ -677,12 +704,38 @@ I used "python -m flake8 --exclude .venv,.vscode,migrations" in my terminal to c
 
 ![Testing - Error Example urls.py](static/images/README_images/error_404code.png)
 
+To check my CSS files I used: [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/#validate_by_input)
+
+Both my CSS files came back with no errors
+
+![Testing - CSS](static/images/README_images/validator_base.css.png)
+
+To check my Javascript files I used: [jshint](https://jshint.com/)
+
+stripe_elements.js
+
+17 warnings came back but no errors. The warnings were either 'const' is available in ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz) or 'template literal syntax' is only available in ES6 (use 'esversion: 6').
+
+![Testing - JS](static/images/README_images/js_error_check.png)
+
+
 ## Bugs
 
 <strong>Fixed Bugs</strong>
 
+Homepage image - after deployment to Heroku the homepage image stopped loading. When running collectstatic the name of the image was changing. This meant the link in my CSS file could not find it. I moved the css for my body element to my base.html and that fixed it.
+
+Newsletter resubscibing - for the newsletter subscription if I unsubscribed and then tried to resubscribe Django was preventing it as the email address was already created. I had to update my views.py to override Django.
+
+Order duplication - once I set up my webhook orders were duplicating. The order view was creating an order and then the webhook was creating the order. I had to remove the order creation section from the order views. Then because the order was completed in the view before the webhook was completed, orders were showing as failed to the user but were still being created. I had to add another step into the order process and delay the order confirmation page. This gave the webhook time to create the order and the order confirmation page could then find the order.
+
+Order confirmation emails sent twice - after fixing the duplicate order issue I had still left in code that sent out email confirmation in my views file. I removed that code and fixed this bug. 
+
+Update and remove cart items - as many of the items on my site have attributes eg. size, weight and colour I encountered issues when trying to update or remove them from the cart. I was originally using just the item_id so it would remove all items even if some of the items had different attributes eg. 5mm Circular Knitting Needles and 6mm Circular Knitting Needles and updating them would cause a new item to be added to the cart with the new quantity and the original item would be unchanged. This bug required a lot of troubleshooting and many iterations of code before I got it working.
+
 <strong>Unfixed Bugs</strong>
 
+Success messages not showing after some actions - while majority of my messages are working, there are 2 that were picked up during testing that are not working - when item quantity in the cart is updated and when an existing stock item has been deleted. I've checked the code and can see no obvious issues as to why these messages are not showing when others are. As I am close to submission date I've decided to leave these bugs. The functionality that should be triggering these messages is working so I'm ok to leave them as bugs for now.
 
 ## Deployment to Heroku
 
@@ -712,13 +765,13 @@ I used "python -m flake8 --exclude .venv,.vscode,migrations" in my terminal to c
 * Navigate to the Settings tab of your newly created app.
 * Scroll down to the Config Vars section and click Reveal Config Vars.
 * Add the following variables:
-    1. Key: CREDS
+    1. Key: CREDS
 
-        Value: Paste the entire contents of your creds.json file.
+ Value: Paste the entire contents of your creds.json file.
 
-    2. Key: PORT
+    2. Key: PORT
 
-        Value: 8000
+ Value: 8000
 
 * Click Add after entering each pair.
 

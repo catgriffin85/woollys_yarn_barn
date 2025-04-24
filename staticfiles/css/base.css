@@ -105,7 +105,7 @@ footer {
 .email-btn,
 .password-btn,
 .signup-btn {
-    background-color: none;
+    background-color: transparent;
     border: none;
 }
 
@@ -199,7 +199,7 @@ ul {
 /* Stock Details Page */
 
 .back-btn {
-    background-color: none;
+    background-color: transparent;
     border: none;
 }
 
@@ -217,7 +217,7 @@ ul {
 
 .keep-shopping-btn {
     text-transform: none !important;
-    background-color: none;
+    background-color: transparent;
     border: none;
 }
 
@@ -240,7 +240,7 @@ ul {
 }
 
 .quantity-field {
-    border-color: none !important;
+    border: none;
 }
 
 .btn-link {

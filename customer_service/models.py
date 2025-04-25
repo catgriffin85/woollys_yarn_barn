@@ -2,7 +2,9 @@ from django.db import models
 
 
 class Topic(models.Model):
-
+    """
+    A topic that groups FAQs under a common theme.
+    """
     name = models.CharField(max_length=254, default='')
     friendly_name = models.CharField(max_length=254, null=True, blank=True)
 
@@ -10,11 +12,18 @@ class Topic(models.Model):
         return self.name
 
     def get_friendly_name(self):
+        """
+        Return the friendly version of the topic name.
+        """
         return self.friendly_name
 
 
 class Faq(models.Model):
-
+    """
+    A frequently asked question entry.
+    Includes question text, a unique slug, topic name,
+    and tracking for views and publication status.
+    """
     topics = models.CharField(max_length=100, blank=True)
     question = models.CharField(max_length=250, blank=True)
     question_id = models.CharField(max_length=100, blank=True)
@@ -30,7 +39,10 @@ class Faq(models.Model):
 
 
 class Contact(models.Model):
-
+    """
+    A customer-submitted contact form, categorized by topic.
+    Automatically assigns a unique contact ID on save.
+    """
     TOPICS = [
         ('delivery', 'Delivery'),
         ('returns_refunds', 'Returns & Refunds'),
@@ -47,6 +59,9 @@ class Contact(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
 
     def save(self, *args, **kwargs):
+        """
+        Override save method to generate a sequential contact ID (e.g., C0001).
+        """
         if not self.contact_id:
             last_contact = Contact.objects.exclude(
                 contact_id=''

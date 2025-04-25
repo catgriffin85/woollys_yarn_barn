@@ -32,6 +32,9 @@ def all_faqs(request):
 
 
 def faq_view(request):
+    """
+    Display FAQs grouped by predefined topics.
+    """
     faqs_delivery = Faq.objects.filter(topics="delivery", is_published=True)
     faqs_returns_refunds = Faq.objects.filter(
         topics="returns_refunds", is_published=True
@@ -55,6 +58,9 @@ def faq_view(request):
 
 
 def contact(request):
+    """
+    Handle the contact form view.
+    """
     selected_topic = request.POST.get('topic') or request.GET.get('topic')
 
     if request.method == 'POST':
@@ -111,6 +117,9 @@ def contact(request):
 
 @csrf_exempt
 def contact_thank_you(request):
+    """
+    Respond to a thank-you action after interacting with FAQs.
+    """
     if request.method == 'POST':
         messages.success(request, "Great! We're glad we could help. 😊")
         return JsonResponse({'status': 'ok'})
@@ -118,6 +127,9 @@ def contact_thank_you(request):
 
 
 def home(request):
+    """
+    Display the homepage, showing a thank-you message if redirected from FAQ/contact.
+    """
     if request.GET.get('thank_you') == '1':
         messages.success(request, "Great! We're glad we could help. 😊")
 

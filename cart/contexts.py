@@ -23,6 +23,14 @@ COLOUR_FRIENDLY_NAMES = {
 
 
 def cart_contents(request):
+    """
+    Retrieve and process the contents of the shopping cart from the user's session.
+
+    It handles both:
+    - Simple items with no attributes.
+    - Items with attributes (size-weight-colour keys).
+     """
+    
     cart_items = []
     total = Decimal(0)
     stock_count = 0
@@ -32,7 +40,6 @@ def cart_contents(request):
 
     for item_id, item_data in cart.items():
         if not item_id.isdigit():
-            print(f"Invalid item_id {item_id} in cart — skipping.")
             continue
         stock = get_object_or_404(Stock, pk=item_id)
 

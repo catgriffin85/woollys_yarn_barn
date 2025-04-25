@@ -10,6 +10,10 @@ from decimal import Decimal, ROUND_HALF_UP
 
 
 class Order(models.Model):
+    """
+    A model to store individual customer orders, including contact information,
+    order totals, delivery cost, and Stripe payment reference.
+    """
     order_number = models.CharField(max_length=32, null=False, editable=False)
     user_profile = models.ForeignKey(UserProfile, on_delete=models.SET_NULL,
                                      null=True, blank=True,
@@ -42,6 +46,9 @@ class Order(models.Model):
         return uuid.uuid4().hex[:8].upper()
 
     def update_total(self):
+        """
+        Update order total, delivery cost, and grand total based on line items.
+        """
         self.order_total = (
             self.lineitems.aggregate(Sum('lineitem_total'))['lineitem_total__sum'] or 0
             )
@@ -94,6 +101,10 @@ STOCK_COLOUR_CHOICES = [
 
 
 class OrderLineItem(models.Model):
+    """
+    An individual item within a customer order.
+    Includes stock details, quantity, and total price for the line.
+    """
     order = models.ForeignKey(Order, null=False, blank=False,
                               on_delete=models.CASCADE,
                               related_name='lineitems')

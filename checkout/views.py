@@ -15,6 +15,12 @@ import json
 
 @require_POST
 def cache_checkout_data(request):
+    """
+    Store cart and user data in the metadata of the Stripe PaymentIntent.
+
+    This helps ensure that relevant information can be accessed from Stripe
+    in the event of payment issues or review.
+    """
     try:
         pid = request.POST.get('client_secret').split('_secret')[0]
         stripe.api_key = settings.STRIPE_SECRET_KEY
@@ -33,6 +39,10 @@ def cache_checkout_data(request):
 
 
 def checkout(request):
+    """
+    Display and handle the checkout form, integrating with Stripe for payment.
+    """
+
     stripe.api_key = settings.STRIPE_SECRET_KEY
     cart = request.session.get('cart', {})
 
@@ -100,6 +110,9 @@ def checkout(request):
 
 
 def order_complete(request, stripe_pid):
+    """
+    Handle the order completion logic after payment.
+    """
     save_info = request.session.get('save_info')
     order = Order.objects.filter(stripe_pid=stripe_pid).first()
 

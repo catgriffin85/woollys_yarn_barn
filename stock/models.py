@@ -3,7 +3,9 @@ from cloudinary.models import CloudinaryField
 
 
 class Category(models.Model):
-
+    """
+    A category that groups stock under a common theme.
+    """
     class Meta:
         verbose_name_plural = 'Categories'
 
@@ -14,11 +16,17 @@ class Category(models.Model):
         return self.name
 
     def get_friendly_name(self):
+        """
+        Return the friendly version of the category name.
+        """
         return self.friendly_name
 
 
 class Stock(models.Model):
-
+    """
+    A model to store individual stock items, including category,
+    name, description, weight, colour, size, price and image.
+    """
     class Meta:
         verbose_name_plural = 'Stock'
 

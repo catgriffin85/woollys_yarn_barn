@@ -128,7 +128,6 @@
                     'quantity': quantity,
                     'item_attribute': itemAttribute,
                 };
-                console.log("Updating item:", itemId, "Attribute:", itemAttribute, "Qty:", quantity);
                 $.post(url, data)
                     .done(function () {
                         location.reload();
@@ -145,8 +144,6 @@
             var itemId = $(this).data('item-id');
             var itemAttribute = $(this).data('item-attribute');
 
-            console.log(`Item ID: ${itemId}, Item Attribute: ${itemAttribute}`);  // Log for debugging
-
             var csrfToken = "{{ csrf_token }}";
             var url = `/cart/remove/${itemId}/${itemAttribute}/`;
             var data = { 'csrfmiddlewaretoken': csrfToken };
@@ -158,7 +155,6 @@
                 .fail(function (xhr, status, error) {
                     alert("Error removing item: " + error);
                 });
-            console.log(url);
         });
     </script>
     {% endblock %}

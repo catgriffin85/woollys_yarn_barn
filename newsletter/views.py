@@ -8,6 +8,9 @@ from django.conf import settings
 
 
 def newsletter_signup(request):
+    """
+    Handle newsletter signup and resubscription.
+    """
     if request.method == 'POST':
         form = NewsletterSignupForm(request.POST)
         if form.is_valid():
@@ -67,6 +70,9 @@ def newsletter_signup(request):
 
 
 def newsletter_unsubscribe(request):
+    """
+    Handle newsletter unsubscription.
+    """
     if request.method == 'POST':
         form = NewsletterUnsubscribeForm(request.POST)
         if form.is_valid():
